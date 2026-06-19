@@ -372,6 +372,9 @@
   #toast.success { border-left: 4px solid var(--green); }
   #toast.error   { border-left: 4px solid var(--red); }
 
+  /* Friends view lookup layout */
+  .friend-item { display: flex; justify-content: space-between; align-items: center; padding: .75rem 1rem; border-radius: 10px; background: var(--slate-50); border: 1.5px solid var(--slate-100); }
+
   @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .grid-4 { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 768px) {
     #sidebar { transform: translateX(-100%); }
@@ -676,15 +679,9 @@
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  CENTRALIZED ARCHIVAL USER STATE REGISTER (BRANDING ALIGNED)
+//  CENTRALIZED USER STATE REGISTER (CLEANED - NO PRELOADED USERS)
 // ═══════════════════════════════════════════════════════════
-const usersDatabase = {
-  'demo@studylyx.com': { password: 'demo1234', name: 'Demo Student', uid: 'u-001', streak: 3, totalQuizzes: 4 },
-  'muhammadbilalcp@gmail.com': { password: 'admin1234', name: 'M Bilal CP', uid: 'u-admin', streak: 12, totalQuizzes: 24 },
-  'sarah.k@studylyx.com': { password: 'password', name: 'Sarah Khan', uid: 'u-002', streak: 7, totalQuizzes: 9 },
-  'john.doe@studylyx.com': { password: 'password', name: 'John Doe', uid: 'u-003', streak: 2, totalQuizzes: 1 },
-  'studylyx.fan@domain.com': { password: 'password', name: 'StudyLyx Enthusiast', uid: 'u-004', streak: 19, totalQuizzes: 35 }
-};
+const usersDatabase = {};
 
 const state = {
   user: null,      
@@ -1068,6 +1065,12 @@ function generateGlobalLeaderboardRows() {
   if(!tbody) return;
 
   const completeLeaderboardMatrix = Object.values(usersDatabase);
+  
+  if (completeLeaderboardMatrix.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:var(--slate-400); padding:2rem;">No profiles registered in this runtime context yet.</td></tr>`;
+    return;
+  }
+
   completeLeaderboardMatrix.sort((a, b) => b.streak - a.streak);
 
   tbody.innerHTML = completeLeaderboardMatrix.map((student, pos) => {
