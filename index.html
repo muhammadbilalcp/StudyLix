@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>StudySpark – Learn. Challenge. Grow.</title>
+<title>StudyLyx – Learn. Challenge. Grow.</title>
 <style>
   /* ── Reset & Base ─────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,12 +82,6 @@
   .input-group input:focus, .input-group select:focus {
     outline: none; border-color: var(--violet); box-shadow: 0 0 0 3px rgba(124,58,237,.15);
   }
-  .search-wrap { position: relative; }
-  .search-wrap input { padding-left: 2.8rem; }
-  .search-wrap .search-icon {
-    position: absolute; left: .9rem; top: 50%; transform: translateY(-50%);
-    color: var(--slate-400); font-size: 1rem; pointer-events: none;
-  }
 
   /* ── Cards ────────────────────────────────────────── */
   .card {
@@ -112,15 +106,6 @@
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 100%);
     padding: 1.5rem; position: relative; overflow: hidden;
-  }
-  .auth-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .auth-particles span {
-    position: absolute; border-radius: 50%; background: rgba(255,255,255,.08);
-    animation: float 8s infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); opacity: .5; }
-    50%       { transform: translateY(-40px) scale(1.1); opacity: 1; }
   }
   .auth-box {
     background: var(--white); border-radius: 20px; box-shadow: var(--shadow-lg);
@@ -214,19 +199,8 @@
     border-radius: var(--radius); padding: 3rem 2.5rem;
     color: var(--white); position: relative; overflow: hidden; margin-bottom: 2rem;
   }
-  .hero::before {
-    content: ''; position: absolute; top: -60px; right: -60px;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: rgba(255,255,255,.05);
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: -80px; right: 80px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: rgba(245,158,11,.1);
-  }
   .hero h1 { color: var(--white); margin-bottom: .8rem; }
   .hero p   { color: rgba(255,255,255,.8); font-size: 1.1rem; margin-bottom: 1.8rem; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .hero-stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
   .hero-stat .num  { font-size: 1.6rem; font-weight: 800; color: var(--gold); }
   .hero-stat .lbl  { font-size: .8rem; color: rgba(255,255,255,.65); }
@@ -243,7 +217,6 @@
   /* ── Subject Cards ────────────────────────────────── */
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
   .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 
   .subject-card {
@@ -266,9 +239,7 @@
   .subject-card.social  { background: linear-gradient(135deg, #d97706, #f59e0b); }
 
   /* ── Notes ────────────────────────────────────────── */
-  .notes-sidebar {
-    width: 240px; flex-shrink: 0;
-  }
+  .notes-sidebar { width: 240px; flex-shrink: 0; }
   .notes-layout { display: flex; gap: 1.5rem; }
   .notes-main   { flex: 1; min-width: 0; }
   .note-subject-btn {
@@ -292,8 +263,6 @@
   .note-card .note-meta { display: flex; gap: .8rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
   .note-body h3 { margin: 1.2rem 0 .5rem; color: var(--indigo); }
   .note-body p  { margin-bottom: .8rem; }
-  .note-body ul { padding-left: 1.4rem; margin-bottom: .8rem; }
-  .note-body ul li { margin-bottom: .35rem; color: var(--slate-600); line-height: 1.6; }
   .note-body .key-formula {
     background: var(--violet-lt); border-left: 4px solid var(--violet);
     padding: .9rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
@@ -319,13 +288,9 @@
 
   .quiz-wrap { max-width: 640px; margin: 0 auto; }
   .quiz-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-  .quiz-progress-bar {
-    height: 6px; background: var(--slate-200); border-radius: 99px; overflow: hidden; flex: 1; margin: 0 1rem;
-  }
+  .quiz-progress-bar { height: 6px; background: var(--slate-200); border-radius: 99px; overflow: hidden; flex: 1; margin: 0 1rem; }
   .quiz-progress-fill { height: 100%; background: var(--violet); border-radius: 99px; transition: width .3s; }
-  .question-card {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem;
-  }
+  .question-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; }
   .question-num { font-size: .8rem; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
   .question-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--indigo); }
   .options-list { display: flex; flex-direction: column; gap: .7rem; }
@@ -344,23 +309,13 @@
   .option-btn.wrong     { border-color: var(--red);   background: #fee2e2; }
   .option-btn.correct .opt-label { background: var(--green); color: var(--white); }
   .option-btn.wrong   .opt-label { background: var(--red);   color: var(--white); }
-  .feedback-box {
-    margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: .9rem; font-weight: 500;
-    animation: fadeIn .3s;
-  }
+  .feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: .9rem; font-weight: 500; }
   .feedback-box.correct { background: #d1fae5; color: #065f46; border-left: 4px solid var(--green); }
   .feedback-box.wrong   { background: #fee2e2; color: #991b1b; border-left: 4px solid var(--red); }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
   /* Results */
-  .results-card {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg);
-    padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto;
-  }
-  .score-ring {
-    width: 140px; height: 140px; margin: 1.5rem auto;
-    position: relative; display: flex; align-items: center; justify-content: center;
-  }
+  .results-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto; }
+  .score-ring { width: 140px; height: 140px; margin: 1.5rem auto; position: relative; display: flex; align-items: center; justify-content: center; }
   .score-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
   .score-ring .score-num { font-size: 2.2rem; font-weight: 800; color: var(--indigo); line-height: 1; }
   .score-ring .score-lbl { font-size: .75rem; color: var(--slate-400); }
@@ -371,25 +326,14 @@
 
   /* ── Dashboard ────────────────────────────────────── */
   .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2rem; }
-  .stat-card {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem;
-    display: flex; flex-direction: column; gap: .5rem;
-  }
+  .stat-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem; }
   .stat-card .stat-icon { font-size: 1.8rem; }
   .stat-card .stat-val  { font-size: 1.8rem; font-weight: 800; color: var(--indigo); }
   .stat-card .stat-lbl  { font-size: .82rem; color: var(--slate-400); font-weight: 600; }
   .stat-card .stat-trend { font-size: .78rem; color: var(--green); font-weight: 600; }
 
-  .profile-card {
-    background: linear-gradient(135deg, var(--indigo), var(--violet));
-    border-radius: var(--radius); padding: 2rem; color: var(--white);
-    display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
-  }
-  .profile-avatar {
-    width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; font-weight: 800; border: 3px solid var(--gold); flex-shrink: 0;
-  }
+  .profile-card { background: linear-gradient(135deg, var(--indigo), var(--violet)); border-radius: var(--radius); padding: 2rem; color: var(--white); display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+  .profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; border: 3px solid var(--gold); flex-shrink: 0; }
   .profile-info h2  { color: var(--white); }
   .profile-info p   { color: rgba(255,255,255,.7); font-size: .9rem; margin-top: .2rem; }
   .profile-info .badges { display: flex; gap: .5rem; margin-top: .7rem; flex-wrap: wrap; }
@@ -398,92 +342,45 @@
   .scores-table table { width: 100%; border-collapse: collapse; }
   .scores-table th { background: var(--slate-50); padding: .9rem 1.2rem; text-align: left; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--slate-400); }
   .scores-table td { padding: .9rem 1.2rem; border-top: 1px solid var(--slate-100); font-size: .9rem; }
-  .score-bar { height: 6px; border-radius: 99px; background: var(--slate-200); }
+  .score-bar-wrap { height: 6px; border-radius: 99px; background: var(--slate-200); }
   .score-bar-fill { height: 100%; border-radius: 99px; background: var(--violet); }
 
   /* ── Daily Challenge ──────────────────────────────── */
-  .challenge-card {
-    background: linear-gradient(135deg, #f59e0b, #ef4444);
-    border-radius: var(--radius); padding: 2rem; color: var(--white); margin-bottom: 1.5rem; position: relative; overflow: hidden;
-  }
-  .challenge-card::before {
-    content: '⚡'; position: absolute; right: 1.5rem; top: 1rem; font-size: 5rem; opacity: .2;
-  }
+  .challenge-card { background: linear-gradient(135deg, #f59e0b, #ef4444); border-radius: var(--radius); padding: 2rem; color: var(--white); margin-bottom: 1.5rem; position: relative; overflow: hidden; }
   .challenge-card h2 { color: var(--white); }
   .challenge-card p  { color: rgba(255,255,255,.85); margin-top: .3rem; }
-  .challenge-form {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.8rem; max-width: 640px;
-  }
+  .challenge-form { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.8rem; max-width: 640px; }
   .challenge-options { display: flex; flex-direction: column; gap: .7rem; margin: 1.2rem 0; }
-  .challenge-opt {
-    display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem;
-    border-radius: 10px; border: 2px solid var(--slate-200); cursor: pointer;
-    transition: all .2s; background: var(--white);
-  }
+  .challenge-opt { display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem; border-radius: 10px; border: 2px solid var(--slate-200); cursor: pointer; transition: all .2s; background: var(--white); }
   .challenge-opt:hover { border-color: var(--gold); background: var(--gold-lt); }
-  .challenge-opt input[type=radio] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; }
-  .challenge-result { padding: 1.2rem; border-radius: 10px; margin-top: 1rem; font-weight: 600; animation: fadeIn .3s; }
+  .challenge-result { padding: 1.2rem; border-radius: 10px; margin-top: 1rem; font-weight: 600; }
   .challenge-result.correct { background: #d1fae5; color: #065f46; }
   .challenge-result.wrong   { background: #fee2e2; color: #991b1b; }
 
-  /* ── Streak & Progress ────────────────────────────── */
+  /* Search Wrap Utility */
+  .search-wrap { position: relative; width: 100%; }
+  .search-wrap input { padding-left: 2.8rem; width: 100%; }
+  .search-wrap .search-icon { position: absolute; left: .9rem; top: 50%; transform: translateY(-50%); color: var(--slate-400); pointer-events: none; }
+
+  /* Progress utility */
   .progress-bar-wrap { background: var(--slate-200); border-radius: 99px; height: 10px; overflow: hidden; }
   .progress-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--violet), var(--gold)); transition: width .6s ease; }
 
-  /* ── Search Results ───────────────────────────────── */
-  .search-results { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-  .search-result-item {
-    display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem;
-    border-bottom: 1px solid var(--slate-100); cursor: pointer; transition: background .15s;
-  }
-  .search-result-item:last-child { border-bottom: none; }
-  .search-result-item:hover { background: var(--slate-50); }
-  .search-result-item .result-icon { font-size: 1.4rem; }
-  .search-result-item .result-info h4 { font-size: .95rem; color: var(--indigo); }
-  .search-result-item .result-info p  { font-size: .82rem; margin-top: .2rem; }
-
-  /* ── Toast ────────────────────────────────────────── */
-  #toast {
-    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
-    background: var(--slate-800); color: var(--white); padding: .8rem 1.4rem;
-    border-radius: 12px; font-size: .9rem; font-weight: 500; box-shadow: var(--shadow-lg);
-    transform: translateY(100px); opacity: 0; transition: all .3s;
-    display: flex; align-items: center; gap: .6rem;
-  }
+  /* Toast */
+  #toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999; background: var(--slate-800); color: var(--white); padding: .8rem 1.4rem; border-radius: 12px; font-size: .9rem; font-weight: 500; box-shadow: var(--shadow-lg); transform: translateY(100px); opacity: 0; transition: all .3s; }
   #toast.show { transform: none; opacity: 1; }
   #toast.success { border-left: 4px solid var(--green); }
   #toast.error   { border-left: 4px solid var(--red); }
 
-  /* ── Friends UI Elements ──────────────────────────── */
-  .friends-list { display: flex; flex-direction: column; gap: .8rem; margin-top: 1rem; }
-  .friend-item { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1rem; background: var(--slate-50); border-radius: 10px; border: 1.5px solid var(--slate-200); }
-
-  /* ── Responsive ───────────────────────────────────── */
-  @media (max-width: 1024px) {
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .grid-4 { grid-template-columns: repeat(2,1fr); }
-  }
+  @media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(2,1fr); } .grid-4 { grid-template-columns: repeat(2,1fr); } }
   @media (max-width: 768px) {
     #sidebar { transform: translateX(-100%); }
     #sidebar.open { transform: none; }
-    .sidebar-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity .3s; }
-    .sidebar-overlay.show { opacity: 1; pointer-events: all; }
     #main-content { margin-left: 0; }
     .hamburger { display: flex; }
     .page-content { padding: 1rem; }
-    .hero { padding: 1.8rem 1.2rem; }
     .notes-layout { flex-direction: column; }
     .notes-sidebar { width: 100%; }
-    .quiz-subjects-grid { grid-template-columns: repeat(2,1fr); }
-    .profile-card { flex-direction: column; text-align: center; }
-    .stats-grid { grid-template-columns: repeat(2,1fr); }
-    .grid-3 { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 480px) {
-    .grid-4, .grid-2 { grid-template-columns: 1fr; }
-    .quiz-subjects-grid { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1rem; }
   }
 </style>
 </head>
@@ -491,499 +388,282 @@
 
 <!-- ░░░ AUTH SCREEN ░░░ -->
 <div id="auth-screen">
-  <div class="auth-particles" id="auth-particles"></div>
   <div class="auth-box">
     <div class="auth-logo">
       <span class="spark">⚡</span>
-      <span class="name">Study<span>Spark</span></span>
+      <span class="name">Study<span>Lyx</span></span>
     </div>
     <div class="auth-tabs">
-      <button class="auth-tab active" onclick="showAuthTab('login')">Log In</button>
-      <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
+      <button class="auth-tab active" id="tab-login" onclick="showAuthTab('login')">Log In</button>
+      <button class="auth-tab" id="tab-signup" onclick="showAuthTab('signup')">Sign Up</button>
     </div>
     <div id="auth-error" class="auth-error hidden"></div>
 
     <!-- Login Form -->
     <div id="login-form">
       <div class="input-group">
-        <label>Email</label>
-        <input type="email" id="login-email" placeholder="you@example.com" />
+        <label>Email Address</label>
+        <input type="email" id="login-email" placeholder="yourname@domain.com" />
       </div>
       <div class="input-group">
         <label>Password</label>
         <input type="password" id="login-password" placeholder="••••••••" />
       </div>
-      <button class="btn btn-primary w-full" onclick="handleLogin()" style="margin-top:.5rem">Log In →</button>
-      <p style="text-align:center;margin-top:1.2rem;font-size:.85rem;color:var(--slate-400)">
-        Admin: <strong>muhammadbilalcp@gmail.com</strong> / <strong>admin1234</strong>
-      </p>
+      <button class="btn btn-primary w-full" onclick="handleLogin()" style="margin-top:.5rem">Sign In Now →</button>
     </div>
 
     <!-- Signup Form -->
     <div id="signup-form" class="hidden">
       <div class="input-group">
         <label>Full Name</label>
-        <input type="text" id="signup-name" placeholder="Alex Johnson" />
+        <input type="text" id="signup-name" placeholder="Alex Mercer" />
       </div>
       <div class="input-group">
-        <label>Email</label>
-        <input type="email" id="signup-email" placeholder="you@example.com" />
+        <label>Email Address</label>
+        <input type="email" id="signup-email" placeholder="newuser@domain.com" />
       </div>
       <div class="input-group">
         <label>Password</label>
-        <input type="password" id="signup-password" placeholder="Min 6 characters" />
+        <input type="password" id="signup-password" placeholder="Minimum 6 characters" />
       </div>
-      <button class="btn btn-primary w-full" onclick="handleSignup()" style="margin-top:.5rem">Create Account →</button>
+      <button class="btn btn-primary w-full" onclick="handleSignup()" style="margin-top:.5rem">Create New Profile →</button>
     </div>
   </div>
 </div>
 
-<!-- ░░░ APP ░░░ -->
+<!-- ░░░ MAIN APPLICATION CONTAINER ░░░ -->
 <div id="app" class="hidden">
-  <!-- Sidebar -->
   <aside id="sidebar">
     <div class="sidebar-logo">
       <span class="spark-icon">⚡</span>
-      <span class="logo-text">Study<span>Spark</span></span>
+      <span class="logo-text">Study<span>Lyx</span></span>
     </div>
     <div class="sidebar-user">
-      <div class="avatar" id="sidebar-avatar">A</div>
+      <div class="avatar" id="sidebar-avatar">U</div>
       <div class="user-info">
-        <div class="user-name" id="sidebar-name">Alex</div>
-        <div class="user-email" id="sidebar-email">alex@example.com</div>
+        <div class="user-name" id="sidebar-name">User</div>
+        <div class="user-email" id="sidebar-email">user@domain.com</div>
       </div>
     </div>
     <nav class="sidebar-nav">
-      <div class="nav-section-label">Learn</div>
-      <div class="nav-link active" onclick="navigate('home')" id="nav-home">
-        <span class="nav-icon">🏠</span> Home
-      </div>
-      <div class="nav-link" onclick="navigate('notes')" id="nav-notes">
-        <span class="nav-icon">📚</span> Notes
-      </div>
-      <div class="nav-link" onclick="navigate('quiz')" id="nav-quiz">
-        <span class="nav-icon">🧠</span> Quizzes
-      </div>
-      <div class="nav-link" onclick="navigate('challenge')" id="nav-challenge">
-        <span class="nav-icon">⚡</span> Daily Challenge
-      </div>
-      <div class="nav-link" onclick="navigate('friends')" id="nav-friends">
-        <span class="nav-icon">👥</span> Friends
-      </div>
-      <div class="nav-section-label id-admin-label hidden" id="admin-nav-label">Management</div>
-      <div class="nav-link hidden" onclick="navigate('admin')" id="nav-admin">
-        <span class="nav-icon">🛠️</span> Teacher Portal
-      </div>
-      <div class="nav-section-label">Account</div>
-      <div class="nav-link" onclick="navigate('dashboard')" id="nav-dashboard">
-        <span class="nav-icon">📊</span> Dashboard
-      </div>
+      <div class="nav-section-label">Main</div>
+      <div class="nav-link active" onclick="navigate('home')" id="nav-home"><span class="nav-icon">🏠</span> Home</div>
+      <div class="nav-link" onclick="navigate('notes')" id="nav-notes"><span class="nav-icon">📚</span> Notes Modules</div>
+      <div class="nav-link" onclick="navigate('quiz')" id="nav-quiz"><span class="nav-icon">🧠</span> Practice Quizzes</div>
+      <div class="nav-link" onclick="navigate('challenge')" id="nav-challenge"><span class="nav-icon">⚡</span> Daily Arenas</div>
+      <div class="nav-link" onclick="navigate('friends')" id="nav-friends"><span class="nav-icon">👥</span> Friends & Rankings</div>
+      <div class="nav-section-label hidden" id="admin-nav-label">Administration</div>
+      <div class="nav-link hidden" onclick="navigate('admin')" id="nav-admin"><span class="nav-icon">🛠️</span> Instructor Portal</div>
+      <div class="nav-section-label">Performance</div>
+      <div class="nav-link" onclick="navigate('dashboard')" id="nav-dashboard"><span class="nav-icon">📊</span> Metrics Board</div>
     </nav>
     <div class="sidebar-footer">
-      <button class="btn btn-danger btn-sm w-full" onclick="handleLogout()">🚪 Log Out</button>
+      <button class="btn btn-danger btn-sm w-full" onclick="handleLogout()">🚪 Terminate Session</button>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
 
-  <!-- Main -->
   <div id="main-content">
     <div class="top-bar">
       <div style="display:flex;align-items:center;gap:.8rem">
-        <button class="hamburger" onclick="toggleSidebar()">
-          <span></span><span></span><span></span>
-        </button>
-        <span class="top-bar-title" id="page-title">Home</span>
+        <button class="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+        <span class="top-bar-title" id="page-title">Home Layout</span>
       </div>
       <div style="display:flex;align-items:center;gap:.8rem">
-        <span id="topbar-streak" class="badge badge-gold">🔥 0 day streak</span>
-        <div class="avatar" id="topbar-avatar" style="width:34px;height:34px;font-size:.85rem;cursor:pointer" onclick="navigate('dashboard')">A</div>
+        <span id="topbar-streak" class="badge badge-gold">🔥 0 Days Active</span>
+        <div class="avatar" id="topbar-avatar" style="width:34px;height:34px;font-size:.85rem;cursor:pointer" onclick="navigate('dashboard')">-</div>
       </div>
     </div>
 
     <div class="page-content">
-      <!-- ── HOME PAGE ── -->
+      <!-- ── HOME SCREEN ── -->
       <div id="page-home">
         <div class="hero">
-          <h1>Ready to Study<br>Smarter Today? ⚡</h1>
-          <p>Explore notes, tackle quizzes, and earn your streak — all in one place.</p>
+          <h1>Achieve True Mastery With StudyLyx ⚡</h1>
+          <p>Access curated textbooks, benchmark performance indexes, and synchronize metrics with study groups seamlessly.</p>
           <div class="hero-search">
             <span class="search-icon">🔍</span>
-            <input type="text" id="home-search" placeholder="Search notes, topics, chapters…" oninput="handleHomeSearch(this.value)" />
+            <input type="text" id="home-search" placeholder="Search across curriculum notes..." oninput="handleHomeSearch(this.value)" />
           </div>
           <div class="hero-stats">
-            <div class="hero-stat"><div class="num">4</div><div class="lbl">Subjects</div></div>
-            <div class="hero-stat"><div class="num" id="hero-quizzes-count">0</div><div class="lbl">Quizzes Taken</div></div>
-            <div class="hero-stat"><div class="num" id="hero-streak">0</div><div class="lbl">Day Streak</div></div>
+            <div class="hero-stat"><div class="num">4</div><div class="lbl">Syllabus Pillars</div></div>
+            <div class="hero-stat"><div class="num" id="hero-quizzes-count">0</div><div class="lbl">Completions</div></div>
+            <div class="hero-stat"><div class="num" id="hero-streak">0</div><div class="lbl">Current Streak</div></div>
           </div>
         </div>
 
-        <!-- Search results -->
         <div id="home-search-results" class="hidden" style="margin-bottom:1.5rem">
           <div class="section-header">
-            <h2>🔍 Search Results</h2>
-            <button class="btn btn-secondary btn-sm" onclick="clearHomeSearch()">Clear</button>
+            <h2>🔍 Matches Identified</h2>
+            <button class="btn btn-secondary btn-sm" onclick="clearHomeSearch()">Clear Matrix</button>
           </div>
-          <div class="search-results" id="search-results-list"></div>
+          <div class="scores-table" style="background:var(--white)" id="search-results-list"></div>
         </div>
 
-        <div class="section-header">
-          <h2>📖 Subjects</h2>
-          <button class="btn btn-secondary btn-sm" onclick="navigate('notes')">Browse All Notes →</button>
-        </div>
-        <div class="grid-4" style="margin-bottom:2rem">
-          <div class="subject-card math" onclick="openSubjectNotes('math')">
-            <div class="icon">➕</div>
-            <h3>Mathematics</h3>
-            <div class="meta" id="meta-count-math">3 chapters · 3 notes</div>
-          </div>
-          <div class="subject-card science" onclick="openSubjectNotes('science')">
-            <div class="icon">🔬</div>
-            <h3>Science</h3>
-            <div class="meta" id="meta-count-science">3 chapters · 3 notes</div>
-          </div>
-          <div class="subject-card english" onclick="openSubjectNotes('english')">
-            <div class="icon">📝</div>
-            <h3>English</h3>
-            <div class="meta" id="meta-count-english">3 chapters · 3 notes</div>
-          </div>
-          <div class="subject-card social" onclick="openSubjectNotes('social')">
-            <div class="icon">🌍</div>
-            <h3>Social Studies</h3>
-            <div class="meta" id="meta-count-social">3 chapters · 3 notes</div>
-          </div>
-        </div>
-
-        <div class="section-header">
-          <h2>🧠 Quick Quiz</h2>
-          <button class="btn btn-secondary btn-sm" onclick="navigate('quiz')">All Quizzes →</button>
-        </div>
-        <div class="grid-2">
-          <div class="card" onclick="startQuickQuiz('math')" style="cursor:pointer">
-            <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem">
-              <span style="font-size:1.5rem">➕</span>
-              <div>
-                <h3>Math Quiz</h3>
-                <p style="font-size:.82rem;margin:0">Algebra & Geometry</p>
-              </div>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span class="badge badge-violet" id="quick-count-math">10 Questions</span>
-              <button class="btn btn-primary btn-sm">Start →</button>
-            </div>
-          </div>
-          <div class="card" onclick="startQuickQuiz('science')" style="cursor:pointer">
-            <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem">
-              <span style="font-size:1.5rem">🔬</span>
-              <div>
-                <h3>Science Quiz</h3>
-                <p style="font-size:.82rem;margin:0">Biology & Physics</p>
-              </div>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <span class="badge badge-green" id="quick-count-science">10 Questions</span>
-              <button class="btn btn-primary btn-sm">Start →</button>
-            </div>
-          </div>
+        <div class="section-header"><h2>📖 Curriculum Blocks</h2></div>
+        <div class="grid-4">
+          <div class="subject-card math" onclick="openSubjectNotes('math')"><div class="icon">➕</div><h3>Mathematics</h3><div class="meta" id="meta-count-math">0 Chapters</div></div>
+          <div class="subject-card science" onclick="openSubjectNotes('science')"><div class="icon">🔬</div><h3>Natural Science</h3><div class="meta" id="meta-count-science">0 Chapters</div></div>
+          <div class="subject-card english" onclick="openSubjectNotes('english')"><div class="icon">📝</div><h3>Language Arts</h3><div class="meta" id="meta-count-english">0 Chapters</div></div>
+          <div class="subject-card social" onclick="openSubjectNotes('social')"><div class="icon">🌍</div><h3>Social Systems</h3><div class="meta" id="meta-count-social">0 Chapters</div></div>
         </div>
       </div>
 
-      <!-- ── NOTES PAGE ── -->
+      <!-- ── NOTES MODULE VIEW ── -->
       <div id="page-notes" class="hidden">
-        <div style="margin-bottom:1.5rem">
-          <div class="search-wrap">
-            <span class="search-icon">🔍</span>
-            <input type="text" placeholder="Search notes…" oninput="filterNotes(this.value)" style="width:100%;padding:.7rem 1rem .7rem 2.8rem;border:1.5px solid var(--slate-200);border-radius:10px;font-size:.95rem" />
-          </div>
-        </div>
         <div class="notes-layout">
           <div class="notes-sidebar">
             <div class="card" style="padding:1rem">
-              <h3 style="margin-bottom:.8rem;font-size:.9rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:.05em">Subjects</h3>
-              <button class="note-subject-btn active" onclick="selectNoteSubject('math',this)" id="note-sub-math">
-                <span class="dot" style="background:#7c3aed"></span> Mathematics
-              </button>
+              <button class="note-subject-btn active" onclick="selectNoteSubject('math',this)" id="note-sub-math"><span class="dot" style="background:#7c3aed"></span> Mathematics</button>
               <div class="chapter-list" id="chapters-math"></div>
-
-              <button class="note-subject-btn" onclick="selectNoteSubject('science',this)" id="note-sub-science">
-                <span class="dot" style="background:#10b981"></span> Science
-              </button>
+              <button class="note-subject-btn" onclick="selectNoteSubject('science',this)" id="note-sub-science"><span class="dot" style="background:#10b981"></span> Natural Science</button>
               <div class="chapter-list hidden" id="chapters-science"></div>
-
-              <button class="note-subject-btn" onclick="selectNoteSubject('english',this)" id="note-sub-english">
-                <span class="dot" style="background:#f97316"></span> English
-              </button>
+              <button class="note-subject-btn" onclick="selectNoteSubject('english',this)" id="note-sub-english"><span class="dot" style="background:#f97316"></span> Language Arts</button>
               <div class="chapter-list hidden" id="chapters-english"></div>
-
-              <button class="note-subject-btn" onclick="selectNoteSubject('social',this)" id="note-sub-social">
-                <span class="dot" style="background:#f59e0b"></span> Social Studies
-              </button>
+              <button class="note-subject-btn" onclick="selectNoteSubject('social',this)" id="note-sub-social"><span class="dot" style="background:#f59e0b"></span> Social Systems</button>
               <div class="chapter-list hidden" id="chapters-social"></div>
             </div>
           </div>
-          <div class="notes-main">
-            <div class="note-card" id="note-content-area"></div>
-          </div>
+          <div class="notes-main"><div class="note-card" id="note-content-area"></div></div>
         </div>
       </div>
 
-      <!-- ── QUIZ PAGE ── -->
+      <!-- ── QUIZZES WINDOW ── -->
       <div id="page-quiz" class="hidden">
         <div id="quiz-picker">
-          <h2 style="margin-bottom:1.2rem">Choose a Quiz Subject</h2>
           <div class="quiz-subjects-grid">
-            <div class="quiz-subject-card" onclick="startQuickQuiz('math')">
-              <div class="icon">➕</div>
-              <h3>Mathematics</h3>
-              <p>Algebra, Geometry, Numbers</p>
-              <div style="margin-top:.8rem"><span class="badge badge-violet" id="picker-count-math">10 Qs</span></div>
-            </div>
-            <div class="quiz-subject-card" onclick="startQuickQuiz('science')">
-              <div class="icon">🔬</div>
-              <h3>Science</h3>
-              <p>Biology, Physics, Chemistry</p>
-              <div style="margin-top:.8rem"><span class="badge badge-green" id="picker-count-science">10 Qs</span></div>
-            </div>
-            <div class="quiz-subject-card" onclick="startQuickQuiz('english')">
-              <div class="icon">📝</div>
-              <h3>English</h3>
-              <p>Grammar, Vocabulary, Writing</p>
-              <div style="margin-top:.8rem"><span class="badge badge-red" id="picker-count-english">10 Qs</span></div>
-            </div>
-            <div class="quiz-subject-card" onclick="startQuickQuiz('social')">
-              <div class="icon">🌍</div>
-              <h3>Social Studies</h3>
-              <p>History, Geography, Civics</p>
-              <div style="margin-top:.8rem"><span class="badge badge-gold" id="picker-count-social">10 Qs</span></div>
-            </div>
+            <div class="quiz-subject-card" onclick="startQuickQuiz('math')"><div class="icon">➕</div><h3>Mathematics</h3><div id="picker-count-math">--</div></div>
+            <div class="quiz-subject-card" onclick="startQuickQuiz('science')"><div class="icon">🔬</div><h3>Natural Science</h3><div id="picker-count-science">--</div></div>
+            <div class="quiz-subject-card" onclick="startQuickQuiz('english')"><div class="icon">📝</div><h3>Language Arts</h3><div id="picker-count-english">--</div></div>
+            <div class="quiz-subject-card" onclick="startQuickQuiz('social')"><div class="icon">🌍</div><h3>Social Systems</h3><div id="picker-count-social">--</div></div>
           </div>
         </div>
-
         <div id="quiz-active" class="hidden quiz-wrap">
           <div class="quiz-header">
-            <button class="btn btn-secondary btn-sm" onclick="exitQuiz()">← Back</button>
+            <button class="btn btn-secondary btn-sm" onclick="exitQuiz()">✕ Terminate</button>
             <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
-            <span id="quiz-counter" style="font-size:.85rem;font-weight:700;color:var(--slate-400);white-space:nowrap"></span>
+            <span id="quiz-counter"></span>
           </div>
           <div class="question-card">
             <div class="question-num" id="q-num"></div>
             <div class="question-text" id="q-text"></div>
             <div class="options-list" id="q-options"></div>
-            <div id="q-feedback" class="hidden"></div>
-            <div style="margin-top:1.5rem;text-align:right">
-              <button class="btn btn-primary hidden" id="q-next" onclick="nextQuestion()">Next Question →</button>
-            </div>
+            <div id="q-feedback" class="feedback-box hidden"></div>
+            <div style="margin-top:1.5rem;text-align:right"><button class="btn btn-primary hidden" id="q-next" onclick="nextQuestion()">Advance Module →</button></div>
           </div>
         </div>
-
         <div id="quiz-results" class="hidden">
           <div class="results-card">
-            <h2>Quiz Complete! 🎉</h2>
+            <h2>Evaluation Terminated! 🎉</h2>
             <div class="score-ring">
               <svg width="140" height="140" viewBox="0 0 140 140">
                 <circle cx="70" cy="70" r="60" fill="none" stroke="#e2e8f0" stroke-width="12"/>
-                <circle cx="70" cy="70" r="60" fill="none" stroke="#7c3aed" stroke-width="12"
-                  stroke-linecap="round" id="score-ring-circle"
-                  stroke-dasharray="377" stroke-dashoffset="377"/>
+                <circle cx="70" cy="70" r="60" fill="none" stroke="#7c3aed" stroke-width="12" id="score-ring-circle" stroke-dasharray="377" stroke-dashoffset="377"/>
               </svg>
-              <div style="text-align:center">
-                <div class="score-num" id="result-pct">0%</div>
-                <div class="score-lbl">Score</div>
-              </div>
+              <div><div class="score-num" id="result-pct">0%</div></div>
             </div>
             <div class="result-breakdown">
               <div class="result-stat"><div class="val" id="res-correct" style="color:var(--green)">0</div><div class="lbl">Correct</div></div>
-              <div class="result-stat"><div class="val" id="res-wrong" style="color:var(--red)">0</div><div class="lbl">Wrong</div></div>
-              <div class="result-stat"><div class="val" id="res-total" style="color:var(--indigo)">0</div><div class="lbl">Total</div></div>
+              <div class="result-stat"><div class="val" id="res-wrong" style="color:var(--red)">0</div><div class="lbl">Incorrect</div></div>
             </div>
-            <div id="result-message" style="margin-bottom:1.5rem;padding:.8rem;border-radius:10px;background:var(--slate-50)"></div>
-            <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
-              <button class="btn btn-primary" onclick="retryQuiz()">Retry Quiz</button>
-              <button class="btn btn-secondary" onclick="navigate('quiz')">More Quizzes</button>
-              <button class="btn btn-secondary" onclick="navigate('dashboard')">Dashboard</button>
-            </div>
+            <button class="btn btn-primary" onclick="navigate('quiz')">Return to Sub-menus</button>
           </div>
         </div>
       </div>
 
-      <!-- ── DAILY CHALLENGE ── -->
+      <!-- ── DAILY CHALLENGE ARENA ── -->
       <div id="page-challenge" class="hidden">
-        <div class="challenge-card">
-          <div class="badge badge-gold" style="margin-bottom:.8rem">⚡ Daily Challenge</div>
-          <h2>Today's Brain Teaser</h2>
-          <p>One question per day. Answer correctly to keep your streak alive!</p>
-        </div>
-        <div class="challenge-form" id="challenge-form-wrap">
-          <div id="challenge-q-subject" style="margin-bottom:.5rem"></div>
-          <h3 id="challenge-q-text" style="font-size:1.15rem;color:var(--indigo);margin-bottom:.3rem"></h3>
+        <div class="challenge-card"><h2>⚡ Arena Objective</h2><p>Process the query matrix correctly to preserve active operational streaks.</p></div>
+        <div class="challenge-form">
+          <h3 id="challenge-q-text" style="margin-bottom:1.2rem"></h3>
           <div class="challenge-options" id="challenge-options"></div>
-          <button class="btn btn-gold" id="challenge-submit-btn" onclick="submitChallenge()" disabled>Submit Answer</button>
+          <button class="btn btn-gold" id="challenge-submit-btn" onclick="submitChallenge()">Verify Matrix Structure</button>
           <div id="challenge-result" class="challenge-result hidden"></div>
         </div>
       </div>
 
-      <!-- ── FRIENDS PAGE ── -->
+      <!-- ── FRIENDS & COMPLETE RANKINGS GLOBAL LEADERBOARD ── -->
       <div id="page-friends" class="hidden">
         <div class="card" style="margin-bottom: 2rem;">
-          <h2 style="margin-bottom: 1rem; color: var(--indigo)">👥 Study Buddies</h2>
-          <p style="margin-bottom: 1.5rem;">Add your friends by their registered names to compete on live streaks and quiz statistics!</p>
+          <h2 style="margin-bottom: 1rem; color: var(--indigo)">👥 Peer Identity Search</h2>
           <div class="flex gap-2">
-            <div class="input-group w-full" style="margin-bottom:0">
-              <input type="text" id="friend-input-name" placeholder="Enter friend's exact name..." style="width: 100%" />
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="friend-input-name" placeholder="Type student full name..." oninput="handleFriendSearch(this.value)" />
             </div>
-            <button class="btn btn-primary" onclick="addFriend()">Add Friend</button>
+          </div>
+          <!-- Dynamic query container -->
+          <div id="friend-search-results" class="hidden" style="margin-top:1rem; border-top:1px solid var(--slate-200); padding-top:1rem;">
+            <h4 style="margin-bottom:0.5rem; font-size:0.85rem; color:var(--slate-400); text-transform:uppercase;">Matches found inside system database:</h4>
+            <div id="friend-search-list" style="display:flex; flex-direction:column; gap:0.5rem;"></div>
           </div>
         </div>
 
-        <div class="section-header">
-          <h2>📊 Leaderboard</h2>
-        </div>
+        <div class="section-header"><h2>🏆 Global Leaderboard (All Users)</h2></div>
         <div class="scores-table">
           <table>
-            <thead>
-              <tr><th>Rank</th><th>Student</th><th>Streak Status</th><th>Quizzes Done</th></tr>
-            </thead>
+            <thead><tr><th>Rank Index</th><th>Student Identity Token</th><th>Active Streak Matrix</th><th>Evaluations Executed</th></tr></thead>
             <tbody id="friends-tbody"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- ── TEACHER PANEL (ADMIN) ── -->
+      <!-- ── INSTRUCTOR ADMINISTRATION ENGINE ── -->
       <div id="page-admin" class="hidden">
-        <div class="card" style="margin-bottom: 2rem;">
-          <h2 style="color: var(--indigo); margin-bottom:0.5rem">🛠️ Add New Content Chapter & Recorded Classes</h2>
-          <p style="margin-bottom: 1.5rem;">Fill out the forms below to dynamically add notes, YouTube video resources, or quiz parameters.</p>
-          
+        <div class="card" style="margin-bottom:2rem">
+          <h2>🛠️ Stream Recorded Video Lecture Matrices</h2>
           <div class="grid-2">
-            <div class="input-group">
-              <label>Subject</label>
-              <select id="admin-note-subject">
-                <option value="math">Mathematics</option>
-                <option value="science">Science</option>
-                <option value="english">English</option>
-                <option value="social">Social Studies</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <label>Unique ID Route (e.g., matrices, genetics)</label>
-              <input type="text" id="admin-note-id" placeholder="geometry-advanced" />
-            </div>
+            <div class="input-group"><label>Subject Track</label><select id="admin-note-subject"><option value="math">Mathematics</option><option value="science">Natural Science</option><option value="english">Language Arts</option><option value="social">Social Systems</option></select></div>
+            <div class="input-group"><label>Route ID Hash</label><input type="text" id="admin-note-id" placeholder="matrices-advanced" /></div>
           </div>
-
-          <div class="input-group">
-            <label>Chapter / Lecture Title</label>
-            <input type="text" id="admin-note-title" placeholder="Introduction to Vector Systems" />
-          </div>
-
-          <div class="input-group">
-            <label>YouTube Embed Link / ID (Optional Recorded Class)</label>
-            <input type="text" id="admin-note-video" placeholder="https://www.youtube.com/embed/dQw4w9WgXcQ" />
-          </div>
-
-          <div class="input-group">
-            <label>Notes Markdown / Rich HTML Body Content</label>
-            <textarea id="admin-note-body" rows="8" placeholder="<h3>Sample Header</h3><p>Your educational notes go here...</p>"></textarea>
-          </div>
-
-          <button class="btn btn-primary" onclick="adminAddChapter()">Publish Lecture Chapter</button>
+          <div class="input-group"><label>Chapter String Heading</label><input type="text" id="admin-note-title" placeholder="Linear Vector Transformations" /></div>
+          <div class="input-group"><label>YouTube Stream URL / Embed Token Code</label><input type="text" id="admin-note-video" placeholder="https://www.youtube.com/embed/dQw4w9WgXcQ" /></div>
+          <div class="input-group"><label>Lecture Notes Mark-up Content Structure</label><textarea id="admin-note-body" rows="6" placeholder="<p>Lecture data elements...</p>"></textarea></div>
+          <button class="btn btn-primary" onclick="adminAddChapter()">Broadcast Lecture Node</button>
         </div>
 
         <div class="card">
-          <h2 style="color: var(--indigo); margin-bottom:1rem">🧠 Add New Multiple-Choice Quiz Questions</h2>
-          <div class="input-group">
-            <label>Target Quiz Subject</label>
-            <select id="admin-q-subject">
-              <option value="math">Mathematics</option>
-              <option value="science">Science</option>
-              <option value="english">English</option>
-              <option value="social">Social Studies</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>Question Content String</label>
-            <input type="text" id="admin-q-text" placeholder="What is the derivative of x²?" />
+          <h2>🧠 Inject Practice Parameters</h2>
+          <div class="input-group"><label>Syllabus Segment Target</label><select id="admin-q-subject"><option value="math">Mathematics</option><option value="science">Natural Science</option><option value="english">Language Arts</option><option value="social">Social Systems</option></select></div>
+          <div class="input-group"><label>Query Evaluation Expression</label><input type="text" id="admin-q-text" placeholder="Evaluate derivative of structural base function: f(x) = sin(x)" /></div>
+          <div class="grid-2">
+            <div class="input-group"><label>Option Choice [A]</label><input type="text" id="admin-q-opt0" /></div>
+            <div class="input-group"><label>Option Choice [B]</label><input type="text" id="admin-q-opt1" /></div>
+            <div class="input-group"><label>Option Choice [C]</label><input type="text" id="admin-q-opt2" /></div>
+            <div class="input-group"><label>Option Choice [D]</label><input type="text" id="admin-q-opt3" /></div>
           </div>
           <div class="grid-2">
-            <div class="input-group"><label>Option A</label><input type="text" id="admin-q-opt0" /></div>
-            <div class="input-group"><label>Option B</label><input type="text" id="admin-q-opt1" /></div>
-            <div class="input-group"><label>Option C</label><input type="text" id="admin-q-opt2" /></div>
-            <div class="input-group"><label>Option D</label><input type="text" id="admin-q-opt3" /></div>
+            <div class="input-group"><label>Target Resolution Array Position</label><select id="admin-q-ans"><option value="0">Option Choice [A]</option><option value="1">Option Choice [B]</option><option value="2">Option Choice [C]</option><option value="3">Option Choice [D]</option></select></div>
+            <div class="input-group"><label>Analytical Exposition String</label><input type="text" id="admin-q-exp" placeholder="Transformation rules map directly to cos(x)." /></div>
           </div>
-          <div class="grid-2">
-            <div class="input-group">
-              <label>Correct Alternative Index</label>
-              <select id="admin-q-ans">
-                <option value="0">Option A</option>
-                <option value="1">Option B</option>
-                <option value="2">Option C</option>
-                <option value="3">Option D</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <label>Explanatory Text Feedback</label>
-              <input type="text" id="admin-q-exp" placeholder="Because power rules state 2 * x^(2-1)." />
-            </div>
-          </div>
-          <button class="btn btn-gold" onclick="adminAddQuestion()">Inject Question Object</button>
+          <button class="btn btn-gold" onclick="adminAddQuestion()">Inject Evaluation Parameters</button>
         </div>
       </div>
 
-      <!-- ── DASHBOARD ── -->
+      <!-- ── METRICS DASHBOARD PANEL ── -->
       <div id="page-dashboard" class="hidden">
         <div class="profile-card">
-          <div class="profile-avatar" id="dash-avatar">A</div>
+          <div class="profile-avatar" id="dash-avatar">U</div>
           <div class="profile-info">
-            <h2 id="dash-name">Alex Johnson</h2>
-            <p id="dash-email">alex@example.com</p>
+            <h2 id="dash-name">-</h2>
+            <p id="dash-email">-</p>
             <div class="badges">
-              <span class="badge badge-gold">🔥 <span id="dash-streak">0</span>-day streak</span>
-              <span class="badge badge-violet" id="dash-level">Level 1</span>
-              <span class="badge badge-green" id="dash-quizzes-badge">0 Quizzes</span>
+              <span class="badge badge-gold">🔥 <span id="dash-streak">0</span> Days Active</span>
+              <span class="badge badge-violet" id="dash-level">Tier Base</span>
             </div>
           </div>
         </div>
-
         <div class="stats-grid">
-          <div class="stat-card">
-            <span class="stat-icon">🧠</span>
-            <div class="stat-val" id="dash-total-quizzes">0</div>
-            <div class="stat-lbl">Quizzes Taken</div>
-            <div class="stat-trend">↑ Keep going!</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-icon">✅</span>
-            <div class="stat-val" id="dash-avg-score">0%</div>
-            <div class="stat-lbl">Average Score</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-icon">🔥</span>
-            <div class="stat-val" id="dash-streak-val">0</div>
-            <div class="stat-lbl">Day Streak</div>
-          </div>
-          <div class="stat-card">
-            <span class="stat-icon">⭐</span>
-            <div class="stat-val" id="dash-best-score">0%</div>
-            <div class="stat-lbl">Best Score</div>
-          </div>
+          <div class="stat-card"><span class="stat-icon">🧠</span><div class="stat-val" id="dash-total-quizzes">0</div><div class="stat-lbl">Evaluations Cleared</div></div>
+          <div class="stat-card"><span class="stat-icon">✅</span><div class="stat-val" id="dash-avg-score">0%</div><div class="stat-lbl">Mean Index Accuracy</div></div>
+          <div class="stat-card"><span class="stat-icon">🔥</span><div class="stat-val" id="dash-streak-val">0</div><div class="stat-lbl">Sustained Run Length</div></div>
+          <div class="stat-card"><span class="stat-icon">⭐</span><div class="stat-val" id="dash-best-score">0%</div><div class="stat-lbl">Peak Score Matrix</div></div>
         </div>
-
-        <div class="section-header" style="margin-bottom:1rem">
-          <h2>📈 Progress by Subject</h2>
-        </div>
-        <div class="grid-2" style="margin-bottom:2rem" id="subject-progress-grid"></div>
-
-        <div class="section-header" style="margin-bottom:1rem">
-          <h2>🏆 Quiz History</h2>
-        </div>
+        <div class="section-header"><h2>📋 History Index Log</h2></div>
         <div class="scores-table">
           <table>
-            <thead>
-              <tr>
-                <th>Subject</th><th>Score</th><th>Date</th><th>Rating</th>
-              </tr>
-            </thead>
-            <tbody id="scores-tbody">
-              <tr><td colspan="4" style="text-align:center;color:var(--slate-400);padding:2rem">No quizzes taken yet. Start one now!</td></tr>
-            </tbody>
+            <thead><tr><th>Discipline Category</th><th>Precision Score</th><th>Timestamp Delta</th></tr></thead>
+            <tbody id="scores-tbody"></tbody>
           </table>
         </div>
       </div>
@@ -992,176 +672,110 @@
   </div>
 </div>
 
-<!-- Toast -->
-<div id="toast">✅ Saved!</div>
-
-<script type="module">
-// Config remains intact for structural persistence fallbacks
-const firebaseConfig = {
-  apiKey: "AIzaSyDEMO_REPLACE_WITH_YOUR_KEY",
-  authDomain: "studyspark-demo.firebaseapp.com",
-  projectId: "studyspark-demo",
-  storageBucket: "studyspark-demo.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:demo0000000"
-};
-window._fbReady = false;
-</script>
+<div id="toast">Update processed successfully.</div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
-//  APP STATE
+//  CENTRALIZED ARCHIVAL USER STATE REGISTER (BRANDING ALIGNED)
 // ═══════════════════════════════════════════════════════════
+const usersDatabase = {
+  'demo@studylyx.com': { password: 'demo1234', name: 'Demo Student', uid: 'u-001', streak: 3, totalQuizzes: 4 },
+  'muhammadbilalcp@gmail.com': { password: 'admin1234', name: 'M Bilal CP', uid: 'u-admin', streak: 12, totalQuizzes: 24 },
+  'sarah.k@studylyx.com': { password: 'password', name: 'Sarah Khan', uid: 'u-002', streak: 7, totalQuizzes: 9 },
+  'john.doe@studylyx.com': { password: 'password', name: 'John Doe', uid: 'u-003', streak: 2, totalQuizzes: 1 },
+  'studylyx.fan@domain.com': { password: 'password', name: 'StudyLyx Enthusiast', uid: 'u-004', streak: 19, totalQuizzes: 35 }
+};
+
 const state = {
   user: null,      
   scores: [],      
   streak: 0,
-  challengeDone: false,
-  subjectProgress: { math:0, science:0, english:0, social:0 },
-  friends: [] 
-};
-
-const demoUsers = {
-  'demo@studyspark.com': { password: 'demo1234', name: 'Demo Student', uid: 'demo-uid-001', streak: 3, totalQuizzes: 4 },
-  'muhammadbilalcp@gmail.com': { password: 'admin1234', name: 'M Bilal CP', uid: 'admin-uid-777', streak: 12, totalQuizzes: 24 },
-  'sarah.k@studyspark.com': { password: 'password', name: 'Sarah Khan', uid: 'local-f1', streak: 7, totalQuizzes: 9 },
-  'john.doe@studyspark.com': { password: 'password', name: 'John Doe', uid: 'local-f2', streak: 2, totalQuizzes: 1 }
+  subjectProgress: { math:0, science:0, english:0, social:0 }
 };
 
 // ─────────────────────────────────────────────────────────
-//  MUTABLE DATA ARRAYS
+//  CONTENT MATRICES DATA ARRAYS
 // ─────────────────────────────────────────────────────────
 const NOTES = {
   math: {
-    algebra: {
-      title: 'Algebra Basics',
-      subject: 'Mathematics',
-      readTime: '8 min read',
-      video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-      body: `<h3>What is Algebra?</h3><p>Algebra is a branch of mathematics dealing with variables and inverse operations.</p><div class="key-formula">3x + 5 = 14<br>3x = 9<br>x = 3</div>`
-    },
-    geometry: {
-      title: 'Geometry Foundations',
-      subject: 'Mathematics',
-      readTime: '10 min read',
-      video: '',
-      body: `<h3>Shapes and Area Formulas</h3><p>Study of multi-dimensional spaces and standard bounding parameters.</p><div class="key-formula">Pythagorean Theorem: a² + b² = c²</div>`
-    }
+    algebra: { title: 'Algebra Basis Matrix', subject: 'Mathematics', readTime: '6 min', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ', body: `<h3>Variables Mapping</h3><p>Mathematical expressions tracking linear operational patterns systematically.</p><div class="key-formula">y = mx + b</div>` }
   },
   science: {
-    cells: {
-      title: 'Cell Biology',
-      subject: 'Science',
-      readTime: '9 min read',
-      video: '',
-      body: `<h3>The Cell Structure</h3><p>All living organisms are crafted natively from operational cell bases.</p>`
-    }
+    physics: { title: 'Thermodynamics Vectors', subject: 'Natural Science', readTime: '9 min', video: '', body: `<h3>Energy States</h3><p>Kinetic properties transfer heat across environments dynamically.</p>` }
   },
   english: {
-    grammar: {
-      title: 'Grammar Rules',
-      subject: 'English',
-      readTime: '8 min read',
-      video: '',
-      body: `<h3>Parts of Speech</h3><p>Structural building rules governing text processing metrics globally.</p>`
-    }
+    syntax: { title: 'Structural Syntax Layouts', subject: 'Language Arts', readTime: '7 min', video: '', body: `<h3>Parsing Sentences</h3><p>Rules governing clause construction structures natively.</p>` }
   },
   social: {
-    history: {
-      title: 'World History Systems',
-      subject: 'Social Studies',
-      readTime: '10 min read',
-      video: '',
-      body: `<h3>Ancient Civilizations</h3><p>Chronological records highlighting socio-economic developments.</p>`
-    }
+    civics: { title: 'Institutional Controls', subject: 'Social Systems', readTime: '12 min', video: '', body: `<h3>Societal Blueprinting</h3><p>Analysis of checks and structural systemic balances.</p>` }
   }
 };
 
 const QUIZZES = {
-  math: [
-    { q: "What is 7 × 8?", opts: ["54","56","58","64"], ans: 1, exp: "7 × 8 = 56" },
-    { q: "Solve for x: 2x + 4 = 12", opts: ["2","3","4","6"], ans: 2, exp: "2x = 8, so x = 4" }
-  ],
-  science: [
-    { q: "What is the powerhouse of the cell?", opts: ["Nucleus","Ribosome","Mitochondria","Golgi body"], ans: 2, exp: "Mitochondria produce ATP energy for the cell." }
-  ],
-  english: [
-    { q: "Which word is a noun in this sentence: 'The dog runs fast'?", opts: ["The","dog","runs","fast"], ans: 1, exp: "'Dog' is a noun." }
-  ],
-  social: [
-    { q: "Which civilization invented writing (cuneiform)?", opts: ["Ancient Egypt","Mesopotamia","Ancient Greece","Roman Empire"], ans: 1, exp: "Mesopotamia developed cuneiform writing." }
-  ]
+  math: [{ q: "Compute matching index output: 8 × 9?", opts: ["64","72","81","90"], ans: 1, exp: "8 multiplied by 9 yields 72 explicitly." }],
+  science: [{ q: "Identify key atmospheric compound element:", opts: ["Hydrogen","Oxygen","Nitrogen","Argon"], ans: 2, exp: "Nitrogen comprises approximately 78% of the mix." }],
+  english: [{ q: "Isolate passive verbal descriptor element:", opts: ["Run","Executed","Jump","Singing"], ans: 1, exp: "'Executed' maps directly to functional past passive context states." }],
+  social: [{ q: "Identify historical center blueprint source:", opts: ["Rome","Athens","Babylon","Alexandria"], ans: 2, exp: "Code of Hammurabi references stem directly from Babylonian coordinates." }]
 };
 
 const CHALLENGES = [
-  { subject: '➕ Mathematics', q: 'A train travels at 60 mph for 2.5 hours. How far does it travel?', opts: ['120 miles','140 miles','150 miles','160 miles'], ans: 2, exp: 'Distance = Speed × Time = 60 × 2.5 = 150 miles.' }
+  { q: 'Isolate prime index subset entry value:', opts: ['15','21','29','33'], ans: 2, exp: '29 possesses no alternative divisors outside identity bases.' }
 ];
 
 // ─────────────────────────────────────────────────────────
-//  PARTICLES & AUTH
+//  AUTHENTICATION CONTROLLER LOGIC
 // ─────────────────────────────────────────────────────────
-(function(){
-  const wrap = document.getElementById('auth-particles');
-  if(wrap) {
-    for(let i=0;i<12;i++){
-      const s = document.createElement('span');
-      const sz = Math.random()*80+20;
-      s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*8}s;animation-duration:${6+Math.random()*6}s`;
-      wrap.appendChild(s);
-    }
-  }
-})();
-
 function showAuthTab(tab) {
   document.getElementById('login-form').classList.toggle('hidden', tab !== 'login');
   document.getElementById('signup-form').classList.toggle('hidden', tab !== 'signup');
-  document.querySelectorAll('.auth-tab').forEach((t,i) => {
-    t.classList.toggle('active', (i===0 && tab==='login') || (i===1 && tab==='signup'));
-  });
-  hideAuthError();
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+  document.getElementById('auth-error').classList.add('hidden');
 }
-function showAuthError(msg) {
-  const el = document.getElementById('auth-error');
-  el.textContent = msg; el.classList.remove('hidden');
-}
-function hideAuthError() { document.getElementById('auth-error').add ? document.getElementById('auth-error').add('hidden') : document.getElementById('auth-error').classList.add('hidden'); }
 
-async function handleLogin() {
-  const email    = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
-  if(!email||!password) { showAuthError('Please fill in all fields.'); return; }
+function handleLogin() {
+  const emailInput = document.getElementById('login-email').value.trim();
+  const passwordInput = document.getElementById('login-password').value;
 
-  const demo = demoUsers[email];
-  if(demo && demo.password === password) {
-    await loginUser(demo.uid, demo.name, email);
+  if (!emailInput || !passwordInput) {
+    showErrorAlert('All operational input fields must be filled.');
+    return;
+  }
+
+  const account = usersDatabase[emailInput.toLowerCase()];
+  if (account && account.password === passwordInput) {
+    executeAppAuthentication(account.uid, account.name, emailInput.toLowerCase());
   } else {
-    showAuthError('Invalid email credentials matching parameters.');
+    showErrorAlert('System failed validation lookup parameter checks.');
   }
 }
 
-async function handleSignup() {
-  const name     = document.getElementById('signup-name').value.trim();
-  const email    = document.getElementById('signup-email').value.trim();
+function handleSignup() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim().toLowerCase();
   const password = document.getElementById('signup-password').value;
-  if(!name||!email||!password) { showAuthError('Please fill in all fields.'); return; }
-  const uid = 'local-' + Date.now();
-  demoUsers[email] = { password, name, uid, streak: 0, totalQuizzes: 0 };
-  await loginUser(uid, name, email);
+
+  if (!name || !email || !password) {
+    showErrorAlert('Please structure all parameters to launch profile activation.');
+    return;
+  }
+
+  if (usersDatabase[email]) {
+    showErrorAlert('Identifier already active within local matrix index lookup.');
+    return;
+  }
+
+  const generatedUid = 'u-' + Date.now();
+  usersDatabase[email] = { password, name, uid: generatedUid, streak: 1, totalQuizzes: 0 };
+  executeAppAuthentication(generatedUid, name, email);
 }
 
-async function handleLogout() {
-  state.user = null;
-  document.getElementById('app').classList.add('hidden');
-  document.getElementById('auth-screen').classList.remove('hidden');
-  showAuthTab('login');
-}
-
-window.loginUser = async function(uid, name, email) {
+function executeAppAuthentication(uid, name, email) {
   state.user = { uid, name, email };
-  state.streak = demoUsers[email] ? demoUsers[email].streak : 0;
+  state.streak = usersDatabase[email].streak;
+  state.scores = []; 
 
-  // STRICT RULE COMPLIANCE: muhammadbilalcp@gmail.com verification
-  if(email.toLowerCase() === 'muhammadbilalcp@gmail.com') {
+  if (email === 'muhammadbilalcp@gmail.com') {
     document.getElementById('nav-admin').classList.remove('hidden');
     document.getElementById('admin-nav-label').classList.remove('hidden');
   } else {
@@ -1169,397 +783,367 @@ window.loginUser = async function(uid, name, email) {
     document.getElementById('admin-nav-label').classList.add('hidden');
   }
 
-  const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-  document.getElementById('sidebar-avatar').textContent   = initials;
-  document.getElementById('topbar-avatar').textContent    = initials;
-  document.getElementById('dash-avatar').textContent      = initials;
-  document.getElementById('sidebar-name').textContent     = name;
-  document.getElementById('sidebar-email').textContent    = email;
-  document.getElementById('dash-name').textContent        = name;
-  document.getElementById('dash-email').textContent       = email;
+  const initials = name.split(' ').map(token => token[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('sidebar-avatar').textContent = initials;
+  document.getElementById('topbar-avatar').textContent = initials;
+  document.getElementById('dash-avatar').textContent = initials;
+  document.getElementById('sidebar-name').textContent = name;
+  document.getElementById('sidebar-email').textContent = email;
+  document.getElementById('dash-name').textContent = name;
+  document.getElementById('dash-email').textContent = email;
 
-  buildGlobalIndices();
-  updateStreakUI();
+  buildDynamicCounts();
+  updateStreakMetrics();
   document.getElementById('auth-screen').classList.add('hidden');
   document.getElementById('app').classList.remove('hidden');
   navigate('home');
-};
+  showNotificationToast('Credentials verified. Profile context generated.', 'success');
+}
 
-// ─────────────────────────────────────────────────────────
-//  DYNAMICS GENERATION
-// ─────────────────────────────────────────────────────────
-const ALL_NOTES_INDEX = [];
-function buildGlobalIndices() {
-  ALL_NOTES_INDEX.length = 0;
-  Object.entries(NOTES).forEach(([subj, chapters]) => {
-    let count = 0;
-    Object.entries(chapters).forEach(([ch, note]) => {
-      count++;
-      ALL_NOTES_INDEX.push({ subj, ch, title: note.title, subject: note.subject });
-    });
-    const metaEl = document.getElementById(`meta-count-${subj}`);
-    if(metaEl) metaEl.textContent = `${count} chapters available`;
-    
-    const quizCount = QUIZZES[subj] ? QUIZZES[subj].length : 0;
-    if(document.getElementById(`quick-count-${subj}`)) document.getElementById(`quick-count-${subj}`).textContent = `${quizCount} Questions`;
-    if(document.getElementById(`picker-count-${subj}`)) document.getElementById(`picker-count-${subj}`).textContent = `${quizCount} Qs`;
-  });
+function handleLogout() {
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-password').value = '';
+  document.getElementById('signup-name').value = '';
+  document.getElementById('signup-email').value = '';
+  document.getElementById('signup-password').value = '';
+
+  state.user = null;
+  document.getElementById('app').classList.add('hidden');
+  document.getElementById('auth-screen').classList.remove('hidden');
+  showAuthTab('login');
+}
+
+function showErrorAlert(msg) {
+  const errBox = document.getElementById('auth-error');
+  errBox.textContent = msg;
+  errBox.classList.remove('hidden');
 }
 
 // ─────────────────────────────────────────────────────────
-//  ROUTING MANAGEMENT
+//  ROUTING PLATFORM NAVIGATION
 // ─────────────────────────────────────────────────────────
-const PAGES = ['home','notes','quiz','challenge','friends','admin','dashboard'];
+const VIEW_IDS = ['home','notes','quiz','challenge','friends','admin','dashboard'];
 function navigate(page) {
-  PAGES.forEach(p => {
-    if(document.getElementById('page-'+p)) {
-      document.getElementById('page-'+p).classList.toggle('hidden', p !== page);
-    }
-    const navEl = document.getElementById('nav-'+p);
-    if(navEl) navEl.classList.toggle('active', p === page);
+  VIEW_IDS.forEach(id => {
+    const el = document.getElementById('page-' + id);
+    if(el) el.classList.toggle('hidden', id !== page);
+    const navLink = document.getElementById('nav-' + id);
+    if(navLink) navLink.classList.toggle('active', id === page);
   });
-  const titles = { home:'Home', notes:'Notes', quiz:'Quizzes', challenge:'Daily Challenge', friends:'Friends Guild', admin:'Teacher Panel', dashboard:'Dashboard' };
-  document.getElementById('page-title').textContent = titles[page] || page;
+  document.getElementById('page-title').textContent = page.toUpperCase() + ' PANEL';
   closeSidebar();
 
-  if(page === 'notes')       initNotes();
-  if(page === 'dashboard')   refreshDashboard();
-  if(page === 'challenge')   initChallenge();
-  if(page === 'friends')     refreshFriends();
+  if(page === 'notes') initNotesLayout();
+  if(page === 'dashboard') recalculateDashboardMetrics();
+  if(page === 'challenge') renderChallengeMatrix();
+  if(page === 'friends') generateGlobalLeaderboardRows();
 }
 
-function openSubjectNotes(subj) {
-  navigate('notes');
-  selectNoteSubject(subj, document.getElementById('note-sub-'+subj));
-}
-function startQuickQuiz(subj) {
-  navigate('quiz');
-  setTimeout(() => startQuiz(subj), 50);
-}
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sidebar-overlay').classList.toggle('show');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebar-overlay').classList.remove('show');
-}
+function openSubjectNotes(subj) { navigate('notes'); selectNoteSubject(subj, document.getElementById('note-sub-'+subj)); }
+function startQuickQuiz(subj) { navigate('quiz'); launchQuizSequence(subj); }
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebar-overlay').classList.toggle('show'); }
+function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('show'); }
 
 // ─────────────────────────────────────────────────────────
-//  SEARCH
+//  INDEX GENERATOR ENGINE
 // ─────────────────────────────────────────────────────────
-function handleHomeSearch(val) {
-  const wrap = document.getElementById('home-search-results');
-  const list = document.getElementById('search-results-list');
-  if(!val.trim()) { wrap.classList.add('hidden'); return; }
+function buildDynamicCounts() {
+  Object.entries(NOTES).forEach(([subjKey, subMap]) => {
+    const count = Object.keys(subMap).length;
+    const indicator = document.getElementById(`meta-count-${subjKey}`);
+    if(indicator) indicator.textContent = `${count} Active Lecture Tracks`;
 
-  const q = val.toLowerCase();
-  const results = ALL_NOTES_INDEX.filter(n => n.title.toLowerCase().includes(q) || n.subject.toLowerCase().includes(q));
-
-  if(!results.length) {
-    wrap.classList.remove('hidden');
-    list.innerHTML = `<div style="padding:1.5rem;text-align:center;color:var(--slate-400)">No matches matching "${val}"</div>`;
-    return;
-  }
-  const icons = { math:'➕', science:'🔬', english:'📝', social:'🌍' };
-  list.innerHTML = results.map(r => `
-    <div class="search-result-item" onclick="openSubjectNotes('${r.subj}'); setTimeout(()=>selectChapter('${r.subj}','${r.ch}',null), 100)">
-      <span class="result-icon">${icons[r.subj]}</span>
-      <div class="result-info">
-        <h4>${r.title}</h4>
-        <p>${r.subject}</p>
-      </div>
-    </div>
-  `).join('');
-  wrap.classList.remove('hidden');
-}
-function clearHomeSearch() {
-  document.getElementById('home-search').value = '';
-  document.getElementById('home-search-results').classList.add('hidden');
-}
-
-// ─────────────────────────────────────────────────────────
-//  NOTES ARCHITECTURE & RECORDED VIDEO CLASSES
-// ─────────────────────────────────────────────────────────
-let currentSubject = 'math', currentChapter = 'algebra';
-function initNotes() {
-  renderSidebarChapters(currentSubject);
-  renderNote(currentSubject, currentChapter);
-}
-
-function selectNoteSubject(subj, btn) {
-  ['math','science','english','social'].forEach(s => {
-    document.getElementById('chapters-'+s).classList.toggle('hidden', s !== subj);
-    document.getElementById('note-sub-'+s).classList.remove('active');
+    const qCount = QUIZZES[subjKey] ? QUIZZES[subjKey].length : 0;
+    const pickerLabel = document.getElementById(`picker-count-${subjKey}`);
+    if(pickerLabel) pickerLabel.textContent = `${qCount} Structural Modules Available`;
   });
-  if(btn) btn.classList.add('active');
-  currentSubject = subj;
+}
 
-  renderSidebarChapters(subj);
-  const firstCh = Object.keys(NOTES[subj])[0];
-  if(firstCh) {
-    currentChapter = firstCh;
-    renderNote(subj, firstCh);
+// ─────────────────────────────────────────────────────────
+//  GLOBAL STRUCTURAL SEARCH CONTROLLER
+// ─────────────────────────────────────────────────────────
+function handleHomeSearch(queryText) {
+  const listFrame = document.getElementById('home-search-results');
+  const itemsContainer = document.getElementById('search-results-list');
+  if(!queryText.trim()) { listFrame.classList.add('hidden'); return; }
+
+  const normalString = queryText.toLowerCase();
+  let matchesHtml = '';
+
+  Object.entries(NOTES).forEach(([subj, cluster]) => {
+    Object.entries(cluster).forEach(([chId, block]) => {
+      if(block.title.toLowerCase().includes(normalString) || block.body.toLowerCase().includes(normalString)) {
+        matchesHtml += `
+          <div style="padding:1rem; border-bottom:1px solid var(--slate-100); cursor:pointer;" onclick="openSubjectNotes('${subj}');">
+            <strong>${block.title}</strong> <span class="badge badge-violet" style="margin-left:0.5rem">${subj.toUpperCase()}</span>
+          </div>
+        `;
+      }
+    });
+  });
+
+  if(!matchesHtml) {
+    itemsContainer.innerHTML = `<div style="padding:1.5rem; text-align:center; color:var(--slate-400)">No search results correlate with text.</div>`;
   } else {
-    document.getElementById('note-content-area').innerHTML = `<p style="color:var(--slate-400)">No chapters published yet for this module.</p>`;
+    itemsContainer.innerHTML = matchesHtml;
   }
+  listFrame.classList.remove('hidden');
 }
+function clearHomeSearch() { document.getElementById('home-search').value = ''; document.getElementById('home-search-results').classList.add('hidden'); }
 
-function renderSidebarChapters(subj) {
-  const container = document.getElementById('chapters-'+subj);
-  if(!container) return;
-  const chapters = NOTES[subj] || {};
-  container.innerHTML = Object.entries(chapters).map(([key, data]) => `
-    <div class="chapter-item ${key === currentChapter ? 'active' : ''}" onclick="selectChapter('${subj}','${key}',this)">
-      ${data.title}
-    </div>
-  `).join('');
-}
+// ─────────────────────────────────────────────────────────
+//  NOTES ARCHITECTURE & EMBED ENGINE
+// ─────────────────────────────────────────────────────────
+let activeSubjectId = 'math';
+function initNotesLayout() { selectNoteSubject(activeSubjectId, document.getElementById('note-sub-' + activeSubjectId)); }
+function selectNoteSubject(subjKey, controlBtn) {
+  activeSubjectId = subjKey;
+  ['math','science','english','social'].forEach(sId => {
+    document.getElementById('chapters-' + sId).classList.toggle('hidden', sId !== subjKey);
+    const subBtn = document.getElementById('note-sub-' + sId);
+    if(subBtn) subBtn.classList.remove('active');
+  });
+  if(controlBtn) controlBtn.classList.add('active');
 
-function selectChapter(subj, ch, el) {
-  currentSubject = subj; currentChapter = ch;
-  document.querySelectorAll('#chapters-'+subj+' .chapter-item').forEach(i => i.classList.remove('active'));
-  if(el) el.classList.add('active');
-  renderNote(subj, ch);
-}
-
-function renderNote(subj, ch) {
-  const note = NOTES[subj] && NOTES[subj][ch];
-  if(!note) return;
-  const icons  = { math:'➕', science:'🔬', english:'📝', social:'🌍' };
+  const container = document.getElementById('chapters-' + subjKey);
+  const subjectNotes = NOTES[subjKey] || {};
   
-  let videoEmbedHTML = '';
-  if(note.video && note.video.trim() !== '') {
-    videoEmbedHTML = `
-      <div class="video-container">
-        <iframe src="${note.video}" allowfullscreen></iframe>
-      </div>
-    `;
+  container.innerHTML = Object.entries(subjectNotes).map(([chKey, data]) => `
+    <div class="chapter-item" onclick="displayNoteNode('${subjKey}','${chKey}')">${data.title}</div>
+  `).join('');
+
+  const targetFirstKey = Object.keys(subjectNotes)[0];
+  if(targetFirstKey) displayNoteNode(subjKey, targetFirstKey);
+}
+
+function displayNoteNode(subjKey, chKey) {
+  const node = NOTES[subjKey][chKey];
+  const viewer = document.getElementById('note-content-area');
+  if(!node) return;
+
+  let streamFrame = '';
+  if(node.video && node.video.trim() !== '') {
+    streamFrame = `<div class="video-container"><iframe src="${node.video}" allowfullscreen></iframe></div>`;
   }
 
-  document.getElementById('note-content-area').innerHTML = `
-    <h2>${note.title}</h2>
-    <div class="note-meta">
-      <span class="badge badge-violet">${icons[subj]} ${note.subject}</span>
-      <span class="badge" style="background:var(--slate-100);color:var(--slate-600)">⏱ ${note.readTime || '10 min read'}</span>
-    </div>
-    ${videoEmbedHTML}
-    <div class="note-body">${note.body}</div>
-    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--slate-200);">
-      <button class="btn btn-primary btn-sm" onclick="startQuickQuiz('${subj}')">Take ${note.subject} Quiz →</button>
-    </div>
+  viewer.innerHTML = `
+    <h2>${node.title}</h2>
+    <span class="badge badge-violet" style="margin: 0.5rem 0 1rem 0">${node.subject}</span>
+    ${streamFrame}
+    <div class="note-body" style="margin-top:1rem">${node.body}</div>
   `;
 }
 
-function filterNotes(val) {
-  if(!val) return;
-  const q = val.toLowerCase();
-  const found = ALL_NOTES_INDEX.find(n => n.title.toLowerCase().includes(q));
-  if(found) selectChapter(found.subj, found.ch, null);
-}
+// ─────────────────────────────────────────────────────────
+//  QUIZ OPERATIONS PLATFORM
+// ─────────────────────────────────────────────────────────
+let activeEvaluationState = { list:[], index:0, accurateHits:0, category:'' };
+function launchQuizSequence(subjKey) {
+  const source = QUIZZES[subjKey] || [];
+  if(!source.length) { showNotificationToast('Curriculum quiz track missing array instances.', 'error'); return; }
 
-// ─────────────────────────────────────────────────────────
-//  QUIZ OPERATIONS
-// ─────────────────────────────────────────────────────────
-let quiz = { subject: '', questions: [], current: 0, correct: 0, answered: false };
-function startQuiz(subject) {
-  if(!QUIZZES[subject] || QUIZZES[subject].length === 0) {
-    showToast('No questions added yet for this subject!', 'error');
-    return;
-  }
-  quiz.subject  = subject;
-  quiz.questions = [...QUIZZES[subject]];
-  quiz.current  = 0; quiz.correct  = 0; quiz.answered = false;
+  activeEvaluationState.list = JSON.parse(JSON.stringify(source));
+  activeEvaluationState.index = 0;
+  activeEvaluationState.accurateHits = 0;
+  activeEvaluationState.category = subjKey;
 
   document.getElementById('quiz-picker').classList.add('hidden');
-  document.getElementById('quiz-active').classList.remove('hidden');
   document.getElementById('quiz-results').classList.add('hidden');
-  renderQuestion();
+  document.getElementById('quiz-active').classList.remove('hidden');
+  processQuestionIndexView();
 }
 
-function renderQuestion() {
-  const total = quiz.questions.length;
-  const idx   = quiz.current;
-  const q     = quiz.questions[idx];
-  quiz.answered = false;
+function processQuestionIndexView() {
+  const total = activeEvaluationState.list.length;
+  const currentItemIndex = activeEvaluationState.index;
+  const targetDataNode = activeEvaluationState.list[currentItemIndex];
 
-  document.getElementById('q-num').textContent  = `Question ${idx+1} of ${total}`;
-  document.getElementById('q-text').textContent = q.q;
-  document.getElementById('quiz-counter').textContent = `${idx+1} / ${total}`;
-  document.getElementById('quiz-progress-fill').style.width = `${(idx/total)*100}%`;
+  document.getElementById('q-num').textContent = `MODULE EVALUATION HASH ELEMENT ${currentItemIndex + 1} OF ${total}`;
+  document.getElementById('q-text').textContent = targetDataNode.q;
+  document.getElementById('quiz-counter').textContent = `${currentItemIndex + 1} / ${total}`;
+  document.getElementById('quiz-progress-fill').style.width = `${((currentItemIndex) / total) * 100}%`;
   document.getElementById('q-feedback').classList.add('hidden');
   document.getElementById('q-next').classList.add('hidden');
 
-  const labels = ['A','B','C','D'];
-  document.getElementById('q-options').innerHTML = q.opts.map((opt,i) => `
-    <button class="option-btn" onclick="selectAnswer(${i})">
-      <span class="opt-label">${labels[i]}</span>
-       ${opt}
-    </button>
-  `).join('');
+  const symbols = ['A','B','C','D'];
+  document.getElementById('q-options').innerHTML = targetDataNode.opts.map((optionText, pos) => {
+    if(!optionText) return '';
+    return `<button class="option-btn" id="opt-node-${pos}" onclick="evaluateUserAnswerChoice(${pos})"><span class="opt-label">${symbols[pos]}</span>${optionText}</button>`;
+  }).join('');
 }
 
-function selectAnswer(idx) {
-  if(quiz.answered) return;
-  quiz.answered = true;
-  const q     = quiz.questions[quiz.current];
-  const correct = idx === q.ans;
-  if(correct) quiz.correct++;
+function evaluateUserAnswerChoice(chosenIndex) {
+  const currentItemIndex = activeEvaluationState.index;
+  const dataNode = activeEvaluationState.list[currentItemIndex];
+  const targetCorrectIndex = dataNode.ans;
 
-  document.querySelectorAll('.option-btn').forEach((b,i) => {
-    b.disabled = true;
-    if(i === q.ans) b.classList.add('correct');
-    if(i === idx && !correct) b.classList.add('wrong');
+  document.querySelectorAll('.options-list .option-btn').forEach((btn, pos) => {
+    btn.disabled = true;
+    if(pos === targetCorrectIndex) btn.classList.add('correct');
+    if(pos === chosenIndex && chosenIndex !== targetCorrectIndex) btn.classList.add('wrong');
   });
 
-  const fb = document.getElementById('q-feedback');
-  fb.className = 'feedback-box ' + (correct ? 'correct' : 'wrong');
-  fb.textContent = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + q.exp;
-  fb.classList.remove('hidden');
+  const feedElement = document.getElementById('q-feedback');
+  if(chosenIndex === targetCorrectIndex) {
+    activeEvaluationState.accurateHits++;
+    feedElement.className = "feedback-box correct";
+    feedElement.textContent = "CORRECT: " + dataNode.exp;
+  } else {
+    feedElement.className = "feedback-box wrong";
+    feedElement.textContent = "INCORRECT VARIANCE: " + dataNode.exp;
+  }
+  feedElement.classList.remove('hidden');
 
-  const nextBtn = document.getElementById('q-next');
-  nextBtn.classList.remove('hidden');
-  nextBtn.textContent = quiz.current < quiz.questions.length-1 ? 'Next Question →' : 'See Results →';
+  const advanceBtn = document.getElementById('q-next');
+  advanceBtn.classList.remove('hidden');
+  advanceBtn.textContent = (currentItemIndex + 1 < activeEvaluationState.list.length) ? "Advance Sequence →" : "Compile Score Summary Metrics";
 }
 
 function nextQuestion() {
-  quiz.current++;
-  if(quiz.current >= quiz.questions.length) { showResults(); } else { renderQuestion(); }
+  activeEvaluationState.index++;
+  if(activeEvaluationState.index >= activeEvaluationState.list.length) {
+    terminateEvaluationPipeline();
+  } else {
+    processQuestionIndexView();
+  }
 }
 
-function showResults() {
+function terminateEvaluationPipeline() {
   document.getElementById('quiz-active').classList.add('hidden');
   document.getElementById('quiz-results').classList.remove('hidden');
 
-  const total = quiz.questions.length;
-  const correct = quiz.correct;
-  const pct = Math.round((correct/total)*100);
+  const hits = activeEvaluationState.accurateHits;
+  const size = activeEvaluationState.list.length;
+  const scoreRatioPercentage = Math.round((hits / size) * 100);
 
-  document.getElementById('result-pct').textContent = pct + '%';
-  document.getElementById('res-correct').textContent = correct;
-  document.getElementById('res-wrong').textContent   = total - correct;
-  document.getElementById('res-total').textContent   = total;
+  document.getElementById('result-pct').textContent = scoreRatioPercentage + '%';
+  document.getElementById('res-correct').textContent = hits;
+  document.getElementById('res-wrong').textContent = size - hits;
+  document.getElementById('score-ring-circle').style.strokeDashoffset = 377 - (377 * (scoreRatioPercentage / 100));
 
-  const entry = { subject: quiz.subject, score: correct, total, pct, date: new Date().toLocaleDateString() };
-  state.scores.unshift(entry);
-  state.subjectProgress[quiz.subject] = Math.max(state.subjectProgress[quiz.subject]||0, pct);
+  state.scores.push({
+    category: activeEvaluationState.category,
+    accuracy: scoreRatioPercentage,
+    timestamp: new Date().toLocaleTimeString()
+  });
 
   state.streak++;
-  updateStreakUI();
-  showToast('Quiz results recorded!', 'success');
+  if(usersDatabase[state.user.email]) {
+    usersDatabase[state.user.email].streak = state.streak;
+    usersDatabase[state.user.email].totalQuizzes = state.scores.length;
+  }
+
+  updateStreakMetrics();
 }
-function exitQuiz() {
-  document.getElementById('quiz-active').classList.add('hidden');
-  document.getElementById('quiz-picker').classList.remove('hidden');
-}
-function retryQuiz() { startQuiz(quiz.subject); }
+function exitQuiz() { document.getElementById('quiz-active').classList.add('hidden'); document.getElementById('quiz-picker').classList.remove('hidden'); }
 
 // ─────────────────────────────────────────────────────────
-//  DAILY CHALLENGE
+//  DAILY CHALLENGE ENGINE
 // ─────────────────────────────────────────────────────────
-function initChallenge() {
-  const ch = CHALLENGES[0];
-  document.getElementById('challenge-q-subject').innerHTML = `<span class="badge badge-gold">${ch.subject}</span>`;
-  document.getElementById('challenge-q-text').textContent  = ch.q;
+function renderChallengeMatrix() {
+  const objective = CHALLENGES[0];
+  document.getElementById('challenge-q-text').textContent = objective.q;
   document.getElementById('challenge-result').classList.add('hidden');
-  document.getElementById('challenge-submit-btn').disabled = true;
-  challengeAnswered = false;
-
-  document.getElementById('challenge-options').innerHTML = ch.opts.map((opt,i) => `
-    <label class="challenge-opt">
-      <input type="radio" name="challenge" value="${i}" onchange="document.getElementById('challenge-submit-btn').disabled = false;" />
-      ${opt}
-    </label>
+  
+  document.getElementById('challenge-options').innerHTML = objective.opts.map((opt, pos) => `
+    <label class="challenge-opt"><input type="radio" name="challenge-radio" value="${pos}" />${opt}</label>
   `).join('');
 }
 function submitChallenge() {
-  const sel = document.querySelector('input[name="challenge"]:checked');
-  if(!sel) return;
-  const ch = CHALLENGES[0];
-  const correct = parseInt(sel.value) === ch.ans;
-  const res = document.getElementById('challenge-result');
-  res.className = 'challenge-result ' + (correct ? 'correct' : 'wrong');
-  res.textContent = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + ch.exp;
-  res.classList.remove('hidden');
+  const chosenRadio = document.querySelector('input[name="challenge-radio"]:checked');
+  if(!chosenRadio) { showNotificationToast('Select structural option alternative.', 'error'); return; }
+  
+  const correctState = parseInt(chosenRadio.value) === CHALLENGES[0].ans;
+  const targetBox = document.getElementById('challenge-result');
+  targetBox.className = "challenge-result " + (correctState ? "correct" : "wrong");
+  targetBox.textContent = correctState ? "VERIFIED SUCCESS: Tracking parameter parameters confirmed." : "VALIDATION FAILURE: Re-evaluate operational model configurations.";
+  targetBox.classList.remove('hidden');
 }
 
 // ─────────────────────────────────────────────────────────
-//  FRIENDS SYSTEM LOGIC
+//  LEADERBOARD & FRIEND SELECTION MATRIX
 // ─────────────────────────────────────────────────────────
-function addFriend() {
-  const targetName = document.getElementById('friend-input-name').value.trim();
-  if(!targetName) return;
-
-  // Search matching profiles inside global registry
-  const match = Object.values(demoUsers).find(u => u.name.toLowerCase() === targetName.toLowerCase());
-  if(!match) {
-    showToast('User not found. Try adding "Sarah Khan" or "John Doe"', 'error');
-    return;
-  }
-  if(match.name === state.user.name) {
-    showToast('You cannot add yourself as a buddy.', 'error');
-    return;
-  }
-  if(state.friends.some(f => f.name === match.name)) {
-    showToast('Already added to your dashboard network.', 'error');
-    return;
-  }
-
-  state.friends.push({ name: match.name, streak: match.streak, quizzes: match.totalQuizzes || 4 });
-  document.getElementById('friend-input-name').value = '';
-  showToast(`${match.name} added!`, 'success');
-  refreshFriends();
-}
-
-function refreshFriends() {
+function generateGlobalLeaderboardRows() {
   const tbody = document.getElementById('friends-tbody');
   if(!tbody) return;
 
-  // Build temporary sorting board matrix combining user and verified peers
-  const list = [
-    { name: state.user.name + " (You)", streak: state.streak, quizzes: state.scores.length },
-    ...state.friends
-  ];
-  list.sort((a,b) => b.streak - a.streak);
+  const completeLeaderboardMatrix = Object.values(usersDatabase);
+  completeLeaderboardMatrix.sort((a, b) => b.streak - a.streak);
 
-  tbody.innerHTML = list.map((item, index) => `
-    <tr>
-      <td><strong>#${index + 1}</strong></td>
-      <td>${item.name}</td>
-      <td><span class="badge badge-gold">🔥 ${item.streak} days</span></td>
-      <td><span class="badge badge-violet">${item.quizzes} completed</span></td>
-    </tr>
-  `).join('');
+  tbody.innerHTML = completeLeaderboardMatrix.map((student, pos) => {
+    const isCurrentUser = state.user && student.uid === state.user.uid;
+    return `
+      <tr style="${isCurrentUser ? 'background: var(--violet-lt); font-weight:700;' : ''}">
+        <td><strong>#${pos + 1}</strong></td>
+        <td>${student.name} ${isCurrentUser ? '(Active Session Record)' : ''}</td>
+        <td><span class="badge badge-gold">🔥 ${student.streak} Days Running</span></td>
+        <td><span class="badge badge-violet">${student.totalQuizzes} Log instances</span></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function handleFriendSearch(textVal) {
+  const pane = document.getElementById('friend-search-results');
+  const anchorNode = document.getElementById('friend-search-list');
+  if(!textVal.trim()) { pane.classList.add('hidden'); return; }
+
+  const normalFilterString = textVal.toLowerCase();
+  let itemsFoundHtml = '';
+
+  Object.values(usersDatabase).forEach(profile => {
+    if(profile.name.toLowerCase().includes(normalFilterString)) {
+      itemsFoundHtml += `
+        <div class="friend-item">
+          <div style="display:flex; flex-direction:column;">
+            <strong>${profile.name}</strong>
+            <span style="font-size:0.75rem; color:var(--slate-400)">Active metrics profile context index</span>
+          </div>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="badge badge-gold">🔥 ${profile.streak}</span>
+            <span class="badge badge-violet">📊 ${profile.totalQuizzes} Qs</span>
+          </div>
+        </div>
+      `;
+    }
+  });
+
+  if(!itemsFoundHtml) {
+    anchorNode.innerHTML = `<p style="font-size:0.85rem; color:var(--slate-600); text-align:center; padding:0.5rem 0;">Zero user accounts mirror identity criteria inside network database logs.</p>`;
+  } else {
+    anchorNode.innerHTML = itemsFoundHtml;
+  }
+  pane.classList.remove('hidden');
 }
 
 // ─────────────────────────────────────────────────────────
-//  ADMIN PANEL INJECTION ENGINE (muhammadbilalcp@gmail.com)
+//  INSTRUCTOR MATRIX INJECTION ACTIONS
 // ─────────────────────────────────────────────────────────
 function adminAddChapter() {
-  const subj = document.getElementById('admin-note-subject').value;
-  const id = document.getElementById('admin-note-id').value.trim();
-  const title = document.getElementById('admin-note-title').value.trim();
-  let video = document.getElementById('admin-note-video').value.trim();
-  const body = document.getElementById('admin-note-body').value.trim();
+  const subjKey = document.getElementById('admin-note-subject').value;
+  const hashRouteId = document.getElementById('admin-note-id').value.trim();
+  const headingTitle = document.getElementById('admin-note-title').value.trim();
+  let streamVideoLink = document.getElementById('admin-note-video').value.trim();
+  const markupBodyContent = document.getElementById('admin-note-body').value.trim();
 
-  if(!id || !title || !body) {
-    showToast('Please fill all critical chapter textareas.', 'error');
-    return;
+  if(!hashRouteId || !headingTitle || !markupBodyContent) { showNotificationToast('Ensure critical structural components are declared.', 'error'); return; }
+
+  if(streamVideoLink.includes('watch?v=')) {
+    const videoTokenCode = streamVideoLink.split('v=')[1]?.split('&')[0];
+    streamVideoLink = `https://www.youtube.com/embed/${videoTokenCode}`;
   }
 
-  // Sanitize standard watch parameters to raw iframe embed structures seamlessly
-  if(video.includes('watch?v=')) {
-    const vId = video.split('v=')[1]?.split('&')[0];
-    video = `https://www.youtube.com/embed/${vId}`;
-  }
+  NOTES[subjKey][hashRouteId] = {
+    title: headingTitle,
+    subject: subjKey === 'math' ? 'Mathematics' : subjKey === 'science' ? 'Natural Science' : subjKey === 'english' ? 'Language Arts' : 'Social Systems',
+    readTime: '10 min instructional node',
+    video: streamVideoLink,
+    body: markupBodyContent
+  };
 
-  if(!NOTES[subj]) NOTES[subj] = {};
-  NOTES[subj][id] = { title, subject: subj === 'math' ? 'Mathematics' : subj === 'science' ? 'Science' : subj === 'english' ? 'English' : 'Social Studies', readTime: '12 min read', video, body };
+  showNotificationToast('Content block embedded inside network data layers.', 'success');
+  buildDynamicCounts();
 
-  showToast('Lecture Published Successfully!', 'success');
-  buildGlobalIndices();
-  
-  // Reset inputs
   document.getElementById('admin-note-id').value = '';
   document.getElementById('admin-note-title').value = '';
   document.getElementById('admin-note-video').value = '';
@@ -1567,27 +1151,27 @@ function adminAddChapter() {
 }
 
 function adminAddQuestion() {
-  const subj = document.getElementById('admin-q-subject').value;
-  const qText = document.getElementById('admin-q-text').value.trim();
-  const opt0 = document.getElementById('admin-q-opt0').value.trim();
-  const opt1 = document.getElementById('admin-q-opt1').value.trim();
-  const opt2 = document.getElementById('admin-q-opt2').value.trim();
-  const opt3 = document.getElementById('admin-q-opt3').value.trim();
-  const ans = parseInt(document.getElementById('admin-q-ans').value);
-  const exp = document.getElementById('admin-q-exp').value.trim();
+  const categoryTrack = document.getElementById('admin-q-subject').value;
+  const queryExpr = document.getElementById('admin-q-text').value.trim();
+  const choiceA = document.getElementById('admin-q-opt0').value.trim();
+  const choiceB = document.getElementById('admin-q-opt1').value.trim();
+  const choiceC = document.getElementById('admin-q-opt2').value.trim();
+  const choiceD = document.getElementById('admin-q-opt3').value.trim();
+  const numericalAnsIndex = parseInt(document.getElementById('admin-q-ans').value);
+  const feedbackTxt = document.getElementById('admin-q-exp').value.trim();
 
-  if(!qText || !opt0 || !opt1) {
-    showToast('Complete question text setup parameters.', 'error');
-    return;
-  }
+  if(!queryExpr || !choiceA || !choiceB) { showNotificationToast('Populate validation choices comprehensively.', 'error'); return; }
 
-  if(!QUIZZES[subj]) QUIZZES[subj] = [];
-  QUIZZES[subj].push({ q: qText, opts: [opt0, opt1, opt2, opt3], ans, exp: exp || 'Correct choice explanation verified.' });
+  QUIZZES[categoryTrack].push({
+    q: queryExpr,
+    opts: [choiceA, choiceB, choiceC, choiceD],
+    ans: numericalAnsIndex,
+    exp: feedbackTxt || "Verified computational response sequence validation parameter."
+  });
 
-  showToast('Question Structure Injected!', 'success');
-  buildGlobalIndices();
+  showNotificationToast('Evaluation framework configuration updated.', 'success');
+  buildDynamicCounts();
 
-  // Reset inputs
   document.getElementById('admin-q-text').value = '';
   document.getElementById('admin-q-opt0').value = '';
   document.getElementById('admin-q-opt1').value = '';
@@ -1597,59 +1181,43 @@ function adminAddQuestion() {
 }
 
 // ─────────────────────────────────────────────────────────
-//  PORTAL DASHBOARD METRICS
+//  METRICS COMPILATION
 // ─────────────────────────────────────────────────────────
-function refreshDashboard() {
-  const scores = state.scores;
-  const total  = scores.length;
-  const avg    = total ? Math.round(scores.reduce((a,s)=>a+s.pct,0)/total) : 0;
-  const best   = total ? Math.max(...scores.map(s=>s.pct)) : 0;
+function recalculateDashboardMetrics() {
+  const sourceLog = state.scores;
+  const entriesCount = sourceLog.length;
+  
+  const meanAccuracy = entriesCount ? Math.round(sourceLog.reduce((accum, block) => accum + block.accuracy, 0) / entriesCount) : 0;
+  const maximumAccuracy = entriesCount ? Math.max(...sourceLog.map(b => b.accuracy)) : 0;
 
-  document.getElementById('dash-total-quizzes').textContent  = total;
-  document.getElementById('dash-avg-score').textContent      = avg + '%';
-  document.getElementById('dash-streak-val').textContent     = state.streak;
-  document.getElementById('dash-best-score').textContent     = best + '%';
-  document.getElementById('dash-streak').textContent         = state.streak;
-  document.getElementById('dash-quizzes-badge').textContent  = total + ' Quizzes';
+  document.getElementById('dash-total-quizzes').textContent = entriesCount;
+  document.getElementById('dash-avg-score').textContent = meanAccuracy + '%';
+  document.getElementById('dash-streak-val').textContent = state.streak;
+  document.getElementById('dash-best-score').textContent = maximumAccuracy + '%';
+  document.getElementById('dash-streak').textContent = state.streak;
 
-  const level = total < 3 ? 'Beginner' : total < 8 ? 'Explorer' : 'Scholar';
-  document.getElementById('dash-level').textContent = '⭐ ' + level;
-
-  const subjectNames = { math:'Mathematics ➕', science:'Science 🔬', english:'English 📝', social:'Social Studies 🌍' };
-  document.getElementById('subject-progress-grid').innerHTML = Object.entries(state.subjectProgress).map(([s,p]) => `
-    <div class="card" style="padding:1.2rem">
-      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
-        <h3 style="font-size:.9rem">${subjectNames[s]}</h3>
-        <strong style="color:var(--violet)">${p}%</strong>
-      </div>
-      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${p}%"></div></div>
-    </div>
-  `).join('');
-
-  if(!scores.length) {
-    document.getElementById('scores-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--slate-400);padding:2rem">No quiz instances tracking.</td></tr>';
+  const rowContainer = document.getElementById('scores-tbody');
+  if(!entriesCount) {
+    rowContainer.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--slate-400); padding:2rem;">No performance evaluations executed inside active execution context runtime.</td></tr>`;
     return;
   }
-  document.getElementById('scores-tbody').innerHTML = scores.map(s => `
-    <tr>
-      <td>${s.subject.toUpperCase()}</td>
-      <td><strong>${s.pct}%</strong></td>
-      <td>${s.date}</td>
-      <td>🌟</td>
-    </tr>
+
+  rowContainer.innerHTML = sourceLog.map(record => `
+    <tr><td>${record.category.toUpperCase()}</td><td><strong>${record.accuracy}%</strong></td><td>${record.timestamp}</td></tr>
   `).join('');
 }
 
-function updateStreakUI() {
-  document.getElementById('topbar-streak').textContent = `🔥 ${state.streak} day streak`;
+function updateStreakMetrics() {
+  document.getElementById('topbar-streak').textContent = `🔥 ${state.streak} Days Running`;
   if(document.getElementById('hero-streak')) document.getElementById('hero-streak').textContent = state.streak;
   if(document.getElementById('hero-quizzes-count')) document.getElementById('hero-quizzes-count').textContent = state.scores.length;
 }
 
-function showToast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'show ' + type;
-  setTimeout(() => { t.className = ''; }, 3000);
+function showNotificationToast(messageText, tierStatus = 'success') {
+  const box = document.getElementById('toast');
+  box.textContent = messageText;
+  box.className = "show " + tierStatus;
+  setTimeout(() => { box.className = ""; }, 2500);
 }
 </script>
 </body>
