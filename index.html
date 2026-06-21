@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -42,7 +41,7 @@
 h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; }
 h2 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 700; }
 h3 { font-size: 1.1rem; font-weight: 700; }
-p  { line-height: 1.65; color: var(–slate-600); }
+p  { line-height: 1.65; color: var(--slate-600); }
 
 /* ── Utilities ────────────────────────────────────── */
 .hidden   { display: none !important; }
@@ -58,85 +57,85 @@ p  { line-height: 1.65; color: var(–slate-600); }
 
 /* ── Buttons ──────────────────────────────────────── */
 .btn {
-display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-padding: .65rem 1.4rem; border-radius: 10px; font-size: .9rem; font-weight: 600;
-cursor: pointer; border: none; transition: all .2s; white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .65rem 1.4rem; border-radius: 10px; font-size: .9rem; font-weight: 600;
+  cursor: pointer; border: none; transition: all .2s; white-space: nowrap;
 }
-.btn-primary   { background: var(–violet); color: #fff; }
+.btn-primary   { background: var(--violet); color: #fff; }
 .btn-primary:hover { background: #6d28d9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,58,237,.35); }
-.btn-secondary { background: var(–white); color: var(–violet); border: 2px solid var(–violet); }
-.btn-secondary:hover { background: var(–violet-lt); }
-.btn-gold      { background: var(–gold); color: #fff; }
+.btn-secondary { background: var(--white); color: var(--violet); border: 2px solid var(--violet); }
+.btn-secondary:hover { background: var(--violet-lt); }
+.btn-gold      { background: var(--gold); color: #fff; }
 .btn-gold:hover { background: #d97706; transform: translateY(-1px); }
-.btn-danger    { background: var(–red); color: #fff; }
+.btn-danger    { background: var(--red); color: #fff; }
 .btn-danger:hover { background: #dc2626; }
 .btn-sm        { padding: .45rem 1rem; font-size: .82rem; }
 
 /* ── Form Inputs ──────────────────────────────────── */
 .input-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
-.input-group label { font-size: .85rem; font-weight: 600; color: var(–slate-600); }
+.input-group label { font-size: .85rem; font-weight: 600; color: var(--slate-600); }
 .input-group input, .input-group select, .input-group textarea {
-padding: .7rem 1rem; border: 1.5px solid var(–slate-200); border-radius: 10px;
-font-size: .95rem; font-family: inherit; background: var(–white);
-transition: border-color .2s, box-shadow .2s;
+  padding: .7rem 1rem; border: 1.5px solid var(--slate-200); border-radius: 10px;
+  font-size: .95rem; font-family: inherit; background: var(--white);
+  transition: border-color .2s, box-shadow .2s;
 }
 .input-group input:focus, .input-group select:focus {
-outline: none; border-color: var(–violet); box-shadow: 0 0 0 3px rgba(124,58,237,.15);
+  outline: none; border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.15);
 }
 .search-wrap { position: relative; }
 .search-wrap input { padding-left: 2.8rem; }
 .search-wrap .search-icon {
-position: absolute; left: .9rem; top: 50%; transform: translateY(-50%);
-color: var(–slate-400); font-size: 1rem; pointer-events: none;
+  position: absolute; left: .9rem; top: 50%; transform: translateY(-50%);
+  color: var(--slate-400); font-size: 1rem; pointer-events: none;
 }
 
 /* ── Cards ────────────────────────────────────────── */
 .card {
-background: var(–white); border-radius: var(–radius);
-box-shadow: var(–shadow); padding: 1.5rem;
-transition: transform .2s, box-shadow .2s;
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1.5rem; transition: transform .2s, box-shadow .2s;
 }
-.card:hover { transform: translateY(-3px); box-shadow: var(–shadow-lg); }
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 
 /* ── Badge ────────────────────────────────────────── */
 .badge {
-display: inline-flex; align-items: center; padding: .2rem .7rem;
-border-radius: 99px; font-size: .75rem; font-weight: 700; gap: .3rem;
+  display: inline-flex; align-items: center; padding: .2rem .7rem;
+  border-radius: 99px; font-size: .75rem; font-weight: 700; gap: .3rem;
 }
-.badge-violet { background: var(–violet-lt); color: var(–violet); }
-.badge-gold   { background: var(–gold-lt);   color: #92400e; }
-.badge-green  { background: #d1fae5;           color: #065f46; }
+.badge-violet { background: var(--violet-lt); color: var(--violet); }
+.badge-gold   { background: var(--gold-lt);   color: #92400e; }
+.badge-green  { background: #d1fae5; color: #065f46; }
 .badge-red    { background: #fee2e2;           color: #991b1b; }
 
 /* ── Auth Screens ─────────────────────────────────── */
 #auth-screen {
-min-height: 100vh; display: flex; align-items: center; justify-content: center;
-background: linear-gradient(135deg, var(–indigo) 0%, var(–violet) 100%);
-padding: 1.5rem; position: relative; overflow: hidden;
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 100%);
+  padding: 1.5rem; position: relative; overflow: hidden;
 }
 .auth-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .auth-particles span {
-position: absolute; border-radius: 50%; background: rgba(255,255,255,.08);
-animation: float 8s infinite;
+  position: absolute; border-radius: 50%; background: rgba(255,255,255,.08);
+  animation: float 8s infinite;
 }
 @keyframes float {
-0%, 100% { transform: translateY(0) scale(1); opacity: .5; }
-50%       { transform: translateY(-40px) scale(1.1); opacity: 1; }
+  0%, 100% { transform: translateY(0) scale(1); opacity: .5; }
+  50%       { transform: translateY(-40px) scale(1.1); opacity: 1; }
 }
 .auth-box {
-background: var(–white); border-radius: 20px; box-shadow: var(–shadow-lg);
-padding: 2.5rem; width: 100%; max-width: 420px; position: relative; z-index: 1;
+  background: var(--white); border-radius: 20px; box-shadow: var(--shadow-lg);
+  padding: 2.5rem; width: 100%; max-width: 420px; position: relative; z-index: 1;
 }
 .auth-logo { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.8rem; }
 .auth-logo .spark { font-size: 2rem; }
-.auth-logo .name  { font-size: 1.6rem; font-weight: 800; color: var(–indigo); }
-.auth-logo .name span { color: var(–violet); }
-.auth-tabs { display: flex; gap: .5rem; margin-bottom: 1.8rem; background: var(–slate-100); padding: .4rem; border-radius: 10px; }
+.auth-logo .name  { font-size: 1.6rem; font-weight: 800; color: var(--indigo); }
+.auth-logo .name span { color: var(--violet); }
+.auth-tabs { display: flex; gap: .5rem; margin-bottom: 1.8rem; background: var(--slate-100); padding: .4rem; border-radius: 10px; }
 .auth-tab  {
-flex: 1; padding: .6rem; border: none; background: transparent; border-radius: 8px;
-font-size: .9rem; font-weight: 600; cursor: pointer; color: var(–slate-400); transition: all .2s;
+  flex: 1; padding: .6rem; border: none; background: transparent; border-radius: 8px;
+  font-size: .9rem; font-weight: 600; cursor: pointer; color: var(--slate-400); transition: all .2s;
 }
-.auth-tab.active { background: var(–white); color: var(–indigo); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+.auth-tab.active { background: var(--white); color: var(--indigo); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
 .auth-error { background: #fee2e2; color: #991b1b; border-radius: 8px; padding: .7rem 1rem; font-size: .85rem; margin-bottom: 1rem; }
 
 /* ── App Layout ───────────────────────────────────── */
@@ -144,101 +143,83 @@ font-size: .9rem; font-weight: 600; cursor: pointer; color: var(–slate-400); t
 
 /* ── Sidebar ──────────────────────────────────────── */
 #sidebar {
-width: var(–nav-w); background: var(–indigo); color: var(–white);
-position: fixed; top: 0; left: 0; height: 100vh; z-index: 100;
-display: flex; flex-direction: column; transition: transform .3s;
-overflow-y: auto;
+  width: var(--nav-w); background: var(--indigo); color: var(--white);
+  position: fixed; top: 0; left: 0; height: 100vh; z-index: 100;
+  display: flex; flex-direction: column; transition: transform .3s; overflow-y: auto;
 }
 .sidebar-logo {
-padding: 1.5rem 1.2rem 1.2rem;
-display: flex; align-items: center; gap: .7rem;
-border-bottom: 1px solid rgba(255,255,255,.1);
+  padding: 1.5rem 1.2rem 1.2rem; display: flex; align-items: center; gap: .7rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 .sidebar-logo .spark-icon { font-size: 1.6rem; }
 .sidebar-logo .logo-text  { font-size: 1.3rem; font-weight: 800; }
-.sidebar-logo .logo-text span { color: var(–gold); }
+.sidebar-logo .logo-text span { color: var(--gold); }
 .sidebar-user {
-padding: 1rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,.1);
-display: flex; align-items: center; gap: .8rem;
+  padding: 1rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; gap: .8rem;
 }
 .avatar {
-width: 38px; height: 38px; border-radius: 50%; background: var(–violet);
-display: flex; align-items: center; justify-content: center;
-font-size: .95rem; font-weight: 700; flex-shrink: 0;
+  width: 38px; height: 38px; border-radius: 50%; background: var(--violet);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .95rem; font-weight: 700; flex-shrink: 0;
 }
 .user-info .user-name  { font-size: .9rem; font-weight: 700; }
 .user-info .user-email { font-size: .75rem; color: rgba(255,255,255,.55); word-break: break-all; }
 nav.sidebar-nav { flex: 1; padding: .8rem 0; }
 .nav-section-label {
-font-size: .68rem; font-weight: 700; letter-spacing: .1em;
-text-transform: uppercase; color: rgba(255,255,255,.35);
-padding: .8rem 1.2rem .3rem;
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.35); padding: .8rem 1.2rem .3rem;
 }
 .nav-link {
-display: flex; align-items: center; gap: .8rem;
-padding: .7rem 1.2rem; color: rgba(255,255,255,.75);
-cursor: pointer; transition: all .15s; border-radius: 0;
-font-size: .9rem; font-weight: 500;
+  display: flex; align-items: center; gap: .8rem; padding: .7rem 1.2rem; color: rgba(255,255,255,.75);
+  cursor: pointer; transition: all .15s; border-radius: 0; font-size: .9rem; font-weight: 500;
 }
 .nav-link .nav-icon { font-size: 1.1rem; width: 1.3rem; text-align: center; }
-.nav-link:hover   { background: rgba(255,255,255,.08); color: var(–white); }
-.nav-link.active  { background: rgba(124,58,237,.35); color: var(–white); border-right: 3px solid var(–gold); }
+.nav-link:hover   { background: rgba(255,255,255,.08); color: var(--white); }
+.nav-link.active  { background: rgba(124,58,237,.35); color: var(--white); border-right: 3px solid var(--gold); }
 .sidebar-footer { padding: 1rem 1.2rem; border-top: 1px solid rgba(255,255,255,.1); }
 
 /* ── Main Content ─────────────────────────────────── */
-#main-content {
-margin-left: var(–nav-w); flex: 1; min-height: 100vh;
-display: flex; flex-direction: column;
-}
+#main-content { margin-left: var(--nav-w); flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
 .top-bar {
-background: var(–white); border-bottom: 1px solid var(–slate-200);
-padding: .9rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
-position: sticky; top: 0; z-index: 50; gap: 1rem;
+  background: var(--white); border-bottom: 1px solid var(--slate-200);
+  padding: .9rem 1.5rem; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 50; gap: 1rem;
 }
-.top-bar-title { font-size: 1.1rem; font-weight: 700; color: var(–indigo); }
+.top-bar-title { font-size: 1.1rem; font-weight: 700; color: var(--indigo); }
 .page-content { flex: 1; padding: 1.8rem; }
 
 /* ── Mobile Hamburger ─────────────────────────────── */
 .hamburger {
-display: none; flex-direction: column; gap: 5px; cursor: pointer;
-padding: .3rem; border: none; background: transparent;
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .3rem; border: none; background: transparent;
 }
-.hamburger span { display: block; width: 22px; height: 2px; background: var(–slate-800); border-radius: 2px; transition: all .3s; }
-.sidebar-overlay {
-display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45);
-z-index: 90;
-}
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--slate-800); border-radius: 2px; transition: all .3s; }
+.sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 90; }
 
 /* ── Hero Section ─────────────────────────────────── */
 .hero {
-background: linear-gradient(135deg, var(–indigo) 0%, var(–indigo-md) 50%, var(–violet) 100%);
-border-radius: var(–radius); padding: 3rem 2.5rem;
-color: var(–white); position: relative; overflow: hidden; margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--indigo) 0%, var(--indigo-md) 50%, var(--violet) 100%);
+  border-radius: var(--radius); padding: 3rem 2.5rem; color: var(--white); position: relative; overflow: hidden; margin-bottom: 2rem;
 }
 .hero::before {
-content: ‘’; position: absolute; top: -60px; right: -60px;
-width: 300px; height: 300px; border-radius: 50%;
-background: rgba(255,255,255,.05);
+  content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,.05);
 }
 .hero::after {
-content: ‘’; position: absolute; bottom: -80px; right: 80px;
-width: 200px; height: 200px; border-radius: 50%;
-background: rgba(245,158,11,.1);
+  content: ''; position: absolute; bottom: -80px; right: 80px; width: 200px; height: 200px; border-radius: 50%; background: rgba(245,158,11,.1);
 }
-.hero h1 { color: var(–white); margin-bottom: .8rem; }
+.hero h1 { color: var(--white); margin-bottom: .8rem; }
 .hero p   { color: rgba(255,255,255,.8); font-size: 1.1rem; margin-bottom: 1.8rem; }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-stats { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
-.hero-stat .num  { font-size: 1.6rem; font-weight: 800; color: var(–gold); }
+.hero-stat .num  { font-size: 1.6rem; font-weight: 800; color: var(--gold); }
 .hero-stat .lbl  { font-size: .8rem; color: rgba(255,255,255,.65); }
 .hero-search { margin-top: 1.5rem; position: relative; max-width: 480px; }
 .hero-search input {
-width: 100%; padding: .9rem 1rem .9rem 3rem; border: none;
-border-radius: 12px; font-size: 1rem; background: rgba(255,255,255,.15);
-color: var(–white); backdrop-filter: blur(10px);
+  width: 100%; padding: .9rem 1rem .9rem 3rem; border: none; border-radius: 12px; font-size: 1rem; background: rgba(255,255,255,.15);
+  color: var(--white); backdrop-filter: blur(10px);
 }
 .hero-search input::placeholder { color: rgba(255,255,255,.6); }
-.hero-search input:focus { outline: 2px solid var(–gold); background: rgba(255,255,255,.2); }
+.hero-search input:focus { outline: 2px solid var(--gold); background: rgba(255,255,255,.2); }
 .hero-search .search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,.7); }
 
 /* ── Subject Cards ────────────────────────────────── */
@@ -247,19 +228,12 @@ color: var(–white); backdrop-filter: blur(10px);
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 
-.subject-card {
-border-radius: var(–radius); padding: 1.5rem; color: var(–white);
-cursor: pointer; transition: all .25s; position: relative; overflow: hidden;
-}
-.subject-card::after {
-content: ‘’; position: absolute; top: -30px; right: -30px;
-width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,.1);
-transition: transform .3s;
-}
+.subject-card { border-radius: var(--radius); padding: 1.5rem; color: var(--white); cursor: pointer; transition: all .25s; position: relative; overflow: hidden; }
+.subject-card::after { content: ''; position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,.1); transition: transform .3s; }
 .subject-card:hover::after { transform: scale(2); }
-.subject-card:hover { transform: translateY(-4px); box-shadow: var(–shadow-lg); }
+.subject-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .subject-card .icon { font-size: 2rem; margin-bottom: .8rem; }
-.subject-card h3    { color: var(–white); font-size: 1.1rem; }
+.subject-card h3    { color: var(--white); font-size: 1.1rem; }
 .subject-card .meta { font-size: .8rem; color: rgba(255,255,255,.75); margin-top: .3rem; }
 .subject-card.math    { background: linear-gradient(135deg, #4f46e5, #7c3aed); }
 .subject-card.science { background: linear-gradient(135deg, #059669, #10b981); }
@@ -267,1782 +241,272 @@ transition: transform .3s;
 .subject-card.social  { background: linear-gradient(135deg, #d97706, #f59e0b); }
 
 /* ── Notes ────────────────────────────────────────── */
-.notes-sidebar {
-width: 240px; flex-shrink: 0;
-}
+.notes-sidebar { width: 240px; flex-shrink: 0; }
 .notes-layout { display: flex; gap: 1.5rem; }
 .notes-main   { flex: 1; min-width: 0; }
 .note-subject-btn {
-display: flex; align-items: center; gap: .7rem; padding: .7rem 1rem;
-border-radius: 10px; cursor: pointer; transition: all .15s;
-font-size: .9rem; font-weight: 500; color: var(–slate-600);
-border: none; background: transparent; width: 100%; text-align: left;
+  display: flex; align-items: center; gap: .7rem; padding: .7rem 1rem; border-radius: 10px;
+  cursor: pointer; transition: all .15s; font-size: .9rem; font-weight: 500; color: var(--slate-600);
+  border: none; background: transparent; width: 100%; text-align: left;
 }
-.note-subject-btn:hover   { background: var(–violet-lt); color: var(–violet); }
-.note-subject-btn.active  { background: var(–violet); color: var(–white); }
+.note-subject-btn:hover   { background: var(--violet-lt); color: var(--violet); }
+.note-subject-btn.active  { background: var(--violet); color: var(--white); }
 .note-subject-btn .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
 .chapter-list { margin-top: .5rem; }
-.chapter-item {
-padding: .55rem .9rem .55rem 2rem; border-radius: 8px; font-size: .85rem;
-cursor: pointer; transition: background .15s; color: var(–slate-600);
-}
-.chapter-item:hover  { background: var(–slate-100); }
-.chapter-item.active { background: var(–violet-lt); color: var(–violet); font-weight: 600; }
-.note-card { background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); padding: 1.8rem; }
+.chapter-item { padding: .55rem .9rem .55rem 2rem; border-radius: 8px; font-size: .85rem; cursor: pointer; transition: background .15s; color: var(--slate-600); }
+.chapter-item:hover  { background: var(--slate-100); }
+.chapter-item.active { background: var(--violet-lt); color: var(--violet); font-weight: 600; }
+.note-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.8rem; }
 .note-card h2 { margin-bottom: .3rem; }
 .note-card .note-meta { display: flex; gap: .8rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
-.note-body h3 { margin: 1.2rem 0 .5rem; color: var(–indigo); }
+.note-body h3 { margin: 1.2rem 0 .5rem; color: var(--indigo); }
 .note-body p  { margin-bottom: .8rem; }
 .note-body ul { padding-left: 1.4rem; margin-bottom: .8rem; }
-.note-body ul li { margin-bottom: .35rem; color: var(–slate-600); line-height: 1.6; }
+.note-body ul li { margin-bottom: .35rem; color: var(--slate-600); line-height: 1.6; }
 .note-body .key-formula {
-background: var(–violet-lt); border-left: 4px solid var(–violet);
-padding: .9rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
-font-family: ‘Courier New’, monospace; color: var(–indigo); font-weight: 600;
+  background: var(--violet-lt); border-left: 4px solid var(--violet); padding: .9rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
+  font-family: 'Courier New', monospace; color: var(--indigo); font-weight: 600;
 }
 
 /* ── Quiz ─────────────────────────────────────────── */
 .quiz-subjects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .quiz-subject-card {
-border-radius: var(–radius); padding: 1.5rem; cursor: pointer; text-align: center;
-background: var(–white); box-shadow: var(–shadow); transition: all .2s;
-border: 2px solid transparent;
+  border-radius: var(--radius); padding: 1.5rem; cursor: pointer; text-align: center;
+  background: var(--white); box-shadow: var(--shadow); transition: all .2s; border: 2px solid transparent;
 }
-.quiz-subject-card:hover { border-color: var(–violet); transform: translateY(-2px); }
+.quiz-subject-card:hover { border-color: var(--violet); transform: translateY(-2px); }
 .quiz-subject-card .icon { font-size: 2.5rem; margin-bottom: .5rem; }
-.quiz-subject-card h3 { color: var(–indigo); }
+.quiz-subject-card h3 { color: var(--indigo); }
 .quiz-subject-card p  { font-size: .85rem; margin-top: .3rem; }
 
 .quiz-wrap { max-width: 640px; margin: 0 auto; }
 .quiz-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-.quiz-progress-bar {
-height: 6px; background: var(–slate-200); border-radius: 99px; overflow: hidden; flex: 1; margin: 0 1rem;
-}
-.quiz-progress-fill { height: 100%; background: var(–violet); border-radius: 99px; transition: width .3s; }
-.question-card {
-background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); padding: 2rem;
-}
-.question-num { font-size: .8rem; font-weight: 700; color: var(–violet); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
-.question-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; color: var(–indigo); }
+.quiz-progress-bar { height: 6px; background: var(--slate-200); border-radius: 99px; overflow: hidden; flex: 1; margin: 0 1rem; }
+.quiz-progress-fill { height: 100%; background: var(--violet); border-radius: 99px; transition: width .3s; }
+.question-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; }
+.question-num { font-size: .8rem; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+.question-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--indigo); }
 .options-list { display: flex; flex-direction: column; gap: .7rem; }
 .option-btn {
-display: flex; align-items: center; gap: 1rem; padding: .9rem 1.2rem;
-border-radius: 10px; border: 2px solid var(–slate-200); background: var(–white);
-cursor: pointer; text-align: left; transition: all .2s; font-size: .95rem; font-weight: 500;
+  display: flex; align-items: center; gap: 1rem; padding: .9rem 1.2rem;
+  border-radius: 10px; border: 2px solid var(--slate-200); background: var(--white);
+  cursor: pointer; text-align: left; transition: all .2s; font-size: .95rem; font-weight: 500;
 }
-.option-btn:hover:not(:disabled) { border-color: var(–violet); background: var(–violet-lt); }
+.option-btn:hover:not(:disabled) { border-color: var(--violet); background: var(--violet-lt); }
 .option-btn .opt-label {
-width: 28px; height: 28px; border-radius: 50%; background: var(–slate-100);
-display: flex; align-items: center; justify-content: center;
-font-size: .8rem; font-weight: 700; flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 50%; background: var(--slate-100);
+  display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; flex-shrink: 0;
 }
-.option-btn.correct   { border-color: var(–green); background: #d1fae5; }
-.option-btn.wrong     { border-color: var(–red);   background: #fee2e2; }
-.option-btn.correct .opt-label { background: var(–green); color: var(–white); }
-.option-btn.wrong   .opt-label { background: var(–red);   color: var(–white); }
-.feedback-box {
-margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: .9rem; font-weight: 500;
-animation: fadeIn .3s;
-}
-.feedback-box.correct { background: #d1fae5; color: #065f46; border-left: 4px solid var(–green); }
-.feedback-box.wrong   { background: #fee2e2; color: #991b1b; border-left: 4px solid var(–red); }
+.option-btn.correct   { border-color: var(--green); background: #d1fae5; }
+.option-btn.wrong     { border-color: var(--red);   background: #fee2e2; }
+.option-btn.correct .opt-label { background: var(--green); color: var(--white); }
+.option-btn.wrong   .opt-label { background: var(--red);   color: var(--white); }
+.feedback-box { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: .9rem; font-weight: 500; animation: fadeIn .3s; }
+.feedback-box.correct { background: #d1fae5; color: #065f46; border-left: 4px solid var(--green); }
+.feedback-box.wrong   { background: #fee2e2; color: #991b1b; border-left: 4px solid var(--red); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 
 /* Results */
-.results-card {
-background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow-lg);
-padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto;
-}
-.score-ring {
-width: 140px; height: 140px; margin: 1.5rem auto;
-position: relative; display: flex; align-items: center; justify-content: center;
-}
+.results-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 2.5rem; text-align: center; max-width: 480px; margin: 0 auto; }
+.score-ring { width: 140px; height: 140px; margin: 1.5rem auto; position: relative; display: flex; align-items: center; justify-content: center; }
 .score-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
-.score-ring .score-num { font-size: 2.2rem; font-weight: 800; color: var(–indigo); line-height: 1; }
-.score-ring .score-lbl { font-size: .75rem; color: var(–slate-400); }
+.score-ring .score-num { font-size: 2.2rem; font-weight: 800; color: var(--indigo); line-height: 1; }
+.score-ring .score-lbl { font-size: .75rem; color: var(--slate-400); }
 .result-breakdown { display: flex; gap: 1rem; justify-content: center; margin: 1rem 0 1.5rem; }
 .result-stat { text-align: center; }
 .result-stat .val { font-size: 1.4rem; font-weight: 800; }
-.result-stat .lbl { font-size: .75rem; color: var(–slate-400); }
+.result-stat .lbl { font-size: .75rem; color: var(--slate-400); }
 
 /* ── Dashboard ────────────────────────────────────── */
 .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2rem; }
-.stat-card {
-background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); padding: 1.4rem;
-display: flex; flex-direction: column; gap: .5rem;
-}
+.stat-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem; }
 .stat-card .stat-icon { font-size: 1.8rem; }
-.stat-card .stat-val  { font-size: 1.8rem; font-weight: 800; color: var(–indigo); }
-.stat-card .stat-lbl  { font-size: .82rem; color: var(–slate-400); font-weight: 600; }
-.stat-card .stat-trend { font-size: .78rem; color: var(–green); font-weight: 600; }
+.stat-card .stat-val  { font-size: 1.8rem; font-weight: 800; color: var(--indigo); }
+.stat-card .stat-lbl  { font-size: .82rem; color: var(--slate-400); font-weight: 600; }
+.stat-card .stat-trend { font-size: .78rem; color: var(--green); font-weight: 600; }
 
 .profile-card {
-background: linear-gradient(135deg, var(–indigo), var(–violet));
-border-radius: var(–radius); padding: 2rem; color: var(–white);
-display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
+  border-radius: var(--radius); padding: 2rem; color: var(--white); display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
 }
 .profile-avatar {
-width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.2);
-display: flex; align-items: center; justify-content: center;
-font-size: 2rem; font-weight: 800; border: 3px solid var(–gold); flex-shrink: 0;
+  width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; border: 3px solid var(--gold); flex-shrink: 0;
 }
-.profile-info h2  { color: var(–white); }
+.profile-info h2  { color: var(--white); }
 .profile-info p   { color: rgba(255,255,255,.7); font-size: .9rem; margin-top: .2rem; }
 .profile-info .badges { display: flex; gap: .5rem; margin-top: .7rem; flex-wrap: wrap; }
 
-.scores-table { background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); overflow: hidden; }
+.scores-table { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
 .scores-table table { width: 100%; border-collapse: collapse; }
-.scores-table th { background: var(–slate-50); padding: .9rem 1.2rem; text-align: left; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(–slate-400); }
-.scores-table td { padding: .9rem 1.2rem; border-top: 1px solid var(–slate-100); font-size: .9rem; }
-.score-bar { height: 6px; border-radius: 99px; background: var(–slate-200); }
-.score-bar-fill { height: 100%; border-radius: 99px; background: var(–violet); }
+.scores-table th { background: var(--slate-50); padding: .9rem 1.2rem; text-align: left; font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--slate-400); }
+.scores-table td { padding: .9rem 1.2rem; border-top: 1px solid var(--slate-100); font-size: .9rem; }
+.score-bar { height: 6px; border-radius: 99px; background: var(--slate-200); }
+.score-bar-fill { height: 100%; border-radius: 99px; background: var(--violet); }
 
 /* ── Daily Challenge ──────────────────────────────── */
 .challenge-card {
-background: linear-gradient(135deg, #f59e0b, #ef4444);
-border-radius: var(–radius); padding: 2rem; color: var(–white); margin-bottom: 1.5rem; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #f59e0b, #ef4444); border-radius: var(--radius);
+  padding: 2rem; color: var(--white); margin-bottom: 1.5rem; position: relative; overflow: hidden;
 }
-.challenge-card::before {
-content: ‘⚡’; position: absolute; right: 1.5rem; top: 1rem; font-size: 5rem; opacity: .2;
-}
-.challenge-card h2 { color: var(–white); }
+.challenge-card::before { content: '⚡'; position: absolute; right: 1.5rem; top: 1rem; font-size: 5rem; opacity: .2; }
+.challenge-card h2 { color: var(--white); }
 .challenge-card p  { color: rgba(255,255,255,.85); margin-top: .3rem; }
-.challenge-form {
-background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); padding: 1.8rem; max-width: 640px;
-}
+.challenge-form { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.8rem; max-width: 640px; }
 .challenge-options { display: flex; flex-direction: column; gap: .7rem; margin: 1.2rem 0; }
 .challenge-opt {
-display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem;
-border-radius: 10px; border: 2px solid var(–slate-200); cursor: pointer;
-transition: all .2s; background: var(–white);
+  display: flex; align-items: center; gap: .8rem; padding: .8rem 1.2rem;
+  border-radius: 10px; border: 2px solid var(--slate-200); cursor: pointer; transition: all .2s; background: var(--white);
 }
-.challenge-opt:hover { border-color: var(–gold); background: var(–gold-lt); }
-.challenge-opt input[type=radio] { accent-color: var(–gold); width: 16px; height: 16px; flex-shrink: 0; }
+.challenge-opt:hover { border-color: var(--gold); background: var(--gold-lt); }
+.challenge-opt input[type=radio] { accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; }
 .challenge-result { padding: 1.2rem; border-radius: 10px; margin-top: 1rem; font-weight: 600; animation: fadeIn .3s; }
 .challenge-result.correct { background: #d1fae5; color: #065f46; }
 .challenge-result.wrong   { background: #fee2e2; color: #991b1b; }
 
 /* ── Streak & Progress ────────────────────────────── */
-.progress-bar-wrap { background: var(–slate-200); border-radius: 99px; height: 10px; overflow: hidden; }
-.progress-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(–violet), var(–gold)); transition: width .6s ease; }
+.progress-bar-wrap { background: var(--slate-200); border-radius: 99px; height: 10px; overflow: hidden; }
+.progress-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--violet), var(--gold)); transition: width .6s ease; }
 
 /* ── Search Results ───────────────────────────────── */
-.search-results { background: var(–white); border-radius: var(–radius); box-shadow: var(–shadow); overflow: hidden; }
+.search-results { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
 .search-result-item {
-display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem;
-border-bottom: 1px solid var(–slate-100); cursor: pointer; transition: background .15s;
+  display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--slate-100); cursor: pointer; transition: background .15s;
 }
 .search-result-item:last-child { border-bottom: none; }
-.search-result-item:hover { background: var(–slate-50); }
+.search-result-item:hover { background: var(--slate-50); }
 .search-result-item .result-icon { font-size: 1.4rem; }
-.search-result-item .result-info h4 { font-size: .95rem; color: var(–indigo); }
+.search-result-item .result-info h4 { font-size: .95rem; color: var(--indigo); }
 .search-result-item .result-info p  { font-size: .82rem; margin-top: .2rem; }
 
 /* ── Toast ────────────────────────────────────────── */
 #toast {
-position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
-background: var(–slate-800); color: var(–white); padding: .8rem 1.4rem;
-border-radius: 12px; font-size: .9rem; font-weight: 500; box-shadow: var(–shadow-lg);
-transform: translateY(100px); opacity: 0; transition: all .3s;
-display: flex; align-items: center; gap: .6rem;
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999;
+  background: var(--slate-800); color: var(--white); padding: .8rem 1.4rem;
+  border-radius: 12px; font-size: .9rem; font-weight: 500; box-shadow: var(--shadow-lg);
+  transform: translateY(100px); opacity: 0; transition: all .3s;
+  display: flex; align-items: center; gap: .6rem;
 }
 #toast.show { transform: none; opacity: 1; }
-#toast.success { border-left: 4px solid var(–green); }
-#toast.error   { border-left: 4px solid var(–red); }
+#toast.success { border-left: 4px solid var(--green); }
+#toast.error   { border-left: 4px solid var(--red); }
 
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 1024px) {
-.stats-grid { grid-template-columns: repeat(2,1fr); }
-.grid-4 { grid-template-columns: repeat(2,1fr); }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 768px) {
-#sidebar { transform: translateX(-100%); }
-#sidebar.open { transform: none; }
-.sidebar-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity .3s; }
-.sidebar-overlay.show { opacity: 1; pointer-events: all; }
-#main-content { margin-left: 0; }
-.hamburger { display: flex; }
-.page-content { padding: 1rem; }
-.hero { padding: 1.8rem 1.2rem; }
-.notes-layout { flex-direction: column; }
-.notes-sidebar { width: 100%; }
-.quiz-subjects-grid { grid-template-columns: repeat(2,1fr); }
-.profile-card { flex-direction: column; text-align: center; }
-.stats-grid { grid-template-columns: repeat(2,1fr); }
-.grid-3 { grid-template-columns: 1fr; }
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: none; }
+  .sidebar-overlay { display: block; opacity: 0; pointer-events: none; transition: opacity .3s; }
+  .sidebar-overlay.show { opacity: 1; pointer-events: all; }
+  #main-content { margin-left: 0; }
+  .hamburger { display: flex; }
+  .page-content { padding: 1rem; }
+  .hero { padding: 1.8rem 1.2rem; }
+  .notes-layout { flex-direction: column; }
+  .notes-sidebar { width: 100%; }
+  .quiz-subjects-grid { grid-template-columns: repeat(2,1fr); }
+  .profile-card { flex-direction: column; text-align: center; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .grid-3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-.grid-4, .grid-2 { grid-template-columns: 1fr; }
-.quiz-subjects-grid { grid-template-columns: 1fr; }
-.stats-grid { grid-template-columns: 1fr; }
-.hero-stats { gap: 1rem; }
+  .grid-4, .grid-2 { grid-template-columns: 1fr; }
+  .quiz-subjects-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1rem; }
 }
 </style>
-
 </head>
 <body>
 
-<!-- ░░░ AUTH SCREEN ░░░ -->
+  <div id="auth-screen">
+    <div class="auth-particles" id="auth-particles"></div>
+    <div class="auth-box">
+      <div class="auth-logo">
+        <span class="spark">⚡</span>
+        <span class="name">Study<span>Lyx</span></span>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="showAuthTab('login')">Log In</button>
+        <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
+      </div>
+      
+      <div id="auth-error" class="auth-error hidden"></div>
 
-<div id="auth-screen">
-  <div class="auth-particles" id="auth-particles"></div>
-  <div class="auth-box">
-    <div class="auth-logo">
-      <span class="spark">⚡</span>
-      <span class="name">Study<span>Lyx</span></span>
-    </div>
-    <div class="auth-tabs">
-      <button class="auth-tab active" onclick="showAuthTab('login')">Log In</button>
-      <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
-    </div>
-    <div id="auth-error" class="auth-error hidden"></div>
+      <div id="login-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="you@example.com" />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" />
+        </div>
+        <button class="btn btn-primary w-full" id="login-submit-btn" onclick="handleLogin()" style="margin-top:.5rem">Log In →</button>
+      </div>
 
-```
-<!-- Login Form -->
-<div id="login-form">
-  <div class="input-group">
-    <label>Email</label>
-    <input type="email" id="login-email" placeholder="you@example.com" />
+      <div id="signup-form" class="hidden">
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" id="signup-name" placeholder="Alex Johnson" />
+        </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="signup-email" placeholder="you@example.com" />
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="signup-password" placeholder="Min 6 characters" />
+        </div>
+        <button class="btn btn-primary w-full" id="signup-submit-btn" onclick="handleSignup()" style="margin-top:.5rem">Create Account →</button>
+      </div>
+    </div>
   </div>
-  <div class="input-group">
-    <label>Password</label>
-    <input type="password" id="login-password" placeholder="••••••••" />
-  </div>
-  <button class="btn btn-primary w-full" id="login-submit-btn" onclick="handleLogin()" style="margin-top:.5rem">Log In →</button>
-</div>
 
-<!-- Signup Form -->
-<div id="signup-form" class="hidden">
-  <div class="input-group">
-    <label>Full Name</label>
-    <input type="text" id="signup-name" placeholder="Alex Johnson" />
-  </div>
-  <div class="input-group">
-    <label>Email</label>
-    <input type="email" id="signup-email" placeholder="you@example.com" />
-  </div>
-  <div class="input-group">
-    <label>Password</label>
-    <input type="password" id="signup-password" placeholder="Min 6 characters" />
-  </div>
-  <button class="btn btn-primary w-full" id="signup-submit-btn" onclick="handleSignup()" style="margin-top:.5rem">Create Account →</button>
-</div>
-```
-
-  </div>
-</div>
-
-<!-- ░░░ APP ░░░ -->
-
-<div id="app" class="hidden">
-  <!-- Sidebar -->
-  <aside id="sidebar">
-    <div class="sidebar-logo">
-      <span class="spark-icon">⚡</span>
-      <span class="logo-text">Study<span>Lyx</span></span>
-    </div>
-    <div class="sidebar-user">
-      <div class="avatar" id="sidebar-avatar">A</div>
-      <div class="user-info">
-        <div class="user-name" id="sidebar-name">Alex</div>
-        <div class="user-email" id="sidebar-email">alex@example.com</div>
+  <div id="app" class="hidden">
+    <aside id="sidebar">
+      <div class="sidebar-logo">
+        <span class="spark-icon">⚡</span>
+        <span class="logo-text">Study<span>Lyx</span></span>
       </div>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="nav-section-label">Learn</div>
-      <div class="nav-link active" onclick="navigate('home')" id="nav-home">
-        <span class="nav-icon">🏠</span> Home
-      </div>
-      <div class="nav-link" onclick="navigate('notes')" id="nav-notes">
-        <span class="nav-icon">📚</span> Notes
-      </div>
-      <div class="nav-link" onclick="navigate('quiz')" id="nav-quiz">
-        <span class="nav-icon">🧠</span> Quizzes
-      </div>
-      <div class="nav-link" onclick="navigate('challenge')" id="nav-challenge">
-        <span class="nav-icon">⚡</span> Daily Challenge
-      </div>
-      <div class="nav-section-label">Account</div>
-      <div class="nav-link" onclick="navigate('dashboard')" id="nav-dashboard">
-        <span class="nav-icon">📊</span> Dashboard
-      </div>
-    </nav>
-    <div class="sidebar-footer">
-      <button class="btn btn-danger btn-sm w-full" onclick="handleLogout()">🚪 Log Out</button>
-    </div>
-  </aside>
-  <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
-
-  <!-- Main -->
-
-  <div id="main-content">
-    <div class="top-bar">
-      <div style="display:flex;align-items:center;gap:.8rem">
-        <button class="hamburger" onclick="toggleSidebar()">
-          <span></span><span></span><span></span>
-        </button>
-        <span class="top-bar-title" id="page-title">Home</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:.8rem">
-        <span id="topbar-streak" class="badge badge-gold">🔥 0 day streak</span>
-        <div class="avatar" id="topbar-avatar" style="width:34px;height:34px;font-size:.85rem;cursor:pointer" onclick="navigate('dashboard')">A</div>
-      </div>
-    </div>
-
-```
-<div class="page-content">
-  <!-- ── HOME PAGE ── -->
-  <div id="page-home">
-    <div class="hero">
-      <h1>Ready to Study<br>Smarter Today? ⚡</h1>
-      <p>Explore notes, tackle quizzes, and earn your streak — all in one place.</p>
-      <div class="hero-search">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="home-search" placeholder="Search notes, topics, chapters…" oninput="handleHomeSearch(this.value)" />
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num">4</div><div class="lbl">Subjects</div></div>
-        <div class="hero-stat"><div class="num" id="hero-quizzes-count">0</div><div class="lbl">Quizzes Taken</div></div>
-        <div class="hero-stat"><div class="num" id="hero-streak">0</div><div class="lbl">Day Streak</div></div>
-      </div>
-    </div>
-
-    <!-- Search results (hidden by default) -->
-    <div id="home-search-results" class="hidden" style="margin-bottom:1.5rem">
-      <div class="section-header">
-        <h2>🔍 Search Results</h2>
-        <button class="btn btn-secondary btn-sm" onclick="clearHomeSearch()">Clear</button>
-      </div>
-      <div class="search-results" id="search-results-list"></div>
-    </div>
-
-    <div class="section-header">
-      <h2>📖 Subjects</h2>
-      <button class="btn btn-secondary btn-sm" onclick="navigate('notes')">Browse All Notes →</button>
-    </div>
-    <div class="grid-4" style="margin-bottom:2rem">
-      <div class="subject-card math" onclick="openSubjectNotes('math')">
-        <div class="icon">➕</div>
-        <h3>Mathematics</h3>
-        <div class="meta">8 chapters · 32 notes</div>
-      </div>
-      <div class="subject-card science" onclick="openSubjectNotes('science')">
-        <div class="icon">🔬</div>
-        <h3>Science</h3>
-        <div class="meta">6 chapters · 24 notes</div>
-      </div>
-      <div class="subject-card english" onclick="openSubjectNotes('english')">
-        <div class="icon">📝</div>
-        <h3>English</h3>
-        <div class="meta">5 chapters · 20 notes</div>
-      </div>
-      <div class="subject-card social" onclick="openSubjectNotes('social')">
-        <div class="icon">🌍</div>
-        <h3>Social Studies</h3>
-        <div class="meta">7 chapters · 28 notes</div>
-      </div>
-    </div>
-
-    <div class="section-header">
-      <h2>🧠 Quick Quiz</h2>
-      <button class="btn btn-secondary btn-sm" onclick="navigate('quiz')">All Quizzes →</button>
-    </div>
-    <div class="grid-2">
-      <div class="card" onclick="startQuickQuiz('math')" style="cursor:pointer">
-        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem">
-          <span style="font-size:1.5rem">➕</span>
-          <div>
-            <h3>Math Quiz</h3>
-            <p style="font-size:.82rem;margin:0">Algebra & Geometry</p>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <span class="badge badge-violet">10 Questions</span>
-          <button class="btn btn-primary btn-sm">Start →</button>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebar-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name" id="sidebar-name">Alex</div>
+          <div class="user-email" id="sidebar-email">alex@example.com</div>
         </div>
       </div>
-      <div class="card" onclick="startQuickQuiz('science')" style="cursor:pointer">
-        <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem">
-          <span style="font-size:1.5rem">🔬</span>
-          <div>
-            <h3>Science Quiz</h3>
-            <p style="font-size:.82rem;margin:0">Biology & Physics</p>
-          </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Learn</div>
+        <div class="nav-link active" onclick="navigate('home')" id="nav-home">
+          <span class="nav-icon">🏠</span> Home
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <span class="badge badge-green">10 Questions</span>
-          <button class="btn btn-primary btn-sm">Start →</button>
+        <div class="nav-link" onclick="navigate('notes')" id="nav-notes">
+          <span class="nav-icon">📚</span> Notes
         </div>
-      </div>
-    </div>
-  </div><!-- end home -->
-
-  <!-- ── NOTES PAGE ── -->
-  <div id="page-notes" class="hidden">
-    <div style="margin-bottom:1.5rem">
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Search notes…" oninput="filterNotes(this.value)" style="width:100%;padding:.7rem 1rem .7rem 2.8rem;border:1.5px solid var(--slate-200);border-radius:10px;font-size:.95rem" />
-      </div>
-    </div>
-    <div class="notes-layout">
-      <div class="notes-sidebar">
-        <div class="card" style="padding:1rem">
-          <h3 style="margin-bottom:.8rem;font-size:.9rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:.05em">Subjects</h3>
-          <button class="note-subject-btn active" onclick="selectNoteSubject('math',this)" id="note-sub-math">
-            <span class="dot" style="background:#7c3aed"></span> Mathematics
-          </button>
-          <div class="chapter-list" id="chapters-math">
-            <div class="chapter-item active" onclick="selectChapter('math','algebra',this)">Algebra Basics</div>
-            <div class="chapter-item" onclick="selectChapter('math','geometry',this)">Geometry</div>
-            <div class="chapter-item" onclick="selectChapter('math','fractions',this)">Fractions & Decimals</div>
-          </div>
-          <button class="note-subject-btn" onclick="selectNoteSubject('science',this)" id="note-sub-science">
-            <span class="dot" style="background:#10b981"></span> Science
-          </button>
-          <div class="chapter-list hidden" id="chapters-science">
-            <div class="chapter-item" onclick="selectChapter('science','cells',this)">Cell Biology</div>
-            <div class="chapter-item" onclick="selectChapter('science','forces',this)">Forces & Motion</div>
-            <div class="chapter-item" onclick="selectChapter('science','ecosystems',this)">Ecosystems</div>
-          </div>
-          <button class="note-subject-btn" onclick="selectNoteSubject('english',this)" id="note-sub-english">
-            <span class="dot" style="background:#f97316"></span> English
-          </button>
-          <div class="chapter-list hidden" id="chapters-english">
-            <div class="chapter-item" onclick="selectChapter('english','grammar',this)">Grammar Rules</div>
-            <div class="chapter-item" onclick="selectChapter('english','essays',this)">Essay Writing</div>
-            <div class="chapter-item" onclick="selectChapter('english','literature',this)">Literature</div>
-          </div>
-          <button class="note-subject-btn" onclick="selectNoteSubject('social',this)" id="note-sub-social">
-            <span class="dot" style="background:#f59e0b"></span> Social Studies
-          </button>
-          <div class="chapter-list hidden" id="chapters-social">
-            <div class="chapter-item" onclick="selectChapter('social','history',this)">World History</div>
-            <div class="chapter-item" onclick="selectChapter('social','geography',this)">Geography</div>
-            <div class="chapter-item" onclick="selectChapter('social','civics',this)">Civics</div>
-          </div>
+        <div class="nav-link" onclick="navigate('quiz')" id="nav-quiz">
+          <span class="nav-icon">🧠</span> Quizzes
         </div>
-      </div>
-      <div class="notes-main">
-        <div class="note-card" id="note-content-area"></div>
-      </div>
-    </div>
-  </div><!-- end notes -->
-
-  <!-- ── QUIZ PAGE ── -->
-  <div id="page-quiz" class="hidden">
-    <!-- Subject picker -->
-    <div id="quiz-picker">
-      <h2 style="margin-bottom:1.2rem">Choose a Quiz Subject</h2>
-      <div class="quiz-subjects-grid">
-        <div class="quiz-subject-card" onclick="startQuickQuiz('math')">
-          <div class="icon">➕</div>
-          <h3>Mathematics</h3>
-          <p>Algebra, Geometry, Numbers</p>
-          <div style="margin-top:.8rem"><span class="badge badge-violet">10 Qs</span></div>
+        <div class="nav-link" onclick="navigate('challenge')" id="nav-challenge">
+          <span class="nav-icon">⚡</span> Daily Challenge
         </div>
-        <div class="quiz-subject-card" onclick="startQuickQuiz('science')">
-          <div class="icon">🔬</div>
-          <h3>Science</h3>
-          <p>Biology, Physics, Chemistry</p>
-          <div style="margin-top:.8rem"><span class="badge badge-green">10 Qs</span></div>
+        <div class="nav-section-label">Account</div>
+        <div class="nav-link" onclick="navigate('dashboard')" id="nav-dashboard">
+          <span class="nav-icon">📊</span> Dashboard
         </div>
-        <div class="quiz-subject-card" onclick="startQuickQuiz('english')">
-          <div class="icon">📝</div>
-          <h3>English</h3>
-          <p>Grammar, Vocabulary, Writing</p>
-          <div style="margin-top:.8rem"><span class="badge badge-red">10 Qs</span></div>
-        </div>
-        <div class="quiz-subject-card" onclick="startQuickQuiz('social')">
-          <div class="icon">🌍</div>
-          <h3>Social Studies</h3>
-          <p>History, Geography, Civics</p>
-          <div style="margin-top:.8rem"><span class="badge badge-gold">10 Qs</span></div>
-        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn btn-danger btn-sm w-full" onclick="handleLogout()">🚪 Log Out</button>
       </div>
+    </aside>
+    
+    <div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+    
     </div>
-
-    <!-- Active quiz -->
-    <div id="quiz-active" class="hidden quiz-wrap">
-      <div class="quiz-header">
-        <button class="btn btn-secondary btn-sm" onclick="exitQuiz()">← Back</button>
-        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
-        <span id="quiz-counter" style="font-size:.85rem;font-weight:700;color:var(--slate-400);white-space:nowrap"></span>
-      </div>
-      <div class="question-card">
-        <div class="question-num" id="q-num"></div>
-        <div class="question-text" id="q-text"></div>
-        <div class="options-list" id="q-options"></div>
-        <div id="q-feedback" class="hidden"></div>
-        <div style="margin-top:1.5rem;text-align:right">
-          <button class="btn btn-primary hidden" id="q-next" onclick="nextQuestion()">Next Question →</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Results -->
-    <div id="quiz-results" class="hidden">
-      <div class="results-card">
-        <h2>Quiz Complete! 🎉</h2>
-        <div class="score-ring">
-          <svg width="140" height="140" viewBox="0 0 140 140">
-            <circle cx="70" cy="70" r="60" fill="none" stroke="#e2e8f0" stroke-width="12"/>
-            <circle cx="70" cy="70" r="60" fill="none" stroke="#7c3aed" stroke-width="12"
-              stroke-linecap="round" id="score-ring-circle"
-              stroke-dasharray="377" stroke-dashoffset="377"/>
-          </svg>
-          <div style="text-align:center">
-            <div class="score-num" id="result-pct">0%</div>
-            <div class="score-lbl">Score</div>
-          </div>
-        </div>
-        <div class="result-breakdown">
-          <div class="result-stat"><div class="val" id="res-correct" style="color:var(--green)">0</div><div class="lbl">Correct</div></div>
-          <div class="result-stat"><div class="val" id="res-wrong" style="color:var(--red)">0</div><div class="lbl">Wrong</div></div>
-          <div class="result-stat"><div class="val" id="res-total" style="color:var(--indigo)">0</div><div class="lbl">Total</div></div>
-        </div>
-        <div id="result-message" style="margin-bottom:1.5rem;padding:.8rem;border-radius:10px;background:var(--slate-50)"></div>
-        <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="retryQuiz()">Retry Quiz</button>
-          <button class="btn btn-secondary" onclick="navigate('quiz')">More Quizzes</button>
-          <button class="btn btn-secondary" onclick="navigate('dashboard')">Dashboard</button>
-        </div>
-      </div>
-    </div>
-  </div><!-- end quiz -->
-
-  <!-- ── DAILY CHALLENGE ── -->
-  <div id="page-challenge" class="hidden">
-    <div class="challenge-card">
-      <div class="badge badge-gold" style="margin-bottom:.8rem">⚡ Daily Challenge</div>
-      <h2>Today's Brain Teaser</h2>
-      <p>One question per day. Answer correctly to keep your streak alive!</p>
-    </div>
-    <div class="challenge-form" id="challenge-form-wrap">
-      <div id="challenge-q-subject" style="margin-bottom:.5rem"></div>
-      <h3 id="challenge-q-text" style="font-size:1.15rem;color:var(--indigo);margin-bottom:.3rem"></h3>
-      <div class="challenge-options" id="challenge-options"></div>
-      <button class="btn btn-gold" id="challenge-submit-btn" onclick="submitChallenge()" disabled>Submit Answer</button>
-      <div id="challenge-result" class="challenge-result hidden"></div>
-    </div>
-  </div><!-- end challenge -->
-
-  <!-- ── DASHBOARD ── -->
-  <div id="page-dashboard" class="hidden">
-    <div class="profile-card">
-      <div class="profile-avatar" id="dash-avatar">A</div>
-      <div class="profile-info">
-        <h2 id="dash-name">Alex Johnson</h2>
-        <p id="dash-email">alex@example.com</p>
-        <div class="badges">
-          <span class="badge badge-gold">🔥 <span id="dash-streak">0</span>-day streak</span>
-          <span class="badge badge-violet" id="dash-level">Level 1</span>
-          <span class="badge badge-green" id="dash-quizzes-badge">0 Quizzes</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-icon">🧠</span>
-        <div class="stat-val" id="dash-total-quizzes">0</div>
-        <div class="stat-lbl">Quizzes Taken</div>
-        <div class="stat-trend">↑ Keep going!</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-icon">✅</span>
-        <div class="stat-val" id="dash-avg-score">0%</div>
-        <div class="stat-lbl">Average Score</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-icon">🔥</span>
-        <div class="stat-val" id="dash-streak-val">0</div>
-        <div class="stat-lbl">Day Streak</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-icon">⭐</span>
-        <div class="stat-val" id="dash-best-score">0%</div>
-        <div class="stat-lbl">Best Score</div>
-      </div>
-    </div>
-
-    <div class="section-header" style="margin-bottom:1rem">
-      <h2>📈 Progress by Subject</h2>
-    </div>
-    <div class="grid-2" style="margin-bottom:2rem" id="subject-progress-grid">
-      <!-- filled by JS -->
-    </div>
-
-    <div class="section-header" style="margin-bottom:1rem">
-      <h2>🏆 Quiz History</h2>
-    </div>
-    <div class="scores-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Subject</th><th>Score</th><th>Date</th><th>Rating</th>
-          </tr>
-        </thead>
-        <tbody id="scores-tbody">
-          <tr><td colspan="4" style="text-align:center;color:var(--slate-400);padding:2rem">No quizzes taken yet. Start one now!</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div><!-- end dashboard -->
-
-</div><!-- end page-content -->
-```
-
-  </div><!-- end main-content -->
-</div><!-- end app -->
-
-<!-- Toast -->
-
-<div id="toast">✅ Saved!</div>
-
-<!-- Firebase -->
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc, updateDoc, arrayUnion, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-// ── Firebase Config ────────────────────────────────────────────────
-// Replace with your own Firebase project config to enable persistence.
-// Without it, the app runs entirely in memory (demo mode).
-const firebaseConfig = {
-  apiKey: "AIzaSyDEMO_REPLACE_WITH_YOUR_KEY",
-  authDomain: "studylyx-demo.firebaseapp.com",
-  projectId: "studylyx-demo",
-  storageBucket: "studylyx-demo.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "1:000000000000:web:demo0000000"
-};
-
-// This is still a PLACEHOLDER config (no real Firebase project behind it).
-// If we let the app try to call real Firebase Auth with these fake values,
-// every login/signup attempt has to wait on a network round-trip that is
-// guaranteed to fail before it can fall back to demo mode — which makes
-// the login screen feel broken or slow. So: detect the placeholder and
-// skip Firebase entirely until real keys are dropped in.
-const isPlaceholderConfig = !firebaseConfig.apiKey || firebaseConfig.apiKey.includes('DEMO') || firebaseConfig.apiKey.includes('REPLACE');
-
-let app, auth, db;
-let firebaseReady = false;
-
-if (!isPlaceholderConfig) {
-  try {
-    app  = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-    db   = getFirestore(app);
-    firebaseReady = true;
-  } catch(e) {
-    console.warn("Firebase init skipped (demo mode):", e.message);
-  }
-} else {
-  console.info("StudyLyx: running in local demo mode (no Firebase config set).");
-}
-
-// Expose Firebase helpers globally for demo mode fallback
-window._fb = { auth, db, firebaseReady, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, doc, setDoc, getDoc, updateDoc, arrayUnion, serverTimestamp };
-window._fbReady = firebaseReady;
-
-if (firebaseReady) {
-  onAuthStateChanged(auth, async user => {
-    if (user) {
-      await window.loginUser(user.uid, user.displayName || user.email.split('@')[0], user.email);
-    }
-  });
-}
-</script>
-
-<script>
-// ═══════════════════════════════════════════════════════════
-//  APP STATE
-// ═══════════════════════════════════════════════════════════
-const state = {
-  user: null,      // { uid, name, email }
-  scores: [],      // [{ subject, score, total, pct, date }]
-  streak: 0,
-  challengeDone: false,
-  subjectProgress: { math:0, science:0, english:0, social:0 },
-};
-
-// ── Demo users (in-memory fallback) ───────────────────────
-// Keys are lower-cased so login/signup is not case-sensitive on email.
-const demoUsers = {
-  'demo@studylyx.com': { password: 'demo1234', name: 'Demo Student', uid: 'demo-uid-001' }
-};
-
-// ─────────────────────────────────────────────────────────
-//  CONTENT DATA
-// ─────────────────────────────────────────────────────────
-const NOTES = {
-  math: {
-    algebra: {
-      title: 'Algebra Basics',
-      subject: 'Mathematics',
-      readTime: '8 min read',
-      body: `
-        <h3>What is Algebra?</h3>
-        <p>Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. These symbols represent quantities without fixed values, known as <strong>variables</strong>.</p>
-        <h3>Key Concepts</h3>
-        <ul>
-          <li><strong>Variable:</strong> A symbol (usually a letter like x, y, n) that stands for an unknown number.</li>
-          <li><strong>Expression:</strong> A combination of numbers, variables, and operations (e.g., 3x + 5).</li>
-          <li><strong>Equation:</strong> A statement that two expressions are equal (e.g., 3x + 5 = 14).</li>
-          <li><strong>Coefficient:</strong> The numerical part of a term with a variable (in 3x, the coefficient is 3).</li>
-          <li><strong>Constant:</strong> A fixed value that doesn't change (in 3x + 5, the constant is 5).</li>
-        </ul>
-        <h3>Solving Linear Equations</h3>
-        <p>To solve for a variable, you must isolate it on one side of the equation using inverse operations:</p>
-        <div class="key-formula">3x + 5 = 14<br>3x = 14 − 5 = 9<br>x = 9 ÷ 3 = 3</div>
-        <h3>Order of Operations (PEMDAS)</h3>
-        <ul>
-          <li><strong>P</strong> – Parentheses first</li>
-          <li><strong>E</strong> – Exponents (powers and square roots)</li>
-          <li><strong>MD</strong> – Multiplication and Division (left to right)</li>
-          <li><strong>AS</strong> – Addition and Subtraction (left to right)</li>
-        </ul>
-        <h3>Properties of Operations</h3>
-        <ul>
-          <li><strong>Commutative:</strong> a + b = b + a; a × b = b × a</li>
-          <li><strong>Associative:</strong> (a+b)+c = a+(b+c)</li>
-          <li><strong>Distributive:</strong> a(b+c) = ab + ac</li>
-        </ul>
-      `
-    },
-    geometry: {
-      title: 'Geometry',
-      subject: 'Mathematics',
-      readTime: '10 min read',
-      body: `
-        <h3>Shapes and Their Properties</h3>
-        <p>Geometry is the study of shapes, sizes, and properties of figures and spaces.</p>
-        <h3>Triangles</h3>
-        <ul>
-          <li><strong>Equilateral:</strong> All 3 sides equal, all angles = 60°</li>
-          <li><strong>Isosceles:</strong> 2 sides equal, 2 angles equal</li>
-          <li><strong>Scalene:</strong> No sides equal</li>
-          <li><strong>Right triangle:</strong> One angle = 90°</li>
-        </ul>
-        <div class="key-formula">Pythagorean Theorem: a² + b² = c²<br>(c is the hypotenuse)</div>
-        <h3>Area Formulas</h3>
-        <ul>
-          <li>Rectangle: A = length × width</li>
-          <li>Triangle: A = ½ × base × height</li>
-          <li>Circle: A = π × r²</li>
-          <li>Parallelogram: A = base × height</li>
-        </ul>
-        <h3>Perimeter Formulas</h3>
-        <ul>
-          <li>Rectangle: P = 2(l + w)</li>
-          <li>Circle (Circumference): C = 2πr = πd</li>
-          <li>Triangle: P = a + b + c</li>
-        </ul>
-        <h3>Angles</h3>
-        <ul>
-          <li>Acute: less than 90°</li>
-          <li>Right: exactly 90°</li>
-          <li>Obtuse: between 90° and 180°</li>
-          <li>Straight: exactly 180°</li>
-          <li>Supplementary angles add up to 180°</li>
-          <li>Complementary angles add up to 90°</li>
-        </ul>
-      `
-    },
-    fractions: {
-      title: 'Fractions & Decimals',
-      subject: 'Mathematics',
-      readTime: '7 min read',
-      body: `
-        <h3>Understanding Fractions</h3>
-        <p>A fraction represents a part of a whole. It has a numerator (top) and denominator (bottom).</p>
-        <h3>Operations with Fractions</h3>
-        <ul>
-          <li><strong>Adding/Subtracting:</strong> Find a common denominator, then add/subtract numerators.</li>
-          <li><strong>Multiplying:</strong> Multiply numerators together and denominators together.</li>
-          <li><strong>Dividing:</strong> Flip the second fraction (reciprocal) and multiply.</li>
-        </ul>
-        <div class="key-formula">½ ÷ ¾ = ½ × 4/3 = 4/6 = 2/3</div>
-        <h3>Converting Fractions to Decimals</h3>
-        <p>Divide the numerator by the denominator: ¾ = 3 ÷ 4 = 0.75</p>
-        <h3>Percentages</h3>
-        <p>A percentage is a fraction out of 100. To convert: multiply the decimal by 100.</p>
-        <ul>
-          <li>0.75 = 75%</li>
-          <li>To find 30% of 200: 200 × 0.30 = 60</li>
-        </ul>
-      `
-    }
-  },
-  science: {
-    cells: {
-      title: 'Cell Biology',
-      subject: 'Science',
-      readTime: '9 min read',
-      body: `
-        <h3>The Cell — Basic Unit of Life</h3>
-        <p>All living organisms are made of cells. The cell is the smallest structural and functional unit of life.</p>
-        <h3>Types of Cells</h3>
-        <ul>
-          <li><strong>Prokaryotic:</strong> No nucleus (e.g., bacteria)</li>
-          <li><strong>Eukaryotic:</strong> Has a true nucleus (e.g., plant and animal cells)</li>
-        </ul>
-        <h3>Cell Organelles</h3>
-        <ul>
-          <li><strong>Nucleus:</strong> Control center; contains DNA</li>
-          <li><strong>Mitochondria:</strong> Powerhouse — produces ATP energy</li>
-          <li><strong>Ribosome:</strong> Site of protein synthesis</li>
-          <li><strong>Cell Membrane:</strong> Selectively permeable barrier</li>
-          <li><strong>Cell Wall:</strong> Rigid outer layer (plants only)</li>
-          <li><strong>Chloroplast:</strong> Photosynthesis (plants only)</li>
-          <li><strong>Endoplasmic Reticulum:</strong> Transport system; smooth and rough types</li>
-          <li><strong>Golgi Apparatus:</strong> Packages and ships proteins</li>
-          <li><strong>Vacuole:</strong> Storage; large in plant cells</li>
-          <li><strong>Lysosome:</strong> Digests waste materials</li>
-        </ul>
-        <div class="key-formula">Photosynthesis: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂</div>
-        <h3>Cell Division</h3>
-        <ul>
-          <li><strong>Mitosis:</strong> Cell divides into 2 identical daughter cells (growth/repair)</li>
-          <li><strong>Meiosis:</strong> Cell divides into 4 sex cells with half the chromosomes</li>
-        </ul>
-      `
-    },
-    forces: {
-      title: 'Forces & Motion',
-      subject: 'Science',
-      readTime: '8 min read',
-      body: `
-        <h3>Newton's Laws of Motion</h3>
-        <ul>
-          <li><strong>First Law (Inertia):</strong> An object at rest stays at rest; an object in motion stays in motion unless acted on by an unbalanced force.</li>
-          <li><strong>Second Law:</strong> Force = Mass × Acceleration (F = ma)</li>
-          <li><strong>Third Law:</strong> For every action there is an equal and opposite reaction.</li>
-        </ul>
-        <div class="key-formula">F = m × a<br>Where F=Force (N), m=mass (kg), a=acceleration (m/s²)</div>
-        <h3>Types of Forces</h3>
-        <ul>
-          <li>Gravity – pulls objects toward Earth's center</li>
-          <li>Friction – opposes motion between surfaces</li>
-          <li>Normal force – perpendicular support from a surface</li>
-          <li>Applied force – force applied by a person or object</li>
-          <li>Tension – force through a string or rope</li>
-        </ul>
-        <h3>Speed, Velocity, and Acceleration</h3>
-        <ul>
-          <li>Speed = Distance / Time</li>
-          <li>Velocity = Displacement / Time (includes direction)</li>
-          <li>Acceleration = Change in velocity / Time</li>
-        </ul>
-      `
-    },
-    ecosystems: {
-      title: 'Ecosystems',
-      subject: 'Science',
-      readTime: '7 min read',
-      body: `
-        <h3>What is an Ecosystem?</h3>
-        <p>An ecosystem is a community of living organisms interacting with each other and their physical environment.</p>
-        <h3>Biotic vs Abiotic Factors</h3>
-        <ul>
-          <li><strong>Biotic:</strong> Living components (plants, animals, fungi, bacteria)</li>
-          <li><strong>Abiotic:</strong> Non-living components (sunlight, water, temperature, soil)</li>
-        </ul>
-        <h3>Food Chains & Food Webs</h3>
-        <ul>
-          <li><strong>Producers:</strong> Plants that make their own food via photosynthesis</li>
-          <li><strong>Primary Consumers:</strong> Herbivores that eat producers</li>
-          <li><strong>Secondary Consumers:</strong> Carnivores that eat primary consumers</li>
-          <li><strong>Decomposers:</strong> Break down dead organic matter</li>
-        </ul>
-        <div class="key-formula">Sun → Grass → Rabbit → Fox → Decomposer</div>
-        <h3>Energy Flow</h3>
-        <p>Only about 10% of energy is transferred from one trophic level to the next. The rest is lost as heat.</p>
-        <h3>Types of Ecosystems</h3>
-        <ul>
-          <li>Terrestrial: Forest, Desert, Grassland, Tundra</li>
-          <li>Aquatic: Marine, Freshwater, Wetland</li>
-        </ul>
-      `
-    }
-  },
-  english: {
-    grammar: {
-      title: 'Grammar Rules',
-      subject: 'English',
-      readTime: '8 min read',
-      body: `
-        <h3>Parts of Speech</h3>
-        <ul>
-          <li><strong>Noun:</strong> Person, place, thing, or idea (cat, London, freedom)</li>
-          <li><strong>Pronoun:</strong> Replaces a noun (he, she, they, it)</li>
-          <li><strong>Verb:</strong> Action or state of being (run, is, seem)</li>
-          <li><strong>Adjective:</strong> Describes a noun (blue, tall, amazing)</li>
-          <li><strong>Adverb:</strong> Describes a verb, adjective, or another adverb (quickly, very)</li>
-          <li><strong>Preposition:</strong> Shows relationship (in, on, under, beside)</li>
-          <li><strong>Conjunction:</strong> Connects words/clauses (and, but, or, because)</li>
-          <li><strong>Interjection:</strong> Express emotion (Wow!, Oh!, Ouch!)</li>
-        </ul>
-        <h3>Sentence Structure</h3>
-        <ul>
-          <li><strong>Simple:</strong> One independent clause — "She runs."</li>
-          <li><strong>Compound:</strong> Two independent clauses joined — "She runs, and he swims."</li>
-          <li><strong>Complex:</strong> Independent + dependent clause — "She runs because she loves it."</li>
-        </ul>
-        <h3>Common Punctuation Rules</h3>
-        <ul>
-          <li>Use a comma before FANBOYS conjunctions (For, And, Nor, But, Or, Yet, So)</li>
-          <li>Use a semicolon to join two related independent clauses</li>
-          <li>Use an apostrophe for possessives and contractions</li>
-          <li>Use quotation marks for direct speech</li>
-        </ul>
-        <div class="key-formula">Subject + Verb + Object<br>Example: "The cat (S) chased (V) the mouse (O)."</div>
-      `
-    },
-    essays: {
-      title: 'Essay Writing',
-      subject: 'English',
-      readTime: '9 min read',
-      body: `
-        <h3>The 5-Paragraph Essay Structure</h3>
-        <ul>
-          <li><strong>Paragraph 1:</strong> Introduction + Thesis Statement</li>
-          <li><strong>Paragraph 2:</strong> Body – First supporting point</li>
-          <li><strong>Paragraph 3:</strong> Body – Second supporting point</li>
-          <li><strong>Paragraph 4:</strong> Body – Third supporting point</li>
-          <li><strong>Paragraph 5:</strong> Conclusion – Restate thesis + closing thoughts</li>
-        </ul>
-        <h3>The Thesis Statement</h3>
-        <p>A thesis statement is a one or two-sentence summary of your essay's main argument. It should be specific, debatable, and placed at the end of your introduction.</p>
-        <div class="key-formula">Weak: "Pollution is bad."<br>Strong: "Industrial pollution poses the greatest threat to urban biodiversity because of its direct impact on air and water quality."</div>
-        <h3>Transition Words</h3>
-        <ul>
-          <li><strong>Adding:</strong> Furthermore, Moreover, In addition, Also</li>
-          <li><strong>Contrasting:</strong> However, On the other hand, Although, Despite</li>
-          <li><strong>Concluding:</strong> Therefore, Thus, In conclusion, Consequently</li>
-          <li><strong>Sequencing:</strong> First, Second, Finally, Subsequently</li>
-        </ul>
-        <h3>Evidence and Citations</h3>
-        <p>Always support your claims with evidence. Quote, paraphrase, or summarize from reliable sources, then explain how the evidence supports your argument.</p>
-      `
-    },
-    literature: {
-      title: 'Literature',
-      subject: 'English',
-      readTime: '7 min read',
-      body: `
-        <h3>Literary Devices</h3>
-        <ul>
-          <li><strong>Simile:</strong> Comparison using "like" or "as" — "brave as a lion"</li>
-          <li><strong>Metaphor:</strong> Direct comparison — "Life is a journey"</li>
-          <li><strong>Personification:</strong> Giving human traits to non-human things — "The wind whispered"</li>
-          <li><strong>Alliteration:</strong> Repeated consonant sounds — "Peter Piper picked…"</li>
-          <li><strong>Foreshadowing:</strong> Hints about future events</li>
-          <li><strong>Irony:</strong> Saying the opposite of what you mean (verbal); events opposite of expectations (situational)</li>
-          <li><strong>Symbolism:</strong> An object represents a deeper meaning</li>
-          <li><strong>Imagery:</strong> Vivid descriptions appealing to the senses</li>
-        </ul>
-        <h3>Plot Structure (Freytag's Pyramid)</h3>
-        <ul>
-          <li>Exposition – Setting, characters introduced</li>
-          <li>Rising Action – Conflict builds</li>
-          <li>Climax – Highest point of tension</li>
-          <li>Falling Action – Tension decreases</li>
-          <li>Resolution – Conflict resolved</li>
-        </ul>
-        <h3>Themes vs. Topics</h3>
-        <p>A <strong>topic</strong> is what the story is about (war, love). A <strong>theme</strong> is the message (e.g., "War destroys even the most righteous causes").</p>
-      `
-    }
-  },
-  social: {
-    history: {
-      title: 'World History',
-      subject: 'Social Studies',
-      readTime: '10 min read',
-      body: `
-        <h3>Ancient Civilizations</h3>
-        <ul>
-          <li><strong>Mesopotamia (3500 BCE):</strong> One of the first civilizations; invented writing (cuneiform)</li>
-          <li><strong>Ancient Egypt:</strong> Famous for pyramids, pharaohs, and the Nile River</li>
-          <li><strong>Ancient Greece:</strong> Democracy, philosophy (Socrates, Plato, Aristotle)</li>
-          <li><strong>Roman Empire:</strong> Advanced law, engineering, spread of Christianity</li>
-        </ul>
-        <h3>The Middle Ages (500–1500 CE)</h3>
-        <ul>
-          <li>Feudal system: King → Nobles → Knights → Serfs</li>
-          <li>The Crusades: Religious wars for control of the Holy Land</li>
-          <li>The Black Death (1347–1351): Killed ⅓ of Europe's population</li>
-          <li>Magna Carta (1215): Limited the king's power; early step toward democracy</li>
-        </ul>
-        <h3>The Renaissance (14th–17th century)</h3>
-        <p>A cultural rebirth in Europe following the Middle Ages, with renewed interest in art, science, and classical learning. Key figures: Leonardo da Vinci, Michelangelo, Galileo.</p>
-        <h3>Major Revolutions</h3>
-        <ul>
-          <li><strong>American Revolution (1775–1783):</strong> Colonies declared independence from Britain</li>
-          <li><strong>French Revolution (1789–1799):</strong> Overthrow of the monarchy; "Liberté, Égalité, Fraternité"</li>
-          <li><strong>Industrial Revolution (1760s–1840s):</strong> Shift from farming to factory work</li>
-        </ul>
-      `
-    },
-    geography: {
-      title: 'Geography',
-      subject: 'Social Studies',
-      readTime: '8 min read',
-      body: `
-        <h3>Earth's Structure</h3>
-        <ul>
-          <li><strong>Inner Core:</strong> Solid iron and nickel</li>
-          <li><strong>Outer Core:</strong> Liquid iron — generates magnetic field</li>
-          <li><strong>Mantle:</strong> Molten rock (magma); thickest layer</li>
-          <li><strong>Crust:</strong> Thin outer layer where we live</li>
-        </ul>
-        <h3>Continents and Oceans</h3>
-        <p>There are 7 continents: Africa, Antarctica, Asia, Australia, Europe, North America, South America. And 5 oceans: Pacific, Atlantic, Indian, Southern, Arctic.</p>
-        <h3>Geographic Features</h3>
-        <ul>
-          <li>Mountain, Plateau, Plain, Valley, Canyon, Peninsula, Island</li>
-          <li>River, Lake, Sea, Bay, Gulf, Delta, Estuary</li>
-        </ul>
-        <h3>Climate Zones</h3>
-        <ul>
-          <li><strong>Tropical:</strong> Hot and humid year-round; near the equator</li>
-          <li><strong>Arid/Desert:</strong> Very little rainfall</li>
-          <li><strong>Temperate:</strong> Mild seasons; most populated areas</li>
-          <li><strong>Continental:</strong> Hot summers, cold winters</li>
-          <li><strong>Polar:</strong> Extremely cold; permanent ice</li>
-        </ul>
-        <div class="key-formula">Latitude = distance from equator (°N or °S)<br>Longitude = distance from prime meridian (°E or °W)</div>
-      `
-    },
-    civics: {
-      title: 'Civics',
-      subject: 'Social Studies',
-      readTime: '7 min read',
-      body: `
-        <h3>Branches of Government (USA)</h3>
-        <ul>
-          <li><strong>Legislative (Congress):</strong> Makes laws — Senate + House of Representatives</li>
-          <li><strong>Executive (President):</strong> Enforces laws — President, Vice President, Cabinet</li>
-          <li><strong>Judicial (Courts):</strong> Interprets laws — Supreme Court + federal courts</li>
-        </ul>
-        <h3>Checks and Balances</h3>
-        <p>Each branch has powers to limit the other two, preventing any one branch from becoming too powerful.</p>
-        <h3>The Constitution</h3>
-        <ul>
-          <li>Adopted in 1787; the supreme law of the United States</li>
-          <li>First 10 amendments = Bill of Rights</li>
-          <li>Key rights: Freedom of speech, religion, press, assembly, right to bear arms, fair trial</li>
-        </ul>
-        <h3>How a Bill Becomes a Law</h3>
-        <ul>
-          <li>1. Bill is introduced in Congress</li>
-          <li>2. Committee reviews it</li>
-          <li>3. Both chambers vote</li>
-          <li>4. President signs (becomes law) or vetoes</li>
-          <li>5. Congress can override a veto with ⅔ majority</li>
-        </ul>
-        <h3>Types of Government</h3>
-        <ul>
-          <li>Democracy, Republic, Monarchy, Oligarchy, Dictatorship, Theocracy</li>
-        </ul>
-      `
-    }
-  }
-};
-
-// ── Quiz Questions ─────────────────────────────────────────
-const QUIZZES = {
-  math: [
-    { q: "What is 7 × 8?", opts: ["54","56","58","64"], ans: 1, exp: "7 × 8 = 56" },
-    { q: "Solve for x: 2x + 4 = 12", opts: ["2","3","4","6"], ans: 2, exp: "2x = 8, so x = 4" },
-    { q: "What is the area of a rectangle with length 9 and width 5?", opts: ["40","45","50","28"], ans: 1, exp: "Area = 9 × 5 = 45" },
-    { q: "What is √144?", opts: ["10","11","12","13"], ans: 2, exp: "12 × 12 = 144" },
-    { q: "Which property does a(b+c) = ab+ac represent?", opts: ["Commutative","Associative","Distributive","Identity"], ans: 2, exp: "This is the distributive property." },
-    { q: "What is 15% of 200?", opts: ["25","30","35","40"], ans: 1, exp: "200 × 0.15 = 30" },
-    { q: "A triangle has angles of 60° and 80°. What is the third?", opts: ["30°","40°","50°","60°"], ans: 1, exp: "180 - 60 - 80 = 40°" },
-    { q: "What is the perimeter of a square with side 7 cm?", opts: ["21 cm","28 cm","42 cm","14 cm"], ans: 1, exp: "P = 4 × 7 = 28 cm" },
-    { q: "Simplify: 3/4 + 1/4", opts: ["4/4","3/4","1","2"], ans: 2, exp: "3/4 + 1/4 = 4/4 = 1" },
-    { q: "What is 2³?", opts: ["6","8","9","12"], ans: 1, exp: "2³ = 2 × 2 × 2 = 8" },
-  ],
-  science: [
-    { q: "What is the powerhouse of the cell?", opts: ["Nucleus","Ribosome","Mitochondria","Golgi body"], ans: 2, exp: "Mitochondria produce ATP energy for the cell." },
-    { q: "Which gas do plants absorb during photosynthesis?", opts: ["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"], ans: 2, exp: "Plants absorb CO₂ and release O₂ during photosynthesis." },
-    { q: "Newton's second law states F =", opts: ["ma","mv","m/a","a/m"], ans: 0, exp: "Force = mass × acceleration (F = ma)." },
-    { q: "What is the unit of force?", opts: ["Joule","Watt","Newton","Pascal"], ans: 2, exp: "Force is measured in Newtons (N)." },
-    { q: "Which organelle is responsible for protein synthesis?", opts: ["Nucleus","Ribosome","Lysosome","Vacuole"], ans: 1, exp: "Ribosomes build proteins from amino acids." },
-    { q: "What type of cell division creates sex cells?", opts: ["Mitosis","Meiosis","Binary fission","Budding"], ans: 1, exp: "Meiosis produces gametes with half the chromosomes." },
-    { q: "Organisms that make their own food are called:", opts: ["Consumers","Decomposers","Producers","Herbivores"], ans: 2, exp: "Producers (plants) make food via photosynthesis." },
-    { q: "Which planet is closest to the Sun?", opts: ["Venus","Earth","Mars","Mercury"], ans: 3, exp: "Mercury is the closest planet to the Sun." },
-    { q: "Water is made of which elements?", opts: ["H & N","H & O","O & C","C & N"], ans: 1, exp: "Water is H₂O: two hydrogen and one oxygen atom." },
-    { q: "What force keeps us on the ground?", opts: ["Friction","Tension","Gravity","Magnetism"], ans: 2, exp: "Gravity pulls objects toward Earth's center." },
-  ],
-  english: [
-    { q: "Which word is a noun in this sentence: 'The dog runs fast'?", opts: ["The","dog","runs","fast"], ans: 1, exp: "'Dog' is a noun (thing/animal)." },
-    { q: "What literary device is 'brave as a lion'?", opts: ["Metaphor","Simile","Alliteration","Personification"], ans: 1, exp: "A simile compares using 'like' or 'as'." },
-    { q: "Which sentence is grammatically correct?", opts: ["She don't like cats.","She doesn't likes cats.","She doesn't like cats.","She don't likes cats."], ans: 2, exp: "With third-person singular, use 'doesn't' + base verb." },
-    { q: "What is a thesis statement?", opts: ["A question","The story's climax","The essay's main argument","A topic sentence"], ans: 2, exp: "A thesis statement presents the main argument of an essay." },
-    { q: "Which punctuation separates two independent clauses?", opts: ["Comma","Semicolon","Colon","Hyphen"], ans: 1, exp: "A semicolon joins two related independent clauses." },
-    { q: "'The wind sang through the trees' is an example of:", opts: ["Simile","Metaphor","Personification","Irony"], ans: 2, exp: "Personification gives human traits to non-human things." },
-    { q: "In Freytag's Pyramid, the highest point of tension is called:", opts: ["Exposition","Rising Action","Climax","Resolution"], ans: 2, exp: "The climax is the turning point and highest tension." },
-    { q: "Which is a conjunction?", opts: ["Quickly","Beautiful","However","Table"], ans: 2, exp: "'However' is a conjunctive adverb used to connect ideas." },
-    { q: "What does 'protagonist' mean?", opts: ["The villain","The main character","A supporting character","The narrator"], ans: 1, exp: "The protagonist is the main character of the story." },
-    { q: "'It rained on her wedding day' is an example of:", opts: ["Verbal irony","Situational irony","Dramatic irony","Foreshadowing"], ans: 1, exp: "Situational irony: events opposite to expectations." },
-  ],
-  social: [
-    { q: "Which civilization invented writing (cuneiform)?", opts: ["Ancient Egypt","Mesopotamia","Ancient Greece","Roman Empire"], ans: 1, exp: "Mesopotamia (modern-day Iraq) developed cuneiform writing around 3200 BCE." },
-    { q: "What document signed in 1215 limited the king's power?", opts: ["Constitution","Bill of Rights","Magna Carta","Declaration of Independence"], ans: 2, exp: "The Magna Carta (1215) established that the king was subject to the law." },
-    { q: "How many branches does the US government have?", opts: ["2","3","4","5"], ans: 1, exp: "The US has 3 branches: Legislative, Executive, and Judicial." },
-    { q: "How many continents are there?", opts: ["5","6","7","8"], ans: 2, exp: "There are 7 continents on Earth." },
-    { q: "Which ocean is the largest?", opts: ["Atlantic","Indian","Arctic","Pacific"], ans: 3, exp: "The Pacific Ocean is the largest, covering more than 30% of Earth." },
-    { q: "What system organized medieval European society?", opts: ["Democracy","Communism","Feudalism","Capitalism"], ans: 2, exp: "Feudalism placed the king at the top, followed by nobles, knights, and serfs." },
-    { q: "The American Revolution ended in:", opts: ["1776","1781","1783","1789"], ans: 2, exp: "The Treaty of Paris (1783) officially ended the American Revolution." },
-    { q: "Latitude measures distance from which reference point?", opts: ["Prime Meridian","North Pole","Equator","South Pole"], ans: 2, exp: "Latitude is measured in degrees north or south of the equator." },
-    { q: "Which branch of government makes laws in the USA?", opts: ["Executive","Judicial","Legislative","Federal"], ans: 2, exp: "Congress (Legislative branch) has the power to make laws." },
-    { q: "The Renaissance began in which country?", opts: ["France","England","Italy","Germany"], ans: 2, exp: "The Renaissance began in Italy in the 14th century." },
-  ]
-};
-
-// ── Daily Challenges ───────────────────────────────────────
-const CHALLENGES = [
-  { subject: '➕ Mathematics', q: 'A train travels at 60 mph for 2.5 hours. How far does it travel?', opts: ['120 miles','140 miles','150 miles','160 miles'], ans: 2, exp: 'Distance = Speed × Time = 60 × 2.5 = 150 miles.' },
-  { subject: '🔬 Science', q: 'What percentage of energy is transferred between trophic levels in a food chain?', opts: ['1%','10%','25%','50%'], ans: 1, exp: 'Only about 10% of energy passes from one trophic level to the next.' },
-  { subject: '📝 English', q: 'What literary device repeats the same consonant sound at the beginning of closely connected words?', opts: ['Assonance','Onomatopoeia','Alliteration','Hyperbole'], ans: 2, exp: "Alliteration repeats initial consonant sounds, e.g., 'Peter Piper picked'." },
-  { subject: '🌍 Social Studies', q: 'What was the name of the trade route connecting Europe, Asia, and Africa in medieval times?', opts: ['Spice Route','Silk Road','Amber Road','Incense Route'], ans: 1, exp: 'The Silk Road was a network of trade routes spanning 4,000 miles across Asia to Europe.' },
-  { subject: '➕ Mathematics', q: 'If a square has a diagonal of 10 cm, what is the length of one side? (Round to nearest whole number)', opts: ['5 cm','6 cm','7 cm','8 cm'], ans: 2, exp: 'Side = diagonal / √2 = 10/1.414 ≈ 7.07 ≈ 7 cm' },
-  { subject: '🔬 Science', q: "Newton's Third Law states: 'For every action there is an equal and _____ reaction'", opts: ['Stronger','Faster','Opposite','Parallel'], ans: 2, exp: "Newton's Third Law: every action has an equal and OPPOSITE reaction." },
-  { subject: '📝 English', q: 'In a 5-paragraph essay, how many body paragraphs are there?', opts: ['1','2','3','4'], ans: 2, exp: 'A 5-paragraph essay has: 1 introduction + 3 body paragraphs + 1 conclusion.' },
-];
-
-// ─────────────────────────────────────────────────────────
-//  PARTICLES (auth screen)
-// ─────────────────────────────────────────────────────────
-(function(){
-  const wrap = document.getElementById('auth-particles');
-  for(let i=0;i<12;i++){
-    const s = document.createElement('span');
-    const sz = Math.random()*80+20;
-    s.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*8}s;animation-duration:${6+Math.random()*6}s`;
-    wrap.appendChild(s);
-  }
-})();
-
-// ─────────────────────────────────────────────────────────
-//  AUTH HELPERS
-// ─────────────────────────────────────────────────────────
-function showAuthTab(tab) {
-  document.getElementById('login-form').classList.toggle('hidden', tab !== 'login');
-  document.getElementById('signup-form').classList.toggle('hidden', tab !== 'signup');
-  document.querySelectorAll('.auth-tab').forEach((t,i) => {
-    t.classList.toggle('active', (i===0 && tab==='login') || (i===1 && tab==='signup'));
-  });
-  hideAuthError();
-}
-function showAuthError(msg) {
-  const el = document.getElementById('auth-error');
-  el.textContent = msg; el.classList.remove('hidden');
-}
-function hideAuthError() {
-  document.getElementById('auth-error').classList.add('hidden');
-}
-
-function setAuthLoading(formPrefix, loading) {
-  const btn = document.getElementById(formPrefix + '-submit-btn');
-  if(!btn) return;
-  btn.disabled = loading;
-  if(loading) {
-    btn.dataset.originalText = btn.dataset.originalText || btn.textContent;
-    btn.textContent = 'Please wait…';
-  } else if(btn.dataset.originalText) {
-    btn.textContent = btn.dataset.originalText;
-  }
-}
-
-async function handleLogin() {
-  const email    = document.getElementById('login-email').value.trim().toLowerCase();
-  const password = document.getElementById('login-password').value;
-  if(!email||!password) { showAuthError('Please fill in all fields.'); return; }
-  hideAuthError();
-  setAuthLoading('login', true);
-
-  try {
-    // Try Firebase only if it's actually configured (not the placeholder demo config)
-    if(window._fbReady) {
-      try {
-        const { auth, signInWithEmailAndPassword } = window._fb;
-        await signInWithEmailAndPassword(auth, email, password);
-        return; // onAuthStateChanged handles the rest
-      } catch(e) {
-        // Fall through to demo/local accounts below
-      }
-    }
-    // Demo / locally-created users
-    const demo = demoUsers[email];
-    if(demo && demo.password === password) {
-      await loginUser(demo.uid, demo.name, email);
-    } else {
-      showAuthError('Invalid email or password. Try demo@studylyx.com / demo1234');
-    }
-  } finally {
-    setAuthLoading('login', false);
-  }
-}
-
-async function handleSignup() {
-  const name     = document.getElementById('signup-name').value.trim();
-  const email    = document.getElementById('signup-email').value.trim().toLowerCase();
-  const password = document.getElementById('signup-password').value;
-  if(!name||!email||!password) { showAuthError('Please fill in all fields.'); return; }
-  if(password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
-  if(demoUsers[email]) { showAuthError('An account with this email already exists. Try logging in instead.'); return; }
-  hideAuthError();
-  setAuthLoading('signup', true);
-
-  try {
-    if(window._fbReady) {
-      try {
-        const { auth, createUserWithEmailAndPassword, updateProfile } = window._fb;
-        const cred = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(cred.user, { displayName: name });
-        await loginUser(cred.user.uid, name, email);
-        return;
-      } catch(e) {
-        if(e.code === 'auth/email-already-in-use') { showAuthError('Email already in use.'); return; }
-        // Any other Firebase error: fall through to local demo signup below
-      }
-    }
-    // Local/demo signup: create an in-memory account and log them in
-    const uid = 'local-' + Date.now();
-    demoUsers[email] = { password, name, uid };
-    await loginUser(uid, name, email);
-  } finally {
-    setAuthLoading('signup', false);
-  }
-}
-
-async function handleLogout() {
-  if(window._fbReady) {
-    try { await window._fb.signOut(window._fb.auth); } catch(e){}
-  }
-  state.user = null;
-  document.getElementById('app').classList.add('hidden');
-  document.getElementById('auth-screen').classList.remove('hidden');
-  showAuthTab('login');
-}
-
-// ─────────────────────────────────────────────────────────
-//  ENTER-KEY SUBMIT
-//  The auth inputs aren't wrapped in a <form>, so pressing Enter
-//  did nothing before — this wires it up for both login & signup.
-// ─────────────────────────────────────────────────────────
-document.getElementById('login-password').addEventListener('keydown', e => {
-  if(e.key === 'Enter') { e.preventDefault(); handleLogin(); }
-});
-document.getElementById('login-email').addEventListener('keydown', e => {
-  if(e.key === 'Enter') { e.preventDefault(); handleLogin(); }
-});
-document.getElementById('signup-password').addEventListener('keydown', e => {
-  if(e.key === 'Enter') { e.preventDefault(); handleSignup(); }
-});
-document.getElementById('signup-name').addEventListener('keydown', e => {
-  if(e.key === 'Enter') { e.preventDefault(); handleSignup(); }
-});
-document.getElementById('signup-email').addEventListener('keydown', e => {
-  if(e.key === 'Enter') { e.preventDefault(); handleSignup(); }
-});
-
-// ─────────────────────────────────────────────────────────
-//  LOGIN USER (shared by Firebase & demo)
-// ─────────────────────────────────────────────────────────
-window.loginUser = async function(uid, name, email) {
-  state.user = { uid, name, email };
-
-  // Load data from Firestore if available
-  if(window._fbReady) {
-    try {
-      const { db, doc, getDoc } = window._fb;
-      const snap = await getDoc(doc(db, 'users', uid));
-      if(snap.exists()) {
-        const d = snap.data();
-        state.scores  = d.scores  || [];
-        state.streak  = d.streak  || 0;
-        state.subjectProgress = d.subjectProgress || { math:0,science:0,english:0,social:0 };
-      }
-    } catch(e) { console.warn('Firestore load skipped:', e.message); }
-  } else {
-    // Local/demo mode: restore this user's data from localStorage, if any
-    try {
-      const raw = localStorage.getItem('ss_data_' + uid);
-      if(raw) {
-        const d = JSON.parse(raw);
-        state.scores = d.scores || [];
-        state.streak = d.streak || 0;
-        state.subjectProgress = d.subjectProgress || { math:0,science:0,english:0,social:0 };
-      } else {
-        state.scores = [];
-        state.streak = 0;
-        state.subjectProgress = { math:0,science:0,english:0,social:0 };
-      }
-    } catch(e) { console.warn('Local data load skipped:', e.message); }
-  }
-
-  // Update UI
-  const initials = name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-  document.getElementById('sidebar-avatar').textContent   = initials;
-  document.getElementById('topbar-avatar').textContent    = initials;
-  document.getElementById('dash-avatar').textContent      = initials;
-  document.getElementById('sidebar-name').textContent     = name;
-  document.getElementById('sidebar-email').textContent    = email;
-  document.getElementById('dash-name').textContent        = name;
-  document.getElementById('dash-email').textContent       = email;
-
-  updateStreakUI();
-  document.getElementById('auth-screen').classList.add('hidden');
-  document.getElementById('app').classList.remove('hidden');
-  navigate('home');
-};
-
-// ─────────────────────────────────────────────────────────
-//  SAVE USER DATA (Firestore when configured, localStorage otherwise)
-// ─────────────────────────────────────────────────────────
-async function saveUserData() {
-  if(!state.user) return;
-  if(window._fbReady) {
-    try {
-      const { db, doc, setDoc } = window._fb;
-      await setDoc(doc(db, 'users', state.user.uid), {
-        name: state.user.name,
-        email: state.user.email,
-        scores: state.scores.slice(-50), // keep last 50
-        streak: state.streak,
-        subjectProgress: state.subjectProgress,
-        updatedAt: window._fb.serverTimestamp()
-      }, { merge: true });
-    } catch(e) { console.warn('Firestore save skipped:', e.message); }
-  } else {
-    try {
-      localStorage.setItem('ss_data_' + state.user.uid, JSON.stringify({
-        scores: state.scores.slice(-50),
-        streak: state.streak,
-        subjectProgress: state.subjectProgress
-      }));
-    } catch(e) { console.warn('Local data save skipped:', e.message); }
-  }
-}
-
-// ─────────────────────────────────────────────────────────
-//  NAVIGATION
-// ─────────────────────────────────────────────────────────
-const PAGES = ['home','notes','quiz','challenge','dashboard'];
-function navigate(page) {
-  PAGES.forEach(p => {
-    document.getElementById('page-'+p).classList.toggle('hidden', p !== page);
-    const navEl = document.getElementById('nav-'+p);
-    if(navEl) navEl.classList.toggle('active', p === page);
-  });
-  const titles = { home:'Home', notes:'Notes', quiz:'Quizzes', challenge:'Daily Challenge', dashboard:'Dashboard' };
-  document.getElementById('page-title').textContent = titles[page] || page;
-  closeSidebar();
-
-  if(page === 'notes')       initNotes();
-  if(page === 'dashboard')   refreshDashboard();
-  if(page === 'challenge')   initChallenge();
-  if(page === 'quiz')        { document.getElementById('quiz-picker').classList.remove('hidden'); document.getElementById('quiz-active').classList.add('hidden'); document.getElementById('quiz-results').classList.add('hidden'); }
-}
-
-function openSubjectNotes(subj) {
-  navigate('notes');
-  const btn = document.getElementById('note-sub-'+subj);
-  if(btn) selectNoteSubject(subj, btn);
-}
-function startQuickQuiz(subj) {
-  navigate('quiz');
-  setTimeout(() => startQuiz(subj), 50);
-}
-
-// ─────────────────────────────────────────────────────────
-//  SIDEBAR MOBILE
-// ─────────────────────────────────────────────────────────
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sidebar-overlay').classList.toggle('show');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebar-overlay').classList.remove('show');
-}
-
-// ─────────────────────────────────────────────────────────
-//  HOME SEARCH
-// ─────────────────────────────────────────────────────────
-const ALL_NOTES_INDEX = [];
-(function buildIndex(){
-  Object.entries(NOTES).forEach(([subj, chapters]) => {
-    Object.entries(chapters).forEach(([ch, note]) => {
-      ALL_NOTES_INDEX.push({ subj, ch, title: note.title, subject: note.subject });
-    });
-  });
-})();
-
-function handleHomeSearch(val) {
-  const wrap = document.getElementById('home-search-results');
-  const list = document.getElementById('search-results-list');
-  if(!val.trim()) { wrap.classList.add('hidden'); return; }
-
-  const q = val.toLowerCase();
-  const results = ALL_NOTES_INDEX.filter(n => n.title.toLowerCase().includes(q) || n.subject.toLowerCase().includes(q) || n.ch.includes(q));
-
-  if(!results.length) {
-    wrap.classList.remove('hidden');
-    list.innerHTML = '<div style="padding:1.5rem;text-align:center;color:var(--slate-400)">No results found for "'+val+'"</div>';
-    return;
-  }
-  const icons = { math:'➕', science:'🔬', english:'📝', social:'🌍' };
-  list.innerHTML = results.map(r => `
-    <div class="search-result-item" onclick="openSubjectNotes('${r.subj}'); selectChapter('${r.subj}','${r.ch}',null)">
-      <span class="result-icon">${icons[r.subj]}</span>
-      <div class="result-info">
-        <h4>${r.title}</h4>
-        <p>${r.subject}</p>
-      </div>
-    </div>
-  `).join('');
-  wrap.classList.remove('hidden');
-}
-function clearHomeSearch() {
-  document.getElementById('home-search').value = '';
-  document.getElementById('home-search-results').classList.add('hidden');
-}
-
-// ─────────────────────────────────────────────────────────
-//  NOTES
-// ─────────────────────────────────────────────────────────
-let currentSubject = 'math', currentChapter = 'algebra';
-
-function initNotes() {
-  renderNote(currentSubject, currentChapter);
-}
-
-function selectNoteSubject(subj, btn) {
-  // Toggle chapters visibility
-  ['math','science','english','social'].forEach(s => {
-    document.getElementById('chapters-'+s).classList.toggle('hidden', s !== subj);
-    document.getElementById('note-sub-'+s).classList.remove('active');
-  });
-  if(btn) btn.classList.add('active');
-  currentSubject = subj;
-
-  // Select first chapter of subject
-  const firstChapter = Object.keys(NOTES[subj])[0];
-  currentChapter = firstChapter;
-  // Mark first chapter item active
-  const chapterItems = document.querySelectorAll('#chapters-'+subj+' .chapter-item');
-  chapterItems.forEach((el,i) => el.classList.toggle('active', i===0));
-  renderNote(subj, firstChapter);
-}
-
-function selectChapter(subj, ch, el) {
-  currentSubject = subj; currentChapter = ch;
-  document.querySelectorAll('#chapters-'+subj+' .chapter-item').forEach(i => i.classList.remove('active'));
-  if(el) el.classList.add('active');
-  renderNote(subj, ch);
-}
-
-function renderNote(subj, ch) {
-  const note = NOTES[subj] && NOTES[subj][ch];
-  if(!note) return;
-  const colors = { math:'var(--violet)', science:'var(--green)', english:'#f97316', social:'var(--gold)' };
-  const icons  = { math:'➕', science:'🔬', english:'📝', social:'🌍' };
-  document.getElementById('note-content-area').innerHTML = `
-    <h2>${note.title}</h2>
-    <div class="note-meta">
-      <span class="badge badge-violet">${icons[subj]} ${note.subject}</span>
-      <span class="badge" style="background:var(--slate-100);color:var(--slate-600)">⏱ ${note.readTime}</span>
-    </div>
-    <div class="note-body">${note.body}</div>
-    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--slate-200);display:flex;gap:.8rem">
-      <button class="btn btn-primary btn-sm" onclick="startQuickQuiz('${subj}')">Take ${note.subject} Quiz →</button>
-    </div>
-  `;
-}
-
-function filterNotes(val) {
-  // Simple: show note content matching search
-  if(!val) return;
-  const q = val.toLowerCase();
-  const found = ALL_NOTES_INDEX.find(n => n.title.toLowerCase().includes(q) || n.subj.includes(q));
-  if(found) renderNote(found.subj, found.ch);
-}
-
-// ─────────────────────────────────────────────────────────
-//  QUIZ ENGINE
-// ─────────────────────────────────────────────────────────
-let quiz = { subject: '', questions: [], current: 0, correct: 0, answered: false };
-
-function startQuiz(subject) {
-  quiz.subject  = subject;
-  quiz.questions = [...QUIZZES[subject]].sort(() => Math.random() - .5);
-  quiz.current  = 0;
-  quiz.correct  = 0;
-  quiz.answered = false;
-
-  document.getElementById('quiz-picker').classList.add('hidden');
-  document.getElementById('quiz-active').classList.remove('hidden');
-  document.getElementById('quiz-results').classList.add('hidden');
-  renderQuestion();
-}
-
-function renderQuestion() {
-  const total = quiz.questions.length;
-  const idx   = quiz.current;
-  const q     = quiz.questions[idx];
-  quiz.answered = false;
-
-  document.getElementById('q-num').textContent  = `Question ${idx+1} of ${total}`;
-  document.getElementById('q-text').textContent = q.q;
-  document.getElementById('quiz-counter').textContent = `${idx+1} / ${total}`;
-  document.getElementById('quiz-progress-fill').style.width = `${(idx/total)*100}%`;
-  document.getElementById('q-feedback').classList.add('hidden');
-  document.getElementById('q-next').classList.add('hidden');
-
-  const labels = ['A','B','C','D'];
-  document.getElementById('q-options').innerHTML = q.opts.map((opt,i) => `
-    <button class="option-btn" onclick="selectAnswer(${i})">
-      <span class="opt-label">${labels[i]}</span>
-      ${opt}
-    </button>
-  `).join('');
-}
-
-function selectAnswer(idx) {
-  if(quiz.answered) return;
-  quiz.answered = true;
-  const q     = quiz.questions[quiz.current];
-  const correct = idx === q.ans;
-  if(correct) quiz.correct++;
-
-  const btns = document.querySelectorAll('.option-btn');
-  btns.forEach((b,i) => {
-    b.disabled = true;
-    if(i === q.ans) b.classList.add('correct');
-    if(i === idx && !correct) b.classList.add('wrong');
-  });
-
-  const fb = document.getElementById('q-feedback');
-  fb.className = 'feedback-box ' + (correct ? 'correct' : 'wrong');
-  fb.textContent = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + q.exp;
-  fb.classList.remove('hidden');
-
-  const nextBtn = document.getElementById('q-next');
-  nextBtn.classList.remove('hidden');
-  nextBtn.textContent = quiz.current < quiz.questions.length-1 ? 'Next Question →' : 'See Results →';
-}
-
-function nextQuestion() {
-  quiz.current++;
-  if(quiz.current >= quiz.questions.length) {
-    showResults();
-  } else {
-    renderQuestion();
-  }
-}
-
-function showResults() {
-  document.getElementById('quiz-active').classList.add('hidden');
-  document.getElementById('quiz-results').classList.remove('hidden');
-
-  const total   = quiz.questions.length;
-  const correct = quiz.correct;
-  const pct     = Math.round((correct/total)*100);
-
-  document.getElementById('result-pct').textContent = pct + '%';
-  document.getElementById('res-correct').textContent = correct;
-  document.getElementById('res-wrong').textContent   = total - correct;
-  document.getElementById('res-total').textContent   = total;
-
-  // Animate ring
-  const circumference = 377;
-  const offset = circumference - (pct/100)*circumference;
-  document.getElementById('score-ring-circle').style.strokeDashoffset = offset;
-  document.getElementById('score-ring-circle').style.stroke = pct>=70 ? 'var(--green)' : pct>=50 ? 'var(--gold)' : 'var(--red)';
-
-  let msg = pct>=90 ? '🏆 Outstanding! You\'re a star student!' :
-            pct>=70 ? '🌟 Great job! Keep practicing!' :
-            pct>=50 ? '👍 Good effort! Review the notes and try again.' :
-                      '📚 Keep studying! Check the Notes section and retry.';
-  document.getElementById('result-message').innerHTML = `<strong>${msg}</strong>`;
-
-  // Record score
-  const entry = {
-    subject: quiz.subject,
-    score: correct,
-    total,
-    pct,
-    date: new Date().toLocaleDateString()
-  };
-  state.scores.unshift(entry);
-  state.subjectProgress[quiz.subject] = Math.max(state.subjectProgress[quiz.subject]||0, pct);
-
-  // Update streak
-  bumpStreakIfNewDay();
-  updateStreakUI();
-  saveUserData();
-  showToast('Quiz score saved! ⚡', 'success');
-}
-
-function exitQuiz() {
-  document.getElementById('quiz-active').classList.add('hidden');
-  document.getElementById('quiz-results').classList.add('hidden');
-  document.getElementById('quiz-picker').classList.remove('hidden');
-}
-
-function retryQuiz() {
-  startQuiz(quiz.subject);
-}
-
-// ─────────────────────────────────────────────────────────
-//  DAILY CHALLENGE
-// ─────────────────────────────────────────────────────────
-let challengeIdx = 0, challengeAnswered = false;
-
-function initChallenge() {
-  challengeIdx = new Date().getDay() % CHALLENGES.length;
-  const ch = CHALLENGES[challengeIdx];
-  document.getElementById('challenge-q-subject').innerHTML = `<span class="badge badge-gold">${ch.subject}</span>`;
-  document.getElementById('challenge-q-text').textContent  = ch.q;
-  document.getElementById('challenge-result').classList.add('hidden');
-  document.getElementById('challenge-submit-btn').disabled = true;
-  challengeAnswered = false;
-
-  document.getElementById('challenge-options').innerHTML = ch.opts.map((opt,i) => `
-    <label class="challenge-opt">
-      <input type="radio" name="challenge" value="${i}" onchange="enableChallengeSubmit()" />
-      ${opt}
-    </label>
-  `).join('');
-}
-
-function enableChallengeSubmit() {
-  document.getElementById('challenge-submit-btn').disabled = false;
-}
-
-function submitChallenge() {
-  if(challengeAnswered) return;
-  const sel = document.querySelector('input[name="challenge"]:checked');
-  if(!sel) return;
-  challengeAnswered = true;
-  const ch = CHALLENGES[challengeIdx];
-  const correct = parseInt(sel.value) === ch.ans;
-
-  const res = document.getElementById('challenge-result');
-  res.className = 'challenge-result ' + (correct ? 'correct' : 'wrong');
-  res.textContent = (correct ? '✅ Correct! ' : '❌ Incorrect. ') + ch.exp;
-  res.classList.remove('hidden');
-  document.getElementById('challenge-submit-btn').disabled = true;
-
-  if(correct) {
-    bumpStreakIfNewDay();
-    updateStreakUI();
-    saveUserData();
-    showToast('Daily challenge complete! 🔥', 'success');
-  }
-  document.querySelectorAll('.challenge-opt').forEach(el => {
-    el.style.pointerEvents = 'none';
-    el.style.opacity = '.7';
-  });
-}
-
-// ─────────────────────────────────────────────────────────
-//  DASHBOARD
-// ─────────────────────────────────────────────────────────
-function refreshDashboard() {
-  const scores = state.scores;
-  const total  = scores.length;
-  const avg    = total ? Math.round(scores.reduce((a,s)=>a+s.pct,0)/total) : 0;
-  const best   = total ? Math.max(...scores.map(s=>s.pct)) : 0;
-
-  document.getElementById('dash-total-quizzes').textContent  = total;
-  document.getElementById('dash-avg-score').textContent      = avg + '%';
-  document.getElementById('dash-streak-val').textContent     = state.streak;
-  document.getElementById('dash-best-score').textContent     = best + '%';
-  document.getElementById('dash-streak').textContent         = state.streak;
-  document.getElementById('dash-quizzes-badge').textContent  = total + ' Quizzes';
-
-  const level = total < 3 ? 'Beginner' : total < 8 ? 'Explorer' : total < 15 ? 'Scholar' : 'Master';
-  document.getElementById('dash-level').textContent = '⭐ ' + level;
-
-  // Subject progress
-  const subjectNames = { math:'Mathematics ➕', science:'Science 🔬', english:'English 📝', social:'Social Studies 🌍' };
-  document.getElementById('subject-progress-grid').innerHTML = Object.entries(state.subjectProgress).map(([s,p]) => `
-    <div class="card" style="padding:1.2rem">
-      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
-        <h3 style="font-size:.9rem">${subjectNames[s]}</h3>
-        <strong style="color:var(--violet)">${p}%</strong>
-      </div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" style="width:${p}%"></div>
-      </div>
-    </div>
-  `).join('');
-
-  // Scores table
-  if(!scores.length) {
-    document.getElementById('scores-tbody').innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--slate-400);padding:2rem">No quizzes taken yet. Start one now!</td></tr>';
-    return;
-  }
-  const subIcons = { math:'➕', science:'🔬', english:'📝', social:'🌍' };
-  const subNames = { math:'Mathematics', science:'Science', english:'English', social:'Social Studies' };
-  document.getElementById('scores-tbody').innerHTML = scores.slice(0,15).map(s => {
-    const star = s.pct>=90?'🏆':s.pct>=70?'🌟':s.pct>=50?'👍':'📚';
-    return `<tr>
-      <td>${subIcons[s.subject]||''} ${subNames[s.subject]||s.subject}</td>
-      <td>
-        <div style="display:flex;align-items:center;gap:.6rem">
-          <span style="font-weight:700;color:${s.pct>=70?'var(--green)':s.pct>=50?'var(--gold)':'var(--red)'}">${s.pct}%</span>
-          <div class="score-bar" style="width:80px"><div class="score-bar-fill" style="width:${s.pct}%;background:${s.pct>=70?'var(--green)':s.pct>=50?'var(--gold)':'var(--red)'}"></div></div>
-        </div>
-      </td>
-      <td style="color:var(--slate-400);font-size:.85rem">${s.date}</td>
-      <td>${star}</td>
-    </tr>`;
-  }).join('');
-}
-
-// ─────────────────────────────────────────────────────────
-//  STREAK
-// ─────────────────────────────────────────────────────────
-function bumpStreakIfNewDay() {
-  const today = new Date().toDateString();
-  const lastDate = localStorage.getItem('ss_last_date');
-  if(lastDate !== today) {
-    const yesterday = new Date(); yesterday.setDate(yesterday.getDate()-1);
-    state.streak = (lastDate === yesterday.toDateString()) ? (state.streak+1) : 1;
-    localStorage.setItem('ss_last_date', today);
-    localStorage.setItem('ss_streak', state.streak);
-  }
-}
-
-function updateStreakUI() {
-  const s = state.streak;
-  document.getElementById('topbar-streak').textContent = `🔥 ${s} day streak`;
-  document.getElementById('hero-streak').textContent   = s;
-  document.getElementById('hero-quizzes-count').textContent = state.scores.length;
-}
-
-// ─────────────────────────────────────────────────────────
-//  TOAST
-// ─────────────────────────────────────────────────────────
-let toastTimer;
-function showToast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'show ' + type;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.className = ''; }, 3000);
-}
-</script>
 
 </body>
 </html>
