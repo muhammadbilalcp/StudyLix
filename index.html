@@ -3,137 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyLyx</title>
+    <title>StudyLyx – Learn. Challenge. Grow.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        :root {
+            --primary: 124 58 237;
+        }
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', system_ui, sans-serif;
         }
-        header {
-            background: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: center;
+        .glass {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(16px);
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .hero-bg {
+            background: linear-gradient(135deg, #1a1560 0%, #7c3aed 100%);
         }
-        .hidden {
-            display: none;
+        .nav-active {
+            background-color: rgb(249 250 251);
+            border-left: 4px solid rgb(124 58 237);
         }
-        .video {
-            margin: 10px 0;
-        }
-        .quiz {
-            margin: 20px 0;
-        }
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
+        iframe {
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
     </style>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-        import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const signUpForm = document.getElementById('signUpForm');
-            const loginForm = document.getElementById('loginForm');
-            const logoutButton = document.getElementById('logoutButton');
-            const userProfile = document.getElementById('userProfile');
-            const welcomeMessage = document.getElementById('welcomeMessage');
-
-            signUpForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = signUpForm.email.value;
-                const password = signUpForm.password.value;
-                await createUserWithEmailAndPassword(auth, email, password);
-                alert('User created successfully!');
-            });
-
-            loginForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const email = loginForm.email.value;
-                const password = loginForm.password.value;
-                await signInWithEmailAndPassword(auth, email, password);
-                alert('Logged in successfully!');
-            });
-
-            logoutButton.addEventListener('click', async () => {
-                await signOut(auth);
-                alert('Logged out successfully!');
-            });
-
-            auth.onAuthStateChanged(async (user) => {
-                if (user) {
-                    userProfile.classList.remove('hidden');
-                    welcomeMessage.textContent = `Welcome, ${user.email}`;
-                    const userDoc = await getDoc(doc(db, "users", user.uid));
-                    if (!userDoc.exists()) {
-                        await setDoc(doc(db, "users", user.uid), { email: user.email });
-                    }
-                } else {
-                    userProfile.classList.add('hidden');
-                }
-            });
-        });
-    </script>
 </head>
-<body>
-    <header>
-        <h1>StudyLyx</h1>
-    </header>
-    <div class="container">
-        <div id="userProfile" class="hidden">
-            <h2 id="welcomeMessage"></h2>
-            <button id="logoutButton">Logout</button>
-        </div>
-        <form id="signUpForm">
-            <h2>Sign Up</h2>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
-        </form>
-        <form id="loginForm">
-            <h2>Login</h2>
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div class="video">
-            <h2>Recorded Classes</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/TQINmo_TP9s" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/TQINmo_TP9s" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/zGluyVamuCw" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/PlqEKJum2BA" frameborder="0" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/FADSgGKG_mc" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="quiz">
-            <h2>Daily Quiz</h2>
-            <p>10 random questions will be displayed here.</p>
+<body class="bg-slate-50 text-slate-900">
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen" class="min-h-screen hero-bg flex items-center justify-center p-6">
+    <div class="glass rounded-3xl w-full max-w-md shadow-2xl">
+        <div class="p-10">
+            <div class="flex justify-center mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="text-5xl">⚡</span>
+                    <h1 class="text-4xl font-bold tracking-tighter">StudyLyx</h1>
+                </div>
+            </div>
+            <p class="text-center text-slate-600 mb-8">Learn smarter. Grow faster.</p>
+
+            <div class="flex bg-slate-100 rounded-2xl p-1 mb-8">
+                <button onclick="switchAuthTab(0)" id="auth-tab-login" class="flex-1 py-3 rounded-xl font-semibold text-sm">Login</button>
+                <button onclick="switchAuthTab(1)" id="auth-tab-signup" class="flex-1 py-3 rounded-xl font-semibold text-sm">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-medium mb-1.5 text-slate-500">EMAIL</label>
+                        <input id="login-email" type="email" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium mb-1.5 text-slate-500">PASSWORD</label>
+                        <input id="login-password" type="password" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="••••••••">
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="remember-me" class="w-4 h-4 accent-violet-600">
+                            <span class="text-slate-600">Remember me</span>
+                        </label>
+                        <button onclick="forgotPassword()" class="text-violet-600 hover:underline">Forgot password?</button>
+                    </div>
+                    <button onclick="loginWithEmail()" class="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition">Sign In</button>
+                </div>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" class="hidden">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-medium mb-1.5 text-slate-500">FULL NAME</label>
+                        <input id="signup-name" type="text" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="Alex Johnson">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium mb-1.5 text-slate-500">EMAIL</label>
+                        <input id="signup-email" type="email" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium mb-1.5 text-slate-500">PASSWORD</label>
+                        <input id="signup-password" type="password" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="Create password">
+                    </div>
+                    <button onclick="signupWithEmail()" class="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition">Create Account</button>
+                </div>
+            </div>
+
+            <button onclick="signInWithGoogle()" class="w-full mt-6 py-4 border border-slate-300 rounded-2xl flex items-center justify-center gap-3 hover:bg-slate-50">
+                <i class="fab fa-google text-red-500"></i>
+                <span class="font-medium">Continue with Google</span>
+            </button>
+
+            <p id="auth-message" class="text-center text-sm mt-6 min-h-[20px] text-red-500"></p>
         </div>
     </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="main-app" class="hidden flex h-screen bg-slate-50">
+    <!-- SIDEBAR -->
+    <div class="w-72 bg-white border-r flex flex-col">
+        <div class="p-6 flex items-center gap-3 border-b">
+            <span class="text-4xl">⚡</span>
+            <span class="text-3xl font-bold tracking-tighter">StudyLyx</span>
+        </div>
+        <div class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+            <div onclick="navigateTo('home')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer nav-active" id="nav-home">
+                <i class="fas fa-home w-5"></i>
+                <span class="font-medium">Home</span>
+            </div>
+            <div onclick="navigateTo('classes')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-classes">
+                <i class="fas fa-play-circle w-5"></i>
+                <span class="font-medium">Recorded Classes</span>
+            </div>
+            <div onclick="navigateTo('quiz')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-quiz">
+                <i class="fas fa-brain w-5"></i>
+                <span class="font-medium">Quizzes</span>
+            </div>
+            <div onclick="navigateTo('dashboard')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-dashboard">
+                <i class="fas fa-chart-bar w-5"></i>
+                <span class="font-medium">Dashboard</span>
+            </div>
+        </div>
+        <div class="p-6 border-t mt-auto">
+            <div class="flex items-center gap-3 mb-6">
+                <div id="sidebar-avatar" class="w-10 h-10 bg-violet-600 text-white rounded-2xl flex items-center justify-center font-bold cursor-pointer" onclick="navigateTo('dashboard')">U</div>
+                <div>
+                    <div id="sidebar-name" class="font-semibold">Alex Johnson</div>
+                    <div id="sidebar-email" class="text-xs text-slate-500">alex@studylyx.com</div>
+                </div>
+            </div>
+            <button onclick="logout()" class="w-full py-3 text-red-600 hover:bg-red-50 rounded-2xl flex items-center justify-center gap-2 font-medium">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENT AREA -->
+    <div class="flex-1 overflow-auto">
+        <!-- Top Nav -->
+        <div class="bg-white border-b px-8 py-5 flex items-center justify-between sticky top-0 z-50">
+            <div id="page-title" class="text-2xl font-semibold">Home</div>
+            <div class="flex items-center gap-6">
+                <button onclick="toggleDarkMode()" class="w-9 h-9 flex items-center justify-center rounded-2xl hover:bg-slate-100">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
+                <div onclick="navigateTo('dashboard')" class="flex items-center gap-3 cursor-pointer">
+                    <div id="top-avatar" class="w-8 h-8 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-sm font-bold">AJ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME PAGE -->
+        <div id="page-home" class="p-8">
+            <div class="hero-bg text-white rounded-3xl p-12 mb-10">
+                <h1 class="text-5xl font-bold leading-none mb-4">Welcome back, <span id="welcome-name">Alex</span>!</h1>
+                <p class="text-xl opacity-90">Ready to level up today?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="flex justify-between">
+                        <div>
+                            <div class="text-4xl font-bold text-amber-500" id="streak-count">7</div>
+                            <div class="text-sm text-slate-500">Day Streak</div>
+                        </div>
+                        <i class="fas fa-fire text-5xl text-amber-400"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="text-4xl font-bold" id="xp-points">1240</div>
+                    <div class="text-sm text-slate-500">Total XP</div>
+                </div>
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="text-4xl font-bold text-emerald-500">Level 5</div>
+                    <div class="text-sm text-slate-500">Scholar</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECORDED CLASSES -->
+        <div id="page-classes" class="hidden p-8">
+            <h2 class="text-3xl font-bold mb-8">Recorded Classes</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-3xl">
+                    <h3 class="font-semibold text-lg mb-4">Basic Algebra</h3>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/TQINmo_TP9s" allowfullscreen></iframe>
+                </div>
+                <div class="bg-white p-6 rounded-3xl">
+                    <h3 class="font-semibold text-lg mb-4">Squares and Square Roots</h3>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/TQINmo_TP9s" allowfullscreen></iframe>
+                </div>
+                <div class="bg-white p-6 rounded-3xl">
+                    <h3 class="font-semibold text-lg mb-4">Cube and Cube Roots</h3>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/zGluyVamuCw" allowfullscreen></iframe>
+                </div>
+                <div class="bg-white p-6 rounded-3xl">
+                    <h3 class="font-semibold text-lg mb-4">Rational Numbers</h3>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/PlqEKJum2BA" allowfullscreen></iframe>
+                </div>
+                <div class="bg-white p-6 rounded-3xl">
+                    <h3 class="font-semibold text-lg mb-4">Comparing Quantities</h3>
+                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/FADSgGKG_mc" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ PAGE -->
+        <div id="page-quiz" class="hidden p-8">
+            <h2 class="text-3xl font-bold mb-6">Daily Quiz</h2>
+            <div class="max-w-2xl mx-auto bg-white rounded-3xl p-10">
+                <div id="quiz-container">
+                    <div class="text-center mb-8">
+                        <div class="text-sm uppercase tracking-widest text-violet-600 font-medium">Mathematics</div>
+                        <div id="question-text" class="text-xl font-medium mt-4"></div>
+                    </div>
+                    <div id="options" class="space-y-3"></div>
+                    <button onclick="submitQuizAnswer()" id="next-btn" class="hidden w-full mt-8 py-4 bg-violet-600 text-white rounded-2xl">Next Question</button>
+                </div>
+                <div id="quiz-result" class="hidden text-center">
+                    <h3 class="text-2xl font-bold mb-4">Quiz Complete!</h3>
+                    <div id="score-display" class="text-6xl font-bold text-violet-600 mb-2"></div>
+                    <button onclick="restartQuiz()" class="mt-6 px-8 py-4 bg-violet-600 text-white rounded-2xl">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div id="page-dashboard" class="hidden p-8">
+            <h2 class="text-3xl font-bold mb-8">Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="text-slate-500 text-sm">Current Level</div>
+                            <div class="text-5xl font-bold mt-2">5</div>
+                        </div>
+                        <div class="text-6xl">🏆</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="text-slate-500 text-sm">XP This Week</div>
+                    <div class="text-5xl font-bold mt-2 text-emerald-600">840</div>
+                </div>
+                <div class="bg-white rounded-3xl p-8">
+                    <div class="text-slate-500 text-sm">Subjects Mastered</div>
+                    <div class="flex gap-4 mt-4">
+                        <div class="text-center">
+                            <div class="text-3xl">📐</div>
+                            <div class="text-xs mt-1">Math</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Firebase Config
+const firebaseConfig = {
+    apiKey: "AIzaSyB2RZlRNlTONf4xuxjPMcZgedc9wbIhj-4",
+    authDomain: "axid-ai.firebaseapp.com",
+    projectId: "axid-ai",
+    storageBucket: "axid-ai.firebasestorage.app",
+    messagingSenderId: "354519561790",
+    appId: "1:354519561790:web:e2b25803bcd713aea4836f"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Global state
+let currentUser = null;
+let currentStreak = 7;
+let xp = 1240;
+
+// Switch auth tabs
+function switchAuthTab(tab) {
+    document.getElementById('login-form').classList.toggle('hidden', tab !== 0);
+    document.getElementById('signup-form').classList.toggle('hidden', tab !== 1);
+}
+
+// Auth functions
+async function loginWithEmail() {
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    if (!email || !password) return showMessage("Please fill all fields");
+    try {
+        await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+        showMessage(error.message);
+    }
+}
+
+async function signupWithEmail() {
+    const name = document.getElementById('signup-name').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value;
+    if (!name || !email || !password) return showMessage("Please fill all fields");
+    try {
+        const cred = await auth.createUserWithEmailAndPassword(email, password);
+        await cred.user.updateProfile({ displayName: name });
+    } catch (error) {
+        showMessage(error.message);
+    }
+}
+
+async function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+        await auth.signInWithPopup(provider);
+    } catch (error) {
+        showMessage(error.message);
+    }
+}
+
+function forgotPassword() {
+    const email = prompt("Enter your email:");
+    if (email) {
+        auth.sendPasswordResetEmail(email).then(() => {
+            showMessage("Password reset email sent!", false);
+        }).catch(err => showMessage(err.message));
+    }
+}
+
+function logout() {
+    auth.signOut();
+}
+
+function showMessage(msg, isError = true) {
+    const el = document.getElementById('auth-message');
+    el.textContent = msg;
+    el.style.color = isError ? '#ef4444' : '#10b981';
+}
+
+// Navigation
+function navigateTo(page) {
+    document.querySelectorAll('[id^="page-"]').forEach(p => p.classList.add('hidden'));
+    document.getElementById('page-' + page).classList.remove('hidden');
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('nav-active'));
+    document.getElementById('nav-' + page).classList.add('nav-active');
+    document.getElementById('page-title').textContent = page === 'home' ? 'Home' : page.charAt(0).toUpperCase() + page.slice(1);
+}
+
+// Quiz demo
+let currentQuestion = 0;
+const sampleQuestions = [
+    { q: "What is 15 + 27?", options: ["40", "42", "45", "52"], ans: 1 },
+    { q: "What is the square root of 64?", options: ["6", "7", "8", "9"], ans: 2 }
+];
+
+function startQuiz() {
+    currentQuestion = 0;
+    document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById('quiz-result').classList.add('hidden');
+    showQuestion();
+}
+
+function showQuestion() {
+    const q = sampleQuestions[currentQuestion];
+    document.getElementById('question-text').textContent = q.q;
+    const optsHTML = q.options.map((opt, i) => `
+        <button onclick="selectAnswer(${i})" class="w-full text-left px-6 py-4 border rounded-2xl hover:bg-slate-50">${opt}</button>
+    `).join('');
+    document.getElementById('options').innerHTML = optsHTML;
+    document.getElementById('next-btn').classList.add('hidden');
+}
+
+function selectAnswer(selected) {
+    const q = sampleQuestions[currentQuestion];
+    const isCorrect = selected === q.ans;
+    if (isCorrect) xp += 50;
+    document.getElementById('next-btn').classList.remove('hidden');
+}
+
+function submitQuizAnswer() {
+    currentQuestion++;
+    if (currentQuestion < sampleQuestions.length) {
+        showQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+function finishQuiz() {
+    document.getElementById('quiz-container').classList.add('hidden');
+    document.getElementById('quiz-result').classList.remove('hidden');
+    document.getElementById('score-display').textContent = "85%";
+}
+
+// Dark mode
+function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark');
+}
+
+// Auth state
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        currentUser = user;
+        document.getElementById('auth-screen').classList.add('hidden');
+        document.getElementById('main-app').classList.remove('hidden');
+        document.getElementById('welcome-name').textContent = user.displayName || "Student";
+        document.getElementById('sidebar-name').textContent = user.displayName || "Student";
+        document.getElementById('sidebar-email').textContent = user.email;
+        navigateTo('home');
+    } else {
+        document.getElementById('auth-screen').classList.remove('hidden');
+        document.getElementById('main-app').classList.add('hidden');
+    }
+});
+
+// Initialize Tailwind and load
+console.log("%cStudyLyx loaded successfully", "color: #7c3aed; font-size: 16px; font-weight: bold");
+</script>
 </body>
 </html>
+``` cursor-pointer
