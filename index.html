@@ -1,428 +1,2792 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyLyx – Learn. Challenge. Grow.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        :root {
-            --primary: 124 58 237;
-        }
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
-        .glass {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(16px);
-        }
-        .hero-bg {
-            background: linear-gradient(135deg, #1a1560 0%, #7c3aed 100%);
-        }
-        .nav-active {
-            background-color: rgb(249 250 251);
-            border-left: 4px solid rgb(124 58 237);
-        }
-        iframe {
-            border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>StudyLyx – Learn Smarter Every Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+--bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a28;--card:#16161f;--card2:#1e1e2e;
+--border:#2a2a3d;--border2:#3a3a55;
+--primary:#7c5cfc;--primary2:#9b7ffe;--primary3:#c4b5fd;
+--accent:#f472b6;--accent2:#fb923c;--accent3:#34d399;
+--text:#f0f0ff;--text2:#a8a8c8;--text3:#6868a0;
+--glow:rgba(124,92,252,0.3);--glow2:rgba(244,114,182,0.2);
+--radius:16px;--radius2:12px;--radius3:8px;
+--shadow:0 8px 32px rgba(0,0,0,0.4);--shadow2:0 4px 16px rgba(0,0,0,0.3);
+--trans:all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"]{
+--bg:#f0f0fa;--bg2:#e8e8f5;--bg3:#dcdcf0;--card:#ffffff;--card2:#f5f5ff;
+--border:#d0d0e8;--border2:#b8b8d8;
+--text:#1a1a2e;--text2:#4a4a6a;--text3:#8888aa;
+--glow:rgba(124,92,252,0.15);--shadow:0 8px 32px rgba(0,0,0,0.1);--shadow2:0 4px 16px rgba(0,0,0,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background 0.3s,color 0.3s;}
+h1,h2,h3,h4,h5{font-family:'Syne',sans-serif;}
+code,pre,.mono{font-family:'JetBrains Mono',monospace;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px;}
+.hidden{display:none!important;}
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* ===== GLASS CARD ===== */
+.glass{background:rgba(22,22,31,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);}
+[data-theme="light"] .glass{background:rgba(255,255,255,0.7);}
+.glass-strong{background:rgba(30,30,46,0.9);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid var(--border2);border-radius:var(--radius);}
+[data-theme="light"] .glass-strong{background:rgba(255,255,255,0.95);}
+
+/* ===== GRADIENTS ===== */
+.grad-text{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.grad-bg{background:linear-gradient(135deg,var(--primary),var(--accent));}
+.grad-card{background:linear-gradient(135deg,rgba(124,92,252,0.15),rgba(244,114,182,0.1));border:1px solid rgba(124,92,252,0.3);}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border:none;border-radius:var(--radius3);cursor:pointer;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;transition:var(--trans);text-decoration:none;}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;box-shadow:0 4px 15px var(--glow);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px var(--glow);}
+.btn-secondary{background:var(--card2);color:var(--text);border:1px solid var(--border2);}
+.btn-secondary:hover{background:var(--bg3);border-color:var(--primary);}
+.btn-ghost{background:transparent;color:var(--primary);border:1px solid var(--primary);}
+.btn-ghost:hover{background:rgba(124,92,252,0.1);}
+.btn-danger{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}
+.btn-danger:hover{background:rgba(239,68,68,0.25);}
+.btn-sm{padding:7px 14px;font-size:13px;}
+.btn-lg{padding:14px 28px;font-size:16px;border-radius:var(--radius2);}
+.btn-icon{padding:10px;border-radius:50%;}
+
+/* ===== INPUTS ===== */
+.input{width:100%;padding:12px 16px;background:var(--card2);border:1px solid var(--border);border-radius:var(--radius3);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;transition:var(--trans);}
+.input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--glow);}
+.input::placeholder{color:var(--text3);}
+.input-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.input-group label{font-size:13px;font-weight:500;color:var(--text2);}
+.input-icon-wrap{position:relative;}
+.input-icon-wrap .input{padding-left:42px;}
+.input-icon-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:15px;}
+textarea.input{resize:vertical;min-height:100px;}
+select.input{appearance:none;cursor:pointer;}
+
+/* ===== TOAST ===== */
+#toast-container{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;}
+.toast{padding:14px 20px;border-radius:var(--radius2);font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px;min-width:280px;animation:slideIn 0.3s ease;box-shadow:var(--shadow);}
+.toast-success{background:rgba(52,211,153,0.9);color:#064e3b;backdrop-filter:blur(10px);}
+.toast-error{background:rgba(239,68,68,0.9);color:#fff;backdrop-filter:blur(10px);}
+.toast-info{background:rgba(124,92,252,0.9);color:#fff;backdrop-filter:blur(10px);}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes slideOut{from{opacity:1;}to{opacity:0;transform:translateX(100%);}}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.hidden{display:none!important;}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:var(--radius);padding:32px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;animation:modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+.modal-lg{max-width:720px;}
+@keyframes modalIn{from{transform:scale(0.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.modal-title{font-size:20px;font-weight:700;}
+.modal-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:20px;padding:4px;transition:var(--trans);}
+.modal-close:hover{color:var(--text);}
+
+/* ===== NAVBAR ===== */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--trans);}
+[data-theme="light"] #navbar{background:rgba(240,240,250,0.85);}
+.nav-brand{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.nav-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff;}
+.nav-name{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{color:var(--text2);text-decoration:none;padding:6px 14px;border-radius:var(--radius3);font-size:14px;font-weight:500;transition:var(--trans);}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(124,92,252,0.1);}
+.nav-actions{display:flex;align-items:center;gap:10px;}
+#theme-toggle{background:var(--card2);border:1px solid var(--border);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:16px;transition:var(--trans);}
+#theme-toggle:hover{border-color:var(--primary);color:var(--primary);}
+.nav-user-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;cursor:pointer;border:2px solid transparent;transition:var(--trans);}
+.nav-user-avatar:hover{border-color:var(--primary);}
+.hamburger{display:none;background:none;border:none;color:var(--text);font-size:20px;cursor:pointer;padding:8px;}
+
+/* ===== SIDEBAR ===== */
+#sidebar{position:fixed;left:0;top:64px;bottom:0;width:240px;background:var(--bg2);border-right:1px solid var(--border);z-index:800;overflow-y:auto;padding:20px 12px;transition:transform 0.3s ease;}
+.sidebar-section{margin-bottom:24px;}
+.sidebar-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:0 12px;margin-bottom:8px;}
+.sidebar-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius3);color:var(--text2);cursor:pointer;transition:var(--trans);font-size:14px;font-weight:500;text-decoration:none;border:none;background:none;width:100%;text-align:left;}
+.sidebar-item:hover{color:var(--text);background:var(--bg3);}
+.sidebar-item.active{color:var(--primary);background:rgba(124,92,252,0.12);font-weight:600;}
+.sidebar-item i{width:18px;text-align:center;font-size:15px;}
+.sidebar-badge{margin-left:auto;background:var(--primary);color:#fff;font-size:10px;padding:2px 7px;border-radius:20px;}
+
+/* ===== MAIN CONTENT ===== */
+#main-content{margin-left:240px;padding-top:64px;min-height:100vh;}
+.content-area{padding:28px;}
+
+/* ===== HOME PAGE ===== */
+#home-page{margin-left:0;padding-top:0;}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(124,92,252,0.2),transparent),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(244,114,182,0.15),transparent);}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.hero-orb-1{width:500px;height:500px;background:rgba(124,92,252,0.15);top:-100px;left:-100px;animation:float 8s ease-in-out infinite;}
+.hero-orb-2{width:400px;height:400px;background:rgba(244,114,182,0.12);bottom:-50px;right:-80px;animation:float 10s ease-in-out infinite reverse;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-30px);}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,252,0.15);border:1px solid rgba(124,92,252,0.3);border-radius:40px;padding:8px 18px;font-size:13px;color:var(--primary3);margin-bottom:24px;}
+.hero-badge span{width:8px;height:8px;background:var(--primary);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero-title{font-size:clamp(42px,7vw,88px);font-weight:800;line-height:1.05;margin-bottom:20px;letter-spacing:-2px;}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);max-width:560px;margin:0 auto 36px;line-height:1.6;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:60px;flex-wrap:wrap;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-stat-label{font-size:13px;color:var(--text3);margin-top:4px;}
+/* Features */
+.section{padding:80px 24px;}
+.section-header{text-align:center;margin-bottom:56px;}
+.section-eyebrow{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--primary);margin-bottom:12px;}
+.section-title{font-size:clamp(28px,4vw,48px);font-weight:800;margin-bottom:16px;}
+.section-sub{font-size:16px;color:var(--text2);max-width:540px;margin:0 auto;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto;}
+.feature-card{padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);transition:var(--trans);}
+.feature-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 20px 40px rgba(124,92,252,0.15);}
+.feature-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(244,114,182,0.15));display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--primary);margin-bottom:20px;}
+.feature-title{font-size:18px;font-weight:700;margin-bottom:10px;}
+.feature-desc{font-size:14px;color:var(--text2);line-height:1.65;}
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
+.testimonial-card{padding:28px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);}
+.t-stars{color:#f59e0b;font-size:14px;margin-bottom:14px;}
+.t-text{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px;font-style:italic;}
+.t-author{display:flex;align-items:center;gap:12px;}
+.t-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;}
+.t-name{font-weight:600;font-size:14px;}
+.t-role{font-size:12px;color:var(--text3);}
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+.faq-item{border-radius:var(--radius2);border:1px solid var(--border);background:var(--card);overflow:hidden;}
+.faq-q{padding:20px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:600;font-size:15px;transition:var(--trans);}
+.faq-q:hover{color:var(--primary);}
+.faq-q i{transition:var(--trans);color:var(--text3);font-size:14px;}
+.faq-item.open .faq-q i{transform:rotate(180deg);color:var(--primary);}
+.faq-a{display:none;padding:0 24px 20px;font-size:14px;color:var(--text2);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
+/* Contact */
+.contact-wrap{max-width:640px;margin:0 auto;}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+/* Footer */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 24px 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;margin-bottom:40px;}
+.footer-brand p{font-size:14px;color:var(--text3);margin-top:14px;line-height:1.65;}
+.footer-col h4{font-size:14px;font-weight:700;margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:var(--text3);text-decoration:none;margin-bottom:10px;transition:var(--trans);}
+.footer-col a:hover{color:var(--primary);}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;text-align:center;font-size:13px;color:var(--text3);max-width:1200px;margin:0 auto;}
+
+/* ===== AUTH PAGES ===== */
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(124,92,252,0.15),transparent);}
+.auth-card{width:100%;max-width:440px;padding:40px;background:var(--card);border:1px solid var(--border2);border-radius:var(--radius);}
+.auth-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:32px;}
+.auth-title{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px;}
+.auth-sub{font-size:14px;color:var(--text2);text-align:center;margin-bottom:28px;}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--text3);font-size:12px;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.auth-link{text-align:center;font-size:14px;color:var(--text2);margin-top:20px;}
+.auth-link a{color:var(--primary);text-decoration:none;font-weight:600;}
+.auth-link a:hover{text-decoration:underline;}
+
+/* ===== DASHBOARD ===== */
+.welcome-banner{background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:var(--radius);padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.welcome-text h2{font-size:24px;font-weight:800;color:#fff;}
+.welcome-text p{color:rgba(255,255,255,0.8);font-size:14px;margin-top:4px;}
+.welcome-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.meta-chip{background:rgba(255,255,255,0.2);padding:8px 16px;border-radius:20px;font-size:13px;color:#fff;display:flex;align-items:center;gap:6px;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:28px;}
+.stat-card{padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);}
+.stat-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;margin-bottom:4px;}
+.stat-label{font-size:12px;color:var(--text3);}
+.stat-change{font-size:11px;margin-top:8px;display:flex;align-items:center;gap:4px;}
+.stat-up{color:var(--accent3);}
+.stat-down{color:#ef4444;}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
+.dash-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;}
+.dash-card h3{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.streak-row{display:flex;gap:6px;flex-wrap:wrap;}
+.streak-day{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;}
+.streak-active{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;}
+.streak-done{background:rgba(52,211,153,0.2);border:1px solid rgba(52,211,153,0.4);color:var(--accent3);}
+.streak-miss{background:var(--bg3);border:1px solid var(--border);color:var(--text3);}
+.badge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.badge-item{text-align:center;padding:12px 8px;}
+.badge-icon{font-size:28px;margin-bottom:6px;}
+.badge-name{font-size:10px;color:var(--text3);}
+.badge-item.locked{opacity:0.35;filter:grayscale(1);}
+.progress-bar-wrap{margin-bottom:16px;}
+.progress-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.progress-label span:first-child{color:var(--text2);}
+.progress-label span:last-child{font-weight:600;}
+.progress-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width 1s ease;}
+.activity-list{display:flex;flex-direction:column;gap:10px;}
+.activity-item{display:flex;align-items:center;gap:14px;padding:12px;border-radius:var(--radius3);background:var(--bg3);}
+.activity-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.activity-text{flex:1;}
+.activity-text strong{font-size:13px;font-weight:600;}
+.activity-text span{display:block;font-size:11px;color:var(--text3);}
+.activity-xp{font-size:12px;font-weight:700;color:var(--primary);}
+
+/* ===== SUBJECTS ===== */
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+.subject-card{padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);cursor:pointer;transition:var(--trans);}
+.subject-card:hover{transform:translateY(-4px);border-color:var(--subject-color, var(--primary));box-shadow:0 12px 30px rgba(0,0,0,0.2);}
+.subject-icon-big{font-size:36px;margin-bottom:14px;}
+.subject-name{font-size:18px;font-weight:700;margin-bottom:6px;}
+.subject-count{font-size:13px;color:var(--text3);}
+.subject-prog{margin-top:14px;}
+.subject-detail{display:none;}
+.subject-detail.active{display:block;}
+.subject-tabs{display:flex;gap:4px;background:var(--bg2);padding:4px;border-radius:var(--radius2);margin-bottom:24px;flex-wrap:wrap;}
+.subject-tab{padding:8px 18px;border-radius:var(--radius3);font-size:14px;font-weight:500;cursor:pointer;transition:var(--trans);color:var(--text2);border:none;background:none;}
+.subject-tab.active{background:var(--primary);color:#fff;}
+
+/* ===== NOTES ===== */
+.notes-toolbar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.note-card{padding:20px;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card);transition:var(--trans);}
+.note-card:hover{border-color:var(--primary);transform:translateY(-2px);}
+.note-title{font-size:15px;font-weight:700;margin-bottom:8px;}
+.note-body{font-size:13px;color:var(--text2);line-height:1.6;max-height:80px;overflow:hidden;}
+.note-footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.note-date{font-size:11px;color:var(--text3);}
+.note-actions{display:flex;gap:6px;}
+.note-actions button{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:4px;transition:var(--trans);}
+.note-actions button:hover{color:var(--primary);}
+.note-subject-tag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:rgba(124,92,252,0.15);color:var(--primary);}
+
+/* ===== FLASHCARDS ===== */
+.flashcard-scene{width:100%;max-width:500px;margin:0 auto 32px;height:300px;perspective:1000px;}
+.flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);cursor:pointer;}
+.flashcard.flipped{transform:rotateY(180deg);}
+.flashcard-face{position:absolute;inset:0;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.flashcard-front{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;}
+.flashcard-back{background:var(--card);border:1px solid var(--border2);transform:rotateY(180deg);}
+.flashcard-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;opacity:0.7;margin-bottom:16px;}
+.flashcard-text{font-size:20px;font-weight:700;line-height:1.4;}
+.flashcard-hint{font-size:12px;opacity:0.6;margin-top:12px;}
+.fc-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:24px;}
+.fc-mini{padding:16px;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card);}
+.fc-mini-front{font-size:13px;font-weight:600;margin-bottom:6px;}
+.fc-mini-back{font-size:12px;color:var(--text2);}
+
+/* ===== QUIZ ===== */
+.quiz-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+.quiz-progress-bar{height:6px;background:var(--bg3);border-radius:3px;margin-bottom:24px;overflow:hidden;}
+.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));transition:width 0.3s;}
+.quiz-question{font-size:18px;font-weight:700;margin-bottom:24px;line-height:1.5;}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-option{padding:14px 20px;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card2);cursor:pointer;transition:var(--trans);font-size:14px;font-weight:500;text-align:left;}
+.quiz-option:hover:not(:disabled){border-color:var(--primary);background:rgba(124,92,252,0.1);}
+.quiz-option.correct{border-color:var(--accent3);background:rgba(52,211,153,0.15);color:var(--accent3);}
+.quiz-option.wrong{border-color:#ef4444;background:rgba(239,68,68,0.15);color:#ef4444;}
+.quiz-option:disabled{cursor:default;}
+.quiz-timer{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:var(--primary);}
+.quiz-result{text-align:center;padding:40px 20px;}
+.quiz-score-circle{width:140px;height:140px;border-radius:50%;background:conic-gradient(var(--primary) var(--pct,0%),var(--bg3) 0);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;position:relative;}
+.quiz-score-inner{width:110px;height:110px;background:var(--card);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.quiz-score-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;}
+.quiz-score-sub{font-size:11px;color:var(--text3);}
+.quiz-history-list{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.quiz-history-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius2);background:var(--card);border:1px solid var(--border);}
+.qhi-score{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--primary);width:50px;}
+.qhi-info{flex:1;}
+.qhi-info strong{font-size:14px;font-weight:600;}
+.qhi-info span{display:block;font-size:12px;color:var(--text3);}
+.qhi-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;}
+.qhi-gold{background:rgba(245,158,11,0.2);color:#f59e0b;}
+.qhi-silver{background:rgba(148,163,184,0.2);color:#94a3b8;}
+.qhi-bronze{background:rgba(180,83,9,0.2);color:#b45309;}
+
+/* ===== RECORDED CLASSES ===== */
+.classes-toolbar{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;}
+.classes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+.class-card{border-radius:var(--radius);border:1px solid var(--border);background:var(--card);overflow:hidden;cursor:pointer;transition:var(--trans);}
+.class-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.2);}
+.class-thumb{position:relative;aspect-ratio:16/9;background:var(--bg3);}
+.class-thumb img{width:100%;height:100%;object-fit:cover;}
+.class-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,var(--bg3),var(--bg2));}
+.class-play-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--trans);}
+.class-card:hover .class-play-overlay{opacity:1;}
+.class-play-btn{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,0.95);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary);}
+.class-info{padding:16px;}
+.class-subject-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;color:var(--primary);}
+.class-title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.4;}
+.class-desc{font-size:12px;color:var(--text3);margin-bottom:12px;line-height:1.5;}
+.class-meta{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text3);}
+.class-progress-bar{height:3px;background:var(--bg3);border-radius:2px;margin-top:10px;}
+.class-progress-fill{height:100%;background:var(--primary);border-radius:2px;}
+/* Video Player */
+.video-player-wrap{background:var(--bg2);border-radius:var(--radius);overflow:hidden;margin-bottom:24px;}
+.video-embed{width:100%;aspect-ratio:16/9;border:none;}
+.video-info{padding:20px;}
+.video-title{font-size:20px;font-weight:700;margin-bottom:8px;}
+.video-meta{display:flex;gap:16px;font-size:13px;color:var(--text3);flex-wrap:wrap;}
+.related-videos{margin-top:24px;}
+.related-list{display:flex;flex-direction:column;gap:12px;margin-top:12px;}
+.related-item{display:flex;gap:12px;cursor:pointer;padding:10px;border-radius:var(--radius3);transition:var(--trans);}
+.related-item:hover{background:var(--bg3);}
+.related-thumb{width:120px;height:68px;border-radius:8px;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;}
+.related-thumb img{width:100%;height:100%;object-fit:cover;}
+.related-info strong{font-size:13px;font-weight:600;}
+.related-info span{font-size:11px;color:var(--text3);display:block;margin-top:3px;}
+
+/* ===== DAILY QUIZ ===== */
+.dq-header{background:linear-gradient(135deg,rgba(124,92,252,0.2),rgba(244,114,182,0.15));border:1px solid rgba(124,92,252,0.3);border-radius:var(--radius);padding:24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.dq-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.dq-chip{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text2);}
+.dq-chip strong{color:var(--text);}
+.category-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.cat-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card2);color:var(--text2);font-size:13px;cursor:pointer;transition:var(--trans);}
+.cat-btn.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+.answer-review{margin-top:20px;}
+.review-item{padding:16px;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card);margin-bottom:10px;}
+.review-q{font-size:14px;font-weight:600;margin-bottom:8px;}
+.review-correct{font-size:13px;color:var(--accent3);display:flex;align-items:center;gap:6px;}
+.review-wrong{font-size:13px;color:#ef4444;display:flex;align-items:center;gap:6px;}
+
+/* ===== STUDY TOOLS ===== */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.tool-card{padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);}
+.tool-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+/* Pomodoro */
+.pomodoro-display{text-align:center;padding:20px 0;}
+.pomo-time{font-family:'JetBrains Mono',monospace;font-size:56px;font-weight:700;color:var(--primary);}
+.pomo-label{font-size:13px;color:var(--text3);margin-top:4px;}
+.pomo-ring{width:160px;height:160px;margin:0 auto 16px;position:relative;}
+.pomo-ring svg{transform:rotate(-90deg);}
+.pomo-ring-bg{fill:none;stroke:var(--bg3);stroke-width:8;}
+.pomo-ring-fill{fill:none;stroke:url(#pomoGrad);stroke-width:8;stroke-linecap:round;stroke-dasharray:440;transition:stroke-dashoffset 1s;}
+.pomo-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.pomo-type-btns{display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap;}
+.pomo-type-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card2);color:var(--text2);font-size:12px;cursor:pointer;transition:var(--trans);}
+.pomo-type-btn.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+/* Tasks */
+.task-input-row{display:flex;gap:8px;margin-bottom:14px;}
+.task-list{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto;}
+.task-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--radius3);background:var(--bg3);}
+.task-check{width:18px;height:18px;border:2px solid var(--border2);border-radius:5px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--trans);}
+.task-check.done{background:var(--primary);border-color:var(--primary);}
+.task-text{flex:1;font-size:13px;}
+.task-text.done{text-decoration:line-through;color:var(--text3);}
+.task-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;}
+/* Goals */
+.goal-list{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+.goal-item{padding:12px;border-radius:var(--radius3);background:var(--bg3);}
+.goal-header{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;}
+.goal-name{font-weight:600;}
+.goal-val{color:var(--primary);font-weight:600;}
+
+/* ===== ANALYTICS ===== */
+.analytics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
+.chart-card{padding:24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);}
+.chart-card h3{font-size:15px;font-weight:700;margin-bottom:20px;}
+.chart-wrap{position:relative;height:200px;}
+
+/* ===== LEADERBOARD ===== */
+.leaderboard-list{display:flex;flex-direction:column;gap:10px;}
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius2);background:var(--card);border:1px solid var(--border);}
+.lb-rank{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;width:30px;text-align:center;}
+.lb-rank.gold{color:#f59e0b;}
+.lb-rank.silver{color:#94a3b8;}
+.lb-rank.bronze{color:#b45309;}
+.lb-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff;}
+.lb-info{flex:1;}
+.lb-name{font-weight:600;font-size:14px;}
+.lb-level{font-size:11px;color:var(--text3);}
+.lb-xp{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--primary);}
+.lb-me{border-color:var(--primary);background:rgba(124,92,252,0.08);}
+
+/* ===== SETTINGS ===== */
+.settings-tabs{display:flex;gap:4px;background:var(--bg2);padding:4px;border-radius:var(--radius2);margin-bottom:28px;flex-wrap:wrap;}
+.settings-tab{padding:9px 18px;border-radius:var(--radius3);font-size:14px;font-weight:500;cursor:pointer;transition:var(--trans);color:var(--text2);border:none;background:none;}
+.settings-tab.active{background:var(--primary);color:#fff;}
+.settings-section{display:none;}
+.settings-section.active{display:block;}
+.settings-group{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;margin-bottom:20px;}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px;}
+.settings-row:last-child{border-bottom:none;}
+.settings-row-info strong{font-size:14px;font-weight:600;display:block;}
+.settings-row-info span{font-size:12px;color:var(--text3);}
+/* Toggle */
+.toggle{width:48px;height:26px;background:var(--bg3);border-radius:13px;position:relative;cursor:pointer;transition:var(--trans);flex-shrink:0;}
+.toggle.on{background:var(--primary);}
+.toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:var(--trans);}
+.toggle.on::after{transform:translateX(22px);}
+/* Avatar upload */
+.avatar-upload{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.avatar-preview{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;}
+.color-pickers{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.color-opt{width:32px;height:32px;border-radius:50%;cursor:pointer;transition:var(--trans);border:3px solid transparent;}
+.color-opt.sel{border-color:var(--text);}
+.color-opt:hover{transform:scale(1.1);}
+
+/* ===== PROFILE ===== */
+.profile-cover{height:180px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:var(--radius) var(--radius) 0 0;position:relative;}
+.profile-avatar-wrap{position:absolute;bottom:-40px;left:32px;}
+.profile-avatar-big{width:80px;height:80px;border-radius:50%;border:4px solid var(--card);background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:#fff;}
+.profile-body{background:var(--card);border:1px solid var(--border);border-radius:0 0 var(--radius) var(--radius);padding:56px 32px 32px;}
+.profile-name{font-size:24px;font-weight:800;margin-bottom:4px;}
+.profile-email{font-size:14px;color:var(--text3);margin-bottom:20px;}
+.profile-stats{display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap;}
+.profile-stat{text-align:center;}
+.profile-stat strong{display:block;font-size:20px;font-weight:800;}
+.profile-stat span{font-size:12px;color:var(--text3);}
+
+/* ===== PAGE HEADERS ===== */
+.page-header{margin-bottom:28px;}
+.page-header h1{font-size:28px;font-weight:800;}
+.page-header p{color:var(--text2);font-size:14px;margin-top:6px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);margin-bottom:16px;}
+.breadcrumb a{color:var(--primary);cursor:pointer;text-decoration:none;}
+.breadcrumb span{color:var(--text3);}
+
+/* ===== EMPTY STATES ===== */
+.empty-state{text-align:center;padding:60px 20px;}
+.empty-icon{font-size:56px;margin-bottom:16px;opacity:0.5;}
+.empty-title{font-size:18px;font-weight:700;margin-bottom:8px;}
+.empty-sub{font-size:14px;color:var(--text3);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+#sidebar{transform:translateX(-100%);top:0;height:100vh;z-index:950;}
+#sidebar.open{transform:translateX(0);}
+#main-content{margin-left:0;}
+.hamburger{display:flex;}
+.nav-links{display:none;}
+.dash-grid{grid-template-columns:1fr;}
+.footer-grid{grid-template-columns:1fr 1fr;}
+.hero-stats{gap:24px;}
+.welcome-banner{flex-direction:column;}
+.profile-body{padding:56px 20px 24px;}
+}
+@media(max-width:480px){
+.content-area{padding:16px;}
+.footer-grid{grid-template-columns:1fr;}
+.modal{padding:24px;}
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in{animation:fadeIn 0.4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.slide-left{animation:slideLeft 0.4s ease;}
+@keyframes slideLeft{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
+
+/* XP Bar on nav */
+.xp-bar-mini{height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;transition:width 0.5s;}
+.xp-wrap-mini{background:var(--bg3);border-radius:2px;height:3px;width:80px;}
+
+/* Notification dot */
+.notif-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;position:absolute;top:2px;right:2px;}
+
+/* Chip */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.chip-purple{background:rgba(124,92,252,0.15);color:var(--primary3);}
+.chip-green{background:rgba(52,211,153,0.15);color:var(--accent3);}
+.chip-pink{background:rgba(244,114,182,0.15);color:var(--accent);}
+.chip-orange{background:rgba(251,146,60,0.15);color:var(--accent2);}
+
+/* Overlay for sidebar on mobile */
+#sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:940;}
+#sidebar-overlay.show{display:block;}
+
+/* Skeleton loader */
+.skeleton{background:linear-gradient(90deg,var(--bg3) 25%,var(--bg2) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body>
 
-<!-- AUTH SCREEN -->
-<div id="auth-screen" class="min-h-screen hero-bg flex items-center justify-center p-6">
-    <div class="glass rounded-3xl w-full max-w-md shadow-2xl">
-        <div class="p-10">
-            <div class="flex justify-center mb-8">
-                <div class="flex items-center gap-3">
-                    <span class="text-5xl">⚡</span>
-                    <h1 class="text-4xl font-bold tracking-tighter">StudyLyx</h1>
-                </div>
-            </div>
-            <p class="text-center text-slate-600 mb-8">Learn smarter. Grow faster.</p>
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
 
-            <div class="flex bg-slate-100 rounded-2xl p-1 mb-8">
-                <button onclick="switchAuthTab(0)" id="auth-tab-login" class="flex-1 py-3 rounded-xl font-semibold text-sm">Login</button>
-                <button onclick="switchAuthTab(1)" id="auth-tab-signup" class="flex-1 py-3 rounded-xl font-semibold text-sm">Sign Up</button>
-            </div>
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div id="sidebar-overlay" onclick="closeSidebar()"></div>
 
-            <!-- Login Form -->
-            <div id="login-form">
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-xs font-medium mb-1.5 text-slate-500">EMAIL</label>
-                        <input id="login-email" type="email" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="you@example.com">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium mb-1.5 text-slate-500">PASSWORD</label>
-                        <input id="login-password" type="password" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="••••••••">
-                    </div>
-                    <div class="flex items-center justify-between text-sm">
-                        <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="checkbox" id="remember-me" class="w-4 h-4 accent-violet-600">
-                            <span class="text-slate-600">Remember me</span>
-                        </label>
-                        <button onclick="forgotPassword()" class="text-violet-600 hover:underline">Forgot password?</button>
-                    </div>
-                    <button onclick="loginWithEmail()" class="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition">Sign In</button>
-                </div>
-            </div>
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar" class="hidden">
+  <div class="nav-brand" onclick="navigate('dashboard')">
+    <div class="nav-logo">S</div>
+    <span class="nav-name grad-text">StudyLyx</span>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <a onclick="navigate('dashboard')" id="nl-dashboard">Dashboard</a>
+    <a onclick="navigate('subjects')" id="nl-subjects">Subjects</a>
+    <a onclick="navigate('classes')" id="nl-classes">Classes</a>
+    <a onclick="navigate('daily-quiz')" id="nl-daily-quiz">Daily Quiz</a>
+    <a onclick="navigate('tools')" id="nl-tools">Tools</a>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><i class="fas fa-moon"></i></button>
+    <div class="nav-user-avatar" id="nav-avatar" onclick="navigate('profile')">U</div>
+    <button class="hamburger" onclick="openSidebar()"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-            <!-- Signup Form -->
-            <div id="signup-form" class="hidden">
-                <div class="space-y-6">
-                    <div>
-                        <label class="block text-xs font-medium mb-1.5 text-slate-500">FULL NAME</label>
-                        <input id="signup-name" type="text" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="Alex Johnson">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium mb-1.5 text-slate-500">EMAIL</label>
-                        <input id="signup-email" type="email" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="you@example.com">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium mb-1.5 text-slate-500">PASSWORD</label>
-                        <input id="signup-password" type="password" class="w-full px-5 py-4 rounded-2xl border border-slate-200 focus:border-violet-500 outline-none" placeholder="Create password">
-                    </div>
-                    <button onclick="signupWithEmail()" class="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-2xl transition">Create Account</button>
-                </div>
-            </div>
+<!-- ==================== SIDEBAR ==================== -->
+<aside id="sidebar" class="hidden">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Main</div>
+    <button class="sidebar-item" onclick="navigate('dashboard');closeSidebar()"><i class="fas fa-th-large"></i> Dashboard</button>
+    <button class="sidebar-item" onclick="navigate('subjects');closeSidebar()"><i class="fas fa-book"></i> Subjects</button>
+    <button class="sidebar-item" onclick="navigate('classes');closeSidebar()"><i class="fas fa-play-circle"></i> Recorded Classes</button>
+    <button class="sidebar-item" onclick="navigate('daily-quiz');closeSidebar()"><i class="fas fa-bolt"></i> Daily Quiz <span class="sidebar-badge">NEW</span></button>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Study</div>
+    <button class="sidebar-item" onclick="navigate('notes');closeSidebar()"><i class="fas fa-sticky-note"></i> Notes</button>
+    <button class="sidebar-item" onclick="navigate('flashcards');closeSidebar()"><i class="fas fa-layer-group"></i> Flashcards</button>
+    <button class="sidebar-item" onclick="navigate('quiz');closeSidebar()"><i class="fas fa-question-circle"></i> Quizzes</button>
+    <button class="sidebar-item" onclick="navigate('tools');closeSidebar()"><i class="fas fa-tools"></i> Study Tools</button>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-label">Progress</div>
+    <button class="sidebar-item" onclick="navigate('analytics');closeSidebar()"><i class="fas fa-chart-line"></i> Analytics</button>
+    <button class="sidebar-item" onclick="navigate('leaderboard');closeSidebar()"><i class="fas fa-trophy"></i> Leaderboard</button>
+    <button class="sidebar-item" onclick="navigate('profile');closeSidebar()"><i class="fas fa-user"></i> Profile</button>
+    <button class="sidebar-item" onclick="navigate('settings');closeSidebar()"><i class="fas fa-cog"></i> Settings</button>
+  </div>
+  <div class="sidebar-section">
+    <button class="sidebar-item" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+</aside>
 
-            <button onclick="signInWithGoogle()" class="w-full mt-6 py-4 border border-slate-300 rounded-2xl flex items-center justify-center gap-3 hover:bg-slate-50">
-                <i class="fab fa-google text-red-500"></i>
-                <span class="font-medium">Continue with Google</span>
-            </button>
-
-            <p id="auth-message" class="text-center text-sm mt-6 min-h-[20px] text-red-500"></p>
-        </div>
+<!-- ==================== HOME PAGE ==================== -->
+<div id="home-page" class="page active">
+  <!-- NAVBAR HOME -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:900;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);">
+    <div class="nav-brand">
+      <div class="nav-logo">S</div>
+      <span class="nav-name grad-text">StudyLyx</span>
     </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button id="theme-toggle-home" onclick="toggleTheme()" style="background:var(--card2);border:1px solid var(--border);width:38px;height:38px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:15px;transition:var(--trans);"><i class="fas fa-moon"></i></button>
+      <button class="btn btn-secondary btn-sm" onclick="showPage('login-page')">Login</button>
+      <button class="btn btn-primary btn-sm" onclick="showPage('signup-page')">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div style="position:relative;z-index:1;max-width:800px;margin:0 auto;">
+      <div class="hero-badge"><span></span> AI-Powered Learning Platform</div>
+      <h1 class="hero-title">Learn Smarter,<br/><span class="grad-text">Achieve More</span></h1>
+      <p class="hero-sub">StudyLyx combines interactive lessons, gamified learning, and smart analytics to help you reach your full potential.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary btn-lg" onclick="showPage('signup-page')"><i class="fas fa-rocket"></i> Start Learning Free</button>
+        <button class="btn btn-secondary btn-lg" onclick="document.getElementById('features-section').scrollIntoView({behavior:'smooth'})"><i class="fas fa-play"></i> See Features</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">50K+</div><div class="hero-stat-label">Students</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">200+</div><div class="hero-stat-label">Lessons</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">98%</div><div class="hero-stat-label">Satisfaction</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Subjects</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="features-section">
+    <div class="section-header">
+      <div class="section-eyebrow">Why StudyLyx?</div>
+      <h2 class="section-title">Everything you need to <span class="grad-text">excel</span></h2>
+      <p class="section-sub">From interactive flashcards to gamified quizzes — we've built the complete learning toolkit.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3 class="feature-title">Smart Flashcards</h3><p class="feature-desc">Create and study with interactive flip-card flashcards. Track mastery and focus on what you need to learn.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-play-circle"></i></div><h3 class="feature-title">Recorded Classes</h3><p class="feature-desc">Watch curated video lessons from expert educators. Track your watch progress and continue where you left off.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3 class="feature-title">Daily Quizzes</h3><p class="feature-desc">Test yourself with 10 fresh questions every day across Maths, Science, and English. Earn XP and climb the leaderboard.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-fire"></i></div><h3 class="feature-title">Streak Rewards</h3><p class="feature-desc">Maintain your study streak and earn daily rewards. Gamification keeps you motivated and consistent.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3 class="feature-title">Analytics</h3><p class="feature-desc">See exactly where you stand with detailed progress charts, subject breakdowns, and quiz history.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3 class="feature-title">Pomodoro Timer</h3><p class="feature-desc">Built-in study timer using the Pomodoro technique. Balance focused work with well-earned breaks.</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="section-header">
+      <div class="section-eyebrow">Testimonials</div>
+      <h2 class="section-title">Students love <span class="grad-text">StudyLyx</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="t-stars">★★★★★</div><p class="t-text">"StudyLyx transformed how I study. The daily quizzes keep me sharp, and I love seeing my streak grow every day!"</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#7c5cfc,#f472b6);">A</div><div><div class="t-name">Aanya Sharma</div><div class="t-role">Grade 10 Student</div></div></div></div>
+      <div class="testimonial-card"><div class="t-stars">★★★★★</div><p class="t-text">"The flashcard system is incredible. I went from failing Maths to getting top marks in just two months!"</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#34d399,#7c5cfc);">R</div><div><div class="t-name">Rohan Mehta</div><div class="t-role">Grade 9 Student</div></div></div></div>
+      <div class="testimonial-card"><div class="t-stars">★★★★★</div><p class="t-text">"Finally a platform that makes studying fun. The badges and XP system keeps my daughter coming back every day."</p><div class="t-author"><div class="t-avatar" style="background:linear-gradient(135deg,#fb923c,#f472b6);">P</div><div><div class="t-name">Priya Nair</div><div class="t-role">Parent</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-title">Common <span class="grad-text">questions</span></h2>
+    </div>
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is StudyLyx free to use? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Yes! StudyLyx is completely free. Create an account and access all features including notes, flashcards, quizzes, recorded classes, and study tools.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Which subjects are covered? <i class="fas fa-chevron-down"></i></div><div class="faq-a">We cover Mathematics, Science, English, History, Geography, and Computer Science — with more subjects being added regularly.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does the daily quiz work? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Every day you get 10 fresh questions from Maths, Science, and English. Complete the quiz to earn XP, maintain your streak, and unlock badges.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my data saved securely? <i class="fas fa-chevron-down"></i></div><div class="faq-a">All your notes, flashcards, quiz scores, and progress are securely stored in Firebase Firestore with Google's enterprise-grade security.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I use StudyLyx on my phone? <i class="fas fa-chevron-down"></i></div><div class="faq-a">Absolutely! StudyLyx is fully responsive and works beautifully on all devices — phones, tablets, and desktops.</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" style="background:var(--bg2);">
+    <div class="section-header">
+      <div class="section-eyebrow">Get in Touch</div>
+      <h2 class="section-title">We'd love to <span class="grad-text">hear from you</span></h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-form">
+        <div class="input-group"><label>Your Name</label><input class="input" placeholder="Enter your name" id="contact-name"/></div>
+        <div class="input-group"><label>Email Address</label><input class="input" placeholder="you@example.com" id="contact-email" type="email"/></div>
+        <div class="input-group"><label>Message</label><textarea class="input" placeholder="Your message..." id="contact-msg"></textarea></div>
+        <button class="btn btn-primary" onclick="sendContact()"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand" style="margin-bottom:12px;"><div class="nav-logo">S</div><span class="nav-name grad-text">StudyLyx</span></div>
+        <p>Your complete educational companion. Study smarter, achieve more, and make learning an adventure every day.</p>
+      </div>
+      <div class="footer-col"><h4>Platform</h4><a>Dashboard</a><a>Subjects</a><a>Recorded Classes</a><a>Daily Quiz</a></div>
+      <div class="footer-col"><h4>Study Tools</h4><a>Flashcards</a><a>Notes</a><a>Pomodoro</a><a>Analytics</a></div>
+      <div class="footer-col"><h4>Company</h4><a>About</a><a>Blog</a><a>Privacy Policy</a><a>Terms of Service</a></div>
+    </div>
+    <div class="footer-bottom">© 2024 StudyLyx. Made with <span style="color:var(--accent);">♥</span> for students everywhere.</div>
+  </footer>
 </div>
 
-<!-- MAIN APP -->
-<div id="main-app" class="hidden flex h-screen bg-slate-50">
-    <!-- SIDEBAR -->
-    <div class="w-72 bg-white border-r flex flex-col">
-        <div class="p-6 flex items-center gap-3 border-b">
-            <span class="text-4xl">⚡</span>
-            <span class="text-3xl font-bold tracking-tighter">StudyLyx</span>
-        </div>
-        <div class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
-            <div onclick="navigateTo('home')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer nav-active" id="nav-home">
-                <i class="fas fa-home w-5"></i>
-                <span class="font-medium">Home</span>
-            </div>
-            <div onclick="navigateTo('classes')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-classes">
-                <i class="fas fa-play-circle w-5"></i>
-                <span class="font-medium">Recorded Classes</span>
-            </div>
-            <div onclick="navigateTo('quiz')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-quiz">
-                <i class="fas fa-brain w-5"></i>
-                <span class="font-medium">Quizzes</span>
-            </div>
-            <div onclick="navigateTo('dashboard')" class="nav-item flex items-center gap-3 px-5 py-3.5 rounded-2xl cursor-pointer" id="nav-dashboard">
-                <i class="fas fa-chart-bar w-5"></i>
-                <span class="font-medium">Dashboard</span>
-            </div>
-        </div>
-        <div class="p-6 border-t mt-auto">
-            <div class="flex items-center gap-3 mb-6">
-                <div id="sidebar-avatar" class="w-10 h-10 bg-violet-600 text-white rounded-2xl flex items-center justify-center font-bold cursor-pointer" onclick="navigateTo('dashboard')">U</div>
-                <div>
-                    <div id="sidebar-name" class="font-semibold">Alex Johnson</div>
-                    <div id="sidebar-email" class="text-xs text-slate-500">alex@studylyx.com</div>
-                </div>
-            </div>
-            <button onclick="logout()" class="w-full py-3 text-red-600 hover:bg-red-50 rounded-2xl flex items-center justify-center gap-2 font-medium">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </button>
-        </div>
+<!-- ==================== LOGIN PAGE ==================== -->
+<div id="login-page" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card glass-strong">
+      <div class="auth-logo"><div class="nav-logo">S</div><span class="nav-name grad-text">StudyLyx</span></div>
+      <h2 class="auth-title">Welcome back</h2>
+      <p class="auth-sub">Sign in to continue your learning journey</p>
+      <div class="input-group"><label>Email</label><div class="input-icon-wrap"><i class="fas fa-envelope"></i><input class="input" type="email" id="login-email" placeholder="you@example.com"/></div></div>
+      <div class="input-group"><label>Password</label><div class="input-icon-wrap"><i class="fas fa-lock"></i><input class="input" type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')loginUser()"/></div></div>
+      <div style="text-align:right;margin-bottom:20px;"><a style="font-size:13px;color:var(--primary);cursor:pointer;text-decoration:none;" onclick="showPage('forgot-page')">Forgot password?</a></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="loginUser()"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      <div class="auth-divider">or</div>
+      <button class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="loginGoogle()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:18px;"/> Continue with Google</button>
+      <div class="auth-link">Don't have an account? <a onclick="showPage('signup-page')">Sign up free</a></div>
+      <div style="text-align:center;margin-top:12px;"><a style="font-size:13px;color:var(--text3);cursor:pointer;" onclick="showPage('home-page')">← Back to home</a></div>
     </div>
-
-    <!-- CONTENT AREA -->
-    <div class="flex-1 overflow-auto">
-        <!-- Top Nav -->
-        <div class="bg-white border-b px-8 py-5 flex items-center justify-between sticky top-0 z-50">
-            <div id="page-title" class="text-2xl font-semibold">Home</div>
-            <div class="flex items-center gap-6">
-                <button onclick="toggleDarkMode()" class="w-9 h-9 flex items-center justify-center rounded-2xl hover:bg-slate-100">
-                    <i class="fas fa-moon text-xl"></i>
-                </button>
-                <div onclick="navigateTo('dashboard')" class="flex items-center gap-3 cursor-pointer">
-                    <div id="top-avatar" class="w-8 h-8 bg-violet-600 text-white rounded-2xl flex items-center justify-center text-sm font-bold">AJ</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- HOME PAGE -->
-        <div id="page-home" class="p-8">
-            <div class="hero-bg text-white rounded-3xl p-12 mb-10">
-                <h1 class="text-5xl font-bold leading-none mb-4">Welcome back, <span id="welcome-name">Alex</span>!</h1>
-                <p class="text-xl opacity-90">Ready to level up today?</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="flex justify-between">
-                        <div>
-                            <div class="text-4xl font-bold text-amber-500" id="streak-count">7</div>
-                            <div class="text-sm text-slate-500">Day Streak</div>
-                        </div>
-                        <i class="fas fa-fire text-5xl text-amber-400"></i>
-                    </div>
-                </div>
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="text-4xl font-bold" id="xp-points">1240</div>
-                    <div class="text-sm text-slate-500">Total XP</div>
-                </div>
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="text-4xl font-bold text-emerald-500">Level 5</div>
-                    <div class="text-sm text-slate-500">Scholar</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- RECORDED CLASSES -->
-        <div id="page-classes" class="hidden p-8">
-            <h2 class="text-3xl font-bold mb-8">Recorded Classes</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-3xl">
-                    <h3 class="font-semibold text-lg mb-4">Basic Algebra</h3>
-                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/TQINmo_TP9s" allowfullscreen></iframe>
-                </div>
-                <div class="bg-white p-6 rounded-3xl">
-                    <h3 class="font-semibold text-lg mb-4">Squares and Square Roots</h3>
-                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/TQINmo_TP9s" allowfullscreen></iframe>
-                </div>
-                <div class="bg-white p-6 rounded-3xl">
-                    <h3 class="font-semibold text-lg mb-4">Cube and Cube Roots</h3>
-                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/zGluyVamuCw" allowfullscreen></iframe>
-                </div>
-                <div class="bg-white p-6 rounded-3xl">
-                    <h3 class="font-semibold text-lg mb-4">Rational Numbers</h3>
-                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/PlqEKJum2BA" allowfullscreen></iframe>
-                </div>
-                <div class="bg-white p-6 rounded-3xl">
-                    <h3 class="font-semibold text-lg mb-4">Comparing Quantities</h3>
-                    <iframe width="100%" height="260" src="https://www.youtube.com/embed/FADSgGKG_mc" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-
-        <!-- QUIZ PAGE -->
-        <div id="page-quiz" class="hidden p-8">
-            <h2 class="text-3xl font-bold mb-6">Daily Quiz</h2>
-            <div class="max-w-2xl mx-auto bg-white rounded-3xl p-10">
-                <div id="quiz-container">
-                    <div class="text-center mb-8">
-                        <div class="text-sm uppercase tracking-widest text-violet-600 font-medium">Mathematics</div>
-                        <div id="question-text" class="text-xl font-medium mt-4"></div>
-                    </div>
-                    <div id="options" class="space-y-3"></div>
-                    <button onclick="submitQuizAnswer()" id="next-btn" class="hidden w-full mt-8 py-4 bg-violet-600 text-white rounded-2xl">Next Question</button>
-                </div>
-                <div id="quiz-result" class="hidden text-center">
-                    <h3 class="text-2xl font-bold mb-4">Quiz Complete!</h3>
-                    <div id="score-display" class="text-6xl font-bold text-violet-600 mb-2"></div>
-                    <button onclick="restartQuiz()" class="mt-6 px-8 py-4 bg-violet-600 text-white rounded-2xl">Try Again</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- DASHBOARD -->
-        <div id="page-dashboard" class="hidden p-8">
-            <h2 class="text-3xl font-bold mb-8">Dashboard</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <div class="text-slate-500 text-sm">Current Level</div>
-                            <div class="text-5xl font-bold mt-2">5</div>
-                        </div>
-                        <div class="text-6xl">🏆</div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="text-slate-500 text-sm">XP This Week</div>
-                    <div class="text-5xl font-bold mt-2 text-emerald-600">840</div>
-                </div>
-                <div class="bg-white rounded-3xl p-8">
-                    <div class="text-slate-500 text-sm">Subjects Mastered</div>
-                    <div class="flex gap-4 mt-4">
-                        <div class="text-center">
-                            <div class="text-3xl">📐</div>
-                            <div class="text-xs mt-1">Math</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
+<!-- ==================== SIGNUP PAGE ==================== -->
+<div id="signup-page" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card glass-strong">
+      <div class="auth-logo"><div class="nav-logo">S</div><span class="nav-name grad-text">StudyLyx</span></div>
+      <h2 class="auth-title">Create account</h2>
+      <p class="auth-sub">Join 50,000+ students learning smarter</p>
+      <div class="input-group"><label>Full Name</label><div class="input-icon-wrap"><i class="fas fa-user"></i><input class="input" type="text" id="signup-name" placeholder="Your full name"/></div></div>
+      <div class="input-group"><label>Email</label><div class="input-icon-wrap"><i class="fas fa-envelope"></i><input class="input" type="email" id="signup-email" placeholder="you@example.com"/></div></div>
+      <div class="input-group"><label>Password</label><div class="input-icon-wrap"><i class="fas fa-lock"></i><input class="input" type="password" id="signup-pass" placeholder="Min 6 characters" onkeydown="if(event.key==='Enter')signupUser()"/></div></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="signupUser()"><i class="fas fa-user-plus"></i> Create Account</button>
+      <div class="auth-divider">or</div>
+      <button class="btn btn-secondary" style="width:100%;justify-content:center;" onclick="loginGoogle()"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:18px;"/> Continue with Google</button>
+      <div class="auth-link">Already have an account? <a onclick="showPage('login-page')">Sign in</a></div>
+      <div style="text-align:center;margin-top:12px;"><a style="font-size:13px;color:var(--text3);cursor:pointer;" onclick="showPage('home-page')">← Back to home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FORGOT PASSWORD PAGE ==================== -->
+<div id="forgot-page" class="page">
+  <div class="auth-wrap">
+    <div class="auth-card glass-strong">
+      <div class="auth-logo"><div class="nav-logo">S</div><span class="nav-name grad-text">StudyLyx</span></div>
+      <h2 class="auth-title">Reset password</h2>
+      <p class="auth-sub">Enter your email and we'll send a reset link</p>
+      <div class="input-group"><label>Email</label><div class="input-icon-wrap"><i class="fas fa-envelope"></i><input class="input" type="email" id="forgot-email" placeholder="you@example.com"/></div></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="resetPassword()"><i class="fas fa-paper-plane"></i> Send Reset Link</button>
+      <div class="auth-link"><a onclick="showPage('login-page')">← Back to sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MAIN APP (Dashboard + all inner pages) ==================== -->
+<div id="app-page" class="page">
+  <nav id="navbar" style="display:flex;">
+    <div class="nav-brand" onclick="navigate('dashboard')">
+      <div class="nav-logo">S</div>
+      <span class="nav-name grad-text">StudyLyx</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="navigate('dashboard')" id="nl-dash">Dashboard</a>
+      <a onclick="navigate('subjects')" id="nl-subj">Subjects</a>
+      <a onclick="navigate('classes')" id="nl-cls">Classes</a>
+      <a onclick="navigate('daily-quiz')" id="nl-dq">Daily Quiz</a>
+      <a onclick="navigate('tools')" id="nl-tls">Tools</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle2" onclick="toggleTheme()" style="background:var(--card2);border:1px solid var(--border);width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:16px;transition:var(--trans);"><i class="fas fa-moon"></i></button>
+      <div class="nav-user-avatar" id="app-avatar" onclick="navigate('profile')" title="Profile">U</div>
+      <button class="hamburger" onclick="openSidebar()"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <aside id="main-sidebar" style="position:fixed;left:0;top:64px;bottom:0;width:240px;background:var(--bg2);border-right:1px solid var(--border);z-index:800;overflow-y:auto;padding:20px 12px;transition:transform 0.3s ease;">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Main</div>
+      <button class="sidebar-item" onclick="navigate('dashboard')"><i class="fas fa-th-large"></i> Dashboard</button>
+      <button class="sidebar-item" onclick="navigate('subjects')"><i class="fas fa-book"></i> Subjects</button>
+      <button class="sidebar-item" onclick="navigate('classes')"><i class="fas fa-play-circle"></i> Recorded Classes</button>
+      <button class="sidebar-item" onclick="navigate('daily-quiz')"><i class="fas fa-bolt"></i> Daily Quiz <span class="sidebar-badge">!</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Study</div>
+      <button class="sidebar-item" onclick="navigate('notes')"><i class="fas fa-sticky-note"></i> Notes</button>
+      <button class="sidebar-item" onclick="navigate('flashcards')"><i class="fas fa-layer-group"></i> Flashcards</button>
+      <button class="sidebar-item" onclick="navigate('quiz')"><i class="fas fa-question-circle"></i> Quizzes</button>
+      <button class="sidebar-item" onclick="navigate('tools')"><i class="fas fa-tools"></i> Study Tools</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Progress</div>
+      <button class="sidebar-item" onclick="navigate('analytics')"><i class="fas fa-chart-line"></i> Analytics</button>
+      <button class="sidebar-item" onclick="navigate('leaderboard')"><i class="fas fa-trophy"></i> Leaderboard</button>
+      <button class="sidebar-item" onclick="navigate('profile')"><i class="fas fa-user"></i> Profile</button>
+      <button class="sidebar-item" onclick="navigate('settings')"><i class="fas fa-cog"></i> Settings</button>
+    </div>
+    <div class="sidebar-section">
+      <button class="sidebar-item" onclick="logoutUser()" style="color:#ef4444;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+
+  <div id="main-content">
+    <div class="content-area">
+
+      <!-- ===== DASHBOARD ===== -->
+      <div id="sec-dashboard" class="fade-in">
+        <div class="welcome-banner">
+          <div class="welcome-text"><h2>Welcome back, <span id="dash-name">Student</span>! 👋</h2><p>You're on a roll. Keep up the great work!</p></div>
+          <div class="welcome-meta">
+            <div class="meta-chip"><i class="fas fa-fire"></i> <span id="dash-streak">0</span> day streak</div>
+            <div class="meta-chip"><i class="fas fa-star"></i> <span id="dash-xp">0</span> XP</div>
+            <div class="meta-chip"><i class="fas fa-trophy"></i> Level <span id="dash-level">1</span></div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-val grad-text" id="ds-notes">0</div><div class="stat-label">Notes Created</div></div>
+          <div class="stat-card"><div class="stat-val grad-text" id="ds-flashcards">0</div><div class="stat-label">Flashcards</div></div>
+          <div class="stat-card"><div class="stat-val grad-text" id="ds-quizzes">0</div><div class="stat-label">Quizzes Done</div></div>
+          <div class="stat-card"><div class="stat-val grad-text" id="ds-classes">0</div><div class="stat-label">Videos Watched</div></div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3><i class="fas fa-fire" style="color:var(--accent2);"></i> Study Streak</h3>
+            <div class="streak-row" id="streak-row"></div>
+          </div>
+          <div class="dash-card">
+            <h3><i class="fas fa-medal" style="color:#f59e0b;"></i> Achievements</h3>
+            <div class="badge-grid" id="badge-grid"></div>
+          </div>
+          <div class="dash-card">
+            <h3><i class="fas fa-chart-bar" style="color:var(--primary);"></i> Subject Progress</h3>
+            <div id="subject-progress-list"></div>
+          </div>
+          <div class="dash-card">
+            <h3><i class="fas fa-history" style="color:var(--accent);"></i> Recent Activity</h3>
+            <div class="activity-list" id="activity-list"></div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-bottom:20px;">
+          <h3 style="margin-bottom:16px;"><i class="fas fa-play-circle" style="color:var(--accent3);"></i> Continue Learning</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;" id="continue-learning"></div>
+        </div>
+      </div>
+
+      <!-- ===== SUBJECTS ===== -->
+      <div id="sec-subjects" class="hidden fade-in">
+        <div class="page-header"><h1>Subjects</h1><p>Choose a subject to explore notes, flashcards, quizzes, and resources.</p></div>
+        <div class="subjects-grid" id="subjects-grid"></div>
+        <!-- Subject Detail View -->
+        <div id="subject-detail-view" class="hidden">
+          <div class="breadcrumb"><a onclick="backToSubjects()">Subjects</a> <span>›</span> <span id="sd-title"></span></div>
+          <div class="page-header"><h1 id="sd-h1"></h1></div>
+          <div class="subject-tabs">
+            <button class="subject-tab active" onclick="switchSubjectTab(this,'sd-notes')">📝 Notes</button>
+            <button class="subject-tab" onclick="switchSubjectTab(this,'sd-flashcards')">🃏 Flashcards</button>
+            <button class="subject-tab" onclick="switchSubjectTab(this,'sd-quiz')">❓ Quiz</button>
+            <button class="subject-tab" onclick="switchSubjectTab(this,'sd-resources')">📚 Resources</button>
+          </div>
+          <div id="sd-notes"></div>
+          <div id="sd-flashcards" class="hidden"></div>
+          <div id="sd-quiz" class="hidden"></div>
+          <div id="sd-resources" class="hidden"></div>
+        </div>
+      </div>
+
+      <!-- ===== NOTES ===== -->
+      <div id="sec-notes" class="hidden fade-in">
+        <div class="page-header"><h1>My Notes</h1><p>Create, edit, and organize your study notes.</p></div>
+        <div class="notes-toolbar">
+          <input class="input" style="max-width:280px;" placeholder="🔍 Search notes..." oninput="filterNotes(this.value)" id="notes-search"/>
+          <select class="input" style="max-width:180px;" onchange="filterNotesBySubject(this.value)" id="notes-subject-filter">
+            <option value="">All Subjects</option>
+            <option>Mathematics</option><option>Science</option><option>English</option>
+            <option>History</option><option>Geography</option><option>Computer Science</option>
+          </select>
+          <button class="btn btn-primary" onclick="openNoteModal()"><i class="fas fa-plus"></i> New Note</button>
+        </div>
+        <div class="notes-grid" id="notes-grid"></div>
+      </div>
+
+      <!-- ===== FLASHCARDS ===== -->
+      <div id="sec-flashcards" class="hidden fade-in">
+        <div class="page-header"><h1>Flashcards</h1><p>Study with interactive flashcards. Click a card to reveal the answer.</p></div>
+        <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:center;">
+          <select class="input" style="max-width:200px;" onchange="loadFlashcards(this.value)" id="fc-subject-filter">
+            <option value="">All Subjects</option>
+            <option>Mathematics</option><option>Science</option><option>English</option>
+            <option>History</option><option>Geography</option><option>Computer Science</option>
+          </select>
+          <button class="btn btn-primary" onclick="openFlashcardModal()"><i class="fas fa-plus"></i> Create Flashcard</button>
+          <button class="btn btn-secondary" onclick="startFlashcardStudy()" id="fc-study-btn"><i class="fas fa-play"></i> Study Mode</button>
+        </div>
+        <!-- Study Mode -->
+        <div id="fc-study-mode" class="hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h3>Card <span id="fc-current">1</span> of <span id="fc-total">0</span></h3>
+            <button class="btn btn-secondary btn-sm" onclick="endStudyMode()"><i class="fas fa-times"></i> Exit</button>
+          </div>
+          <div class="flashcard-scene">
+            <div class="flashcard" id="main-flashcard" onclick="flipCard()">
+              <div class="flashcard-face flashcard-front"><div class="flashcard-label">Question</div><div class="flashcard-text" id="fc-front-text">Click to start</div><div class="flashcard-hint">Tap to flip</div></div>
+              <div class="flashcard-face flashcard-back"><div class="flashcard-label">Answer</div><div class="flashcard-text" id="fc-back-text">Answer</div></div>
+            </div>
+          </div>
+          <div class="fc-controls">
+            <button class="btn btn-secondary" onclick="prevCard()"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button class="btn btn-danger" onclick="markCard('hard')"><i class="fas fa-times"></i> Hard</button>
+            <button class="btn btn-primary" onclick="markCard('easy')"><i class="fas fa-check"></i> Easy</button>
+            <button class="btn btn-secondary" onclick="nextCard()">Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <!-- Flashcard Grid -->
+        <div class="fc-grid" id="fc-grid"></div>
+      </div>
+
+      <!-- ===== QUIZ ===== -->
+      <div id="sec-quiz" class="hidden fade-in">
+        <div class="page-header"><h1>Practice Quizzes</h1><p>Test your knowledge with subject-specific quizzes.</p></div>
+        <div id="quiz-lobby">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:28px;">
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('Mathematics')"><div class="feature-icon">➕</div><h3 class="feature-title">Mathematics</h3><p class="feature-desc">Algebra, geometry, numbers and more</p></div>
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('Science')"><div class="feature-icon">🔬</div><h3 class="feature-title">Science</h3><p class="feature-desc">Physics, chemistry, biology</p></div>
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('English')"><div class="feature-icon">📖</div><h3 class="feature-title">English</h3><p class="feature-desc">Grammar, vocabulary, comprehension</p></div>
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('History')"><div class="feature-icon">🏛️</div><h3 class="feature-title">History</h3><p class="feature-desc">World events and civilisations</p></div>
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('Geography')"><div class="feature-icon">🌍</div><h3 class="feature-title">Geography</h3><p class="feature-desc">Countries, capitals, and landforms</p></div>
+            <div class="feature-card" style="cursor:pointer;" onclick="startQuiz('Computer Science')"><div class="feature-icon">💻</div><h3 class="feature-title">Computer Science</h3><p class="feature-desc">Programming, algorithms, networks</p></div>
+          </div>
+          <div class="dash-card"><h3>Quiz History</h3><div class="quiz-history-list" id="quiz-history-list"><div class="empty-state"><div class="empty-icon">📊</div><div class="empty-title">No quizzes yet</div><div class="empty-sub">Complete your first quiz to see results here.</div></div></div></div>
+        </div>
+        <div id="quiz-active" class="hidden">
+          <div class="quiz-header">
+            <div><span id="q-subject-label" class="chip chip-purple"></span></div>
+            <div class="quiz-timer" id="quiz-timer">00:00</div>
+            <button class="btn btn-secondary btn-sm" onclick="quitQuiz()"><i class="fas fa-times"></i> Quit</button>
+          </div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill"></div></div>
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text3);margin-bottom:16px;"><span>Question <span id="q-num">1</span> of <span id="q-total">10</span></span><span id="q-score-live">Score: 0</span></div>
+            <div class="quiz-question" id="quiz-question-text"></div>
+            <div class="quiz-options" id="quiz-options"></div>
+            <button class="btn btn-primary" style="margin-top:20px;" onclick="nextQuestion()" id="quiz-next-btn" disabled>Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div id="quiz-result" class="hidden">
+          <div class="dash-card quiz-result">
+            <div class="quiz-score-circle" id="quiz-score-circle">
+              <div class="quiz-score-inner"><div class="quiz-score-num" id="result-score">0%</div><div class="quiz-score-sub">Score</div></div>
+            </div>
+            <h2 id="result-title" style="margin-bottom:8px;"></h2>
+            <p id="result-sub" style="color:var(--text2);margin-bottom:24px;font-size:14px;"></p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="retryQuiz()"><i class="fas fa-redo"></i> Try Again</button>
+              <button class="btn btn-secondary" onclick="showQuizLobby()"><i class="fas fa-th"></i> All Subjects</button>
+            </div>
+            <div class="answer-review" id="answer-review"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RECORDED CLASSES ===== -->
+      <div id="sec-classes" class="hidden fade-in">
+        <div id="classes-listing">
+          <div class="page-header"><h1>Recorded Classes</h1><p>Watch expert video lessons and track your progress.</p></div>
+          <div class="classes-toolbar">
+            <div class="input-icon-wrap" style="flex:1;max-width:320px;"><i class="fas fa-search"></i><input class="input" placeholder="Search classes..." oninput="searchClasses(this.value)"/></div>
+            <select class="input" style="max-width:180px;" onchange="filterClasses(this.value)" id="class-subject-filter">
+              <option value="">All Subjects</option>
+              <option>Mathematics</option><option>Science</option><option>English</option>
+              <option>History</option><option>Geography</option><option>Computer Science</option>
+            </select>
+          </div>
+          <div id="recently-watched-section" class="hidden" style="margin-bottom:28px;">
+            <h3 style="margin-bottom:14px;font-size:16px;"><i class="fas fa-history" style="color:var(--primary);margin-right:8px;"></i>Recently Watched</h3>
+            <div class="classes-grid" id="recently-watched-grid"></div>
+          </div>
+          <h3 style="margin-bottom:14px;font-size:16px;" id="classes-section-title"><i class="fas fa-play-circle" style="color:var(--accent3);margin-right:8px;"></i>All Classes</h3>
+          <div class="classes-grid" id="classes-grid"></div>
+        </div>
+        <!-- Video Player View -->
+        <div id="video-player-view" class="hidden">
+          <div class="breadcrumb"><a onclick="backToClasses()">← All Classes</a></div>
+          <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;" id="video-layout">
+            <div>
+              <div class="video-player-wrap">
+                <iframe id="main-video-iframe" class="video-embed" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <div class="video-info">
+                <div class="class-subject-tag" id="vp-subject"></div>
+                <div class="video-title" id="vp-title"></div>
+                <div class="video-meta">
+                  <span><i class="fas fa-eye"></i> <span id="vp-views">0</span> views</span>
+                  <span><i class="fas fa-star" style="color:#f59e0b;"></i> 4.8</span>
+                </div>
+                <p style="margin-top:14px;font-size:14px;color:var(--text2);line-height:1.65;" id="vp-desc"></p>
+              </div>
+            </div>
+            <div class="related-videos">
+              <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">More from this subject</h3>
+              <div class="related-list" id="related-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DAILY QUIZ ===== -->
+      <div id="sec-daily-quiz" class="hidden fade-in">
+        <div class="page-header"><h1>Daily Quiz</h1><p>10 fresh questions every day. Complete to earn XP and maintain your streak!</p></div>
+        <div class="dq-header">
+          <div>
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:4px;"><i class="fas fa-calendar" style="color:var(--primary);margin-right:8px;"></i>Today's Quiz</h3>
+            <p style="font-size:13px;color:var(--text2);" id="dq-date"></p>
+          </div>
+          <div class="dq-meta">
+            <div class="dq-chip"><i class="fas fa-question-circle" style="color:var(--primary);"></i> <strong>10</strong> questions</div>
+            <div class="dq-chip"><i class="fas fa-star" style="color:#f59e0b;"></i> Up to <strong>+100</strong> XP</div>
+            <div class="dq-chip"><i class="fas fa-trophy" style="color:var(--accent2);"></i> Best: <strong id="dq-best">—</strong></div>
+          </div>
+        </div>
+
+        <div id="dq-start-screen">
+          <div class="category-filter">
+            <button class="cat-btn active" onclick="setDQCategory(this,'all')">All</button>
+            <button class="cat-btn" onclick="setDQCategory(this,'Mathematics')">Mathematics</button>
+            <button class="cat-btn" onclick="setDQCategory(this,'Science')">Science</button>
+            <button class="cat-btn" onclick="setDQCategory(this,'English')">English</button>
+          </div>
+          <div class="dash-card" style="text-align:center;padding:40px;">
+            <div style="font-size:56px;margin-bottom:16px;">🎯</div>
+            <h3 style="font-size:20px;margin-bottom:8px;">Ready for today's challenge?</h3>
+            <p style="color:var(--text2);margin-bottom:24px;font-size:14px;">Answer 10 questions to earn XP and keep your streak alive.</p>
+            <button class="btn btn-primary btn-lg" onclick="startDailyQuiz()"><i class="fas fa-bolt"></i> Start Daily Quiz</button>
+          </div>
+          <div style="margin-top:24px;">
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:14px;">Quiz History</h3>
+            <div id="dq-history-list" class="quiz-history-list"></div>
+          </div>
+        </div>
+
+        <div id="dq-active" class="hidden">
+          <div class="quiz-header">
+            <div><span class="chip chip-purple" id="dq-category-label">Mixed</span></div>
+            <div class="quiz-timer" id="dq-timer">00:00</div>
+            <button class="btn btn-secondary btn-sm" onclick="quitDQ()"><i class="fas fa-times"></i> Quit</button>
+          </div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="dq-prog-fill"></div></div>
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text3);margin-bottom:16px;">
+              <span>Question <span id="dq-num">1</span> of 10</span>
+              <span id="dq-score-live">Score: 0</span>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;" id="dq-q-subject"></div>
+            <div class="quiz-question" id="dq-question-text"></div>
+            <div class="quiz-options" id="dq-options"></div>
+            <button class="btn btn-primary" style="margin-top:20px;" onclick="nextDQ()" id="dq-next-btn" disabled>Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <div id="dq-result" class="hidden">
+          <div class="dash-card quiz-result">
+            <div class="quiz-score-circle" id="dq-score-circle">
+              <div class="quiz-score-inner"><div class="quiz-score-num" id="dq-result-score">0%</div><div class="quiz-score-sub">Score</div></div>
+            </div>
+            <h2 id="dq-result-title" style="margin-bottom:8px;"></h2>
+            <p style="color:var(--primary);font-weight:600;margin-bottom:8px;" id="dq-xp-earned"></p>
+            <p id="dq-result-sub" style="color:var(--text2);margin-bottom:24px;font-size:14px;"></p>
+            <button class="btn btn-primary" onclick="resetDQ()"><i class="fas fa-redo"></i> Try Again Tomorrow</button>
+            <div class="answer-review" id="dq-answer-review"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STUDY TOOLS ===== -->
+      <div id="sec-tools" class="hidden fade-in">
+        <div class="page-header"><h1>Study Tools</h1><p>Everything you need for a productive study session.</p></div>
+        <div class="tools-grid">
+          <!-- Pomodoro -->
+          <div class="tool-card" style="grid-column:span 1;">
+            <div class="tool-title"><i class="fas fa-clock" style="color:var(--primary);font-size:18px;"></i> Pomodoro Timer</div>
+            <div class="pomo-type-btns">
+              <button class="pomo-type-btn active" onclick="setPomo(this,25,'Work')">Work 25m</button>
+              <button class="pomo-type-btn" onclick="setPomo(this,5,'Short Break')">Break 5m</button>
+              <button class="pomo-type-btn" onclick="setPomo(this,15,'Long Break')">Long 15m</button>
+            </div>
+            <div class="pomodoro-display">
+              <div class="pomo-ring">
+                <svg viewBox="0 0 160 160" width="160" height="160">
+                  <defs><linearGradient id="pomoGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c5cfc"/><stop offset="100%" stop-color="#f472b6"/></linearGradient></defs>
+                  <circle class="pomo-ring-bg" cx="80" cy="80" r="70"/>
+                  <circle class="pomo-ring-fill" cx="80" cy="80" r="70" id="pomo-ring-fill"/>
+                </svg>
+                <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                  <div class="pomo-time" id="pomo-display">25:00</div>
+                  <div class="pomo-label" id="pomo-label">Work</div>
+                </div>
+              </div>
+            </div>
+            <div class="pomo-controls">
+              <button class="btn btn-secondary btn-sm" onclick="pomoReset()"><i class="fas fa-redo"></i></button>
+              <button class="btn btn-primary" onclick="pomoToggle()" id="pomo-btn"><i class="fas fa-play"></i> Start</button>
+              <button class="btn btn-secondary btn-sm" onclick="pomoSkip()"><i class="fas fa-forward"></i></button>
+            </div>
+            <div style="text-align:center;margin-top:12px;font-size:13px;color:var(--text3);">Sessions today: <strong id="pomo-sessions">0</strong></div>
+          </div>
+
+          <!-- Task Manager -->
+          <div class="tool-card">
+            <div class="tool-title"><i class="fas fa-tasks" style="color:var(--accent3);font-size:18px;"></i> Task Manager</div>
+            <div class="task-input-row">
+              <input class="input" id="task-input" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTask()"/>
+              <button class="btn btn-primary btn-sm" onclick="addTask()"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="task-list" id="task-list"></div>
+          </div>
+
+          <!-- Goal Tracker -->
+          <div class="tool-card">
+            <div class="tool-title"><i class="fas fa-bullseye" style="color:var(--accent);font-size:18px;"></i> Goal Tracker</div>
+            <div class="goal-list" id="goal-list"></div>
+            <button class="btn btn-secondary btn-sm" style="margin-top:12px;width:100%;justify-content:center;" onclick="openGoalModal()"><i class="fas fa-plus"></i> Add Goal</button>
+          </div>
+
+          <!-- Study Planner -->
+          <div class="tool-card">
+            <div class="tool-title"><i class="fas fa-calendar-alt" style="color:var(--accent2);font-size:18px;"></i> Study Planner</div>
+            <div id="planner-days" style="display:flex;flex-direction:column;gap:8px;"></div>
+            <button class="btn btn-secondary btn-sm" style="margin-top:12px;width:100%;justify-content:center;" onclick="addPlannerEntry()"><i class="fas fa-plus"></i> Schedule Study</button>
+          </div>
+
+          <!-- Daily Challenge -->
+          <div class="tool-card">
+            <div class="tool-title"><i class="fas fa-fire" style="color:var(--accent2);font-size:18px;"></i> Daily Challenge</div>
+            <div id="daily-challenge-content" style="text-align:center;padding:20px 0;">
+              <div style="font-size:48px;margin-bottom:12px;" id="dc-icon">🎯</div>
+              <p style="font-size:15px;font-weight:600;margin-bottom:8px;" id="dc-title">Today's Challenge</p>
+              <p style="font-size:13px;color:var(--text2);margin-bottom:16px;" id="dc-desc"></p>
+              <button class="btn btn-primary btn-sm" id="dc-btn" onclick="completeDailyChallenge()">Complete Challenge</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ANALYTICS ===== -->
+      <div id="sec-analytics" class="hidden fade-in">
+        <div class="page-header"><h1>Analytics</h1><p>Track your progress and identify areas for improvement.</p></div>
+        <div class="analytics-grid">
+          <div class="chart-card"><h3>Weekly Study Activity</h3><div class="chart-wrap"><canvas id="chart-activity"></canvas></div></div>
+          <div class="chart-card"><h3>Subject Distribution</h3><div class="chart-wrap"><canvas id="chart-subjects"></canvas></div></div>
+          <div class="chart-card"><h3>Quiz Performance</h3><div class="chart-wrap"><canvas id="chart-quiz"></canvas></div></div>
+          <div class="chart-card"><h3>XP Progress</h3><div class="chart-wrap"><canvas id="chart-xp"></canvas></div></div>
+        </div>
+        <div class="dash-card" style="margin-top:20px;">
+          <h3>Study Statistics</h3>
+          <div class="stats-row" style="margin-top:16px;" id="analytics-stats"></div>
+        </div>
+      </div>
+
+      <!-- ===== LEADERBOARD ===== -->
+      <div id="sec-leaderboard" class="hidden fade-in">
+        <div class="page-header"><h1>Leaderboard</h1><p>See how you rank against other students.</p></div>
+        <div class="leaderboard-list" id="leaderboard-list"></div>
+      </div>
+
+      <!-- ===== PROFILE ===== -->
+      <div id="sec-profile" class="hidden fade-in">
+        <div class="profile-cover"></div>
+        <div class="profile-body">
+          <div class="profile-avatar-wrap"><div class="profile-avatar-big" id="profile-avatar-big">U</div></div>
+          <div class="profile-name" id="profile-name">Student</div>
+          <div class="profile-email" id="profile-email">user@email.com</div>
+          <div class="profile-stats">
+            <div class="profile-stat"><strong id="ps-xp" class="grad-text">0</strong><span>XP</span></div>
+            <div class="profile-stat"><strong id="ps-streak">0</strong><span>Streak</span></div>
+            <div class="profile-stat"><strong id="ps-badges">0</strong><span>Badges</span></div>
+            <div class="profile-stat"><strong id="ps-level">1</strong><span>Level</span></div>
+          </div>
+          <div class="badge-grid" id="profile-badge-grid" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- ===== SETTINGS ===== -->
+      <div id="sec-settings" class="hidden fade-in">
+        <div class="page-header"><h1>Settings</h1><p>Customize your StudyLyx experience.</p></div>
+        <div class="settings-tabs">
+          <button class="settings-tab active" onclick="switchSettingsTab(this,'settings-profile')">Profile</button>
+          <button class="settings-tab" onclick="switchSettingsTab(this,'settings-theme')">Appearance</button>
+          <button class="settings-tab" onclick="switchSettingsTab(this,'settings-notifs')">Notifications</button>
+          <button class="settings-tab" onclick="switchSettingsTab(this,'settings-account')">Account</button>
+        </div>
+        <div id="settings-profile" class="settings-section active">
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-info"><strong>Profile Picture</strong><span>Your avatar shown across StudyLyx</span></div>
+              <div class="avatar-upload">
+                <div class="avatar-preview" id="settings-avatar">U</div>
+                <button class="btn btn-secondary btn-sm" onclick="toast('Avatar updates coming soon!','info')"><i class="fas fa-upload"></i> Upload</button>
+              </div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info" style="flex:1;"><strong>Display Name</strong></div>
+              <input class="input" style="max-width:240px;" id="settings-name-input" placeholder="Your name"/>
+            </div>
+            <div class="settings-row">
+              <div style="flex:1;"></div>
+              <button class="btn btn-primary btn-sm" onclick="saveProfileSettings()">Save Changes</button>
+            </div>
+          </div>
+        </div>
+        <div id="settings-theme" class="settings-section">
+          <div class="settings-group">
+            <div class="settings-row">
+              <div class="settings-row-info"><strong>Dark Mode</strong><span>Toggle dark/light theme</span></div>
+              <div class="toggle" id="theme-toggle-setting" onclick="toggleThemeFromSettings()"></div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info"><strong>Accent Color</strong><span>Primary interface color</span></div>
+              <div class="color-pickers">
+                <div class="color-opt sel" style="background:#7c5cfc;" onclick="setAccent('#7c5cfc','#f472b6',this)"></div>
+                <div class="color-opt" style="background:#06b6d4;" onclick="setAccent('#06b6d4','#6366f1',this)"></div>
+                <div class="color-opt" style="background:#10b981;" onclick="setAccent('#10b981','#f59e0b',this)"></div>
+                <div class="color-opt" style="background:#f59e0b;" onclick="setAccent('#f59e0b','#ef4444',this)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="settings-notifs" class="settings-section">
+          <div class="settings-group">
+            <div class="settings-row"><div class="settings-row-info"><strong>Daily Quiz Reminder</strong><span>Remind me to complete the daily quiz</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="settings-row"><div class="settings-row-info"><strong>Streak Alerts</strong><span>Warn me before my streak breaks</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+            <div class="settings-row"><div class="settings-row-info"><strong>Achievement Notifications</strong><span>Notify when I earn a badge</span></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+          </div>
+        </div>
+        <div id="settings-account" class="settings-section">
+          <div class="settings-group">
+            <div class="settings-row"><div class="settings-row-info"><strong>Email</strong><span id="settings-email-display">—</span></div><span class="chip chip-green"><i class="fas fa-check"></i> Verified</span></div>
+            <div class="settings-row">
+              <div class="settings-row-info"><strong>Change Password</strong><span>Send a password reset email</span></div>
+              <button class="btn btn-secondary btn-sm" onclick="resetPassword2()"><i class="fas fa-key"></i> Reset</button>
+            </div>
+            <div class="settings-row">
+              <div class="settings-row-info"><strong>Sign Out</strong><span>Log out of your account</span></div>
+              <button class="btn btn-danger btn-sm" onclick="logoutUser()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end content-area -->
+  </div><!-- end main-content -->
+</div><!-- end app-page -->
+
+<!-- ==================== MODALS ==================== -->
+<!-- Note Modal -->
+<div class="modal-overlay hidden" id="note-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="note-modal-title">New Note</h3>
+      <button class="modal-close" onclick="closeModal('note-modal')">✕</button>
+    </div>
+    <div class="input-group"><label>Title</label><input class="input" id="note-title-input" placeholder="Note title..."/></div>
+    <div class="input-group"><label>Subject</label><select class="input" id="note-subject-input"><option>Mathematics</option><option>Science</option><option>English</option><option>History</option><option>Geography</option><option>Computer Science</option><option>General</option></select></div>
+    <div class="input-group"><label>Content</label><textarea class="input" id="note-content-input" style="min-height:140px;" placeholder="Write your note here..."></textarea></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="closeModal('note-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNote()"><i class="fas fa-save"></i> Save Note</button>
+    </div>
+  </div>
+</div>
+
+<!-- Flashcard Modal -->
+<div class="modal-overlay hidden" id="flashcard-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Create Flashcard</h3>
+      <button class="modal-close" onclick="closeModal('flashcard-modal')">✕</button>
+    </div>
+    <div class="input-group"><label>Subject</label><select class="input" id="fc-subject-input"><option>Mathematics</option><option>Science</option><option>English</option><option>History</option><option>Geography</option><option>Computer Science</option></select></div>
+    <div class="input-group"><label>Question (Front)</label><textarea class="input" id="fc-front-input" style="min-height:90px;" placeholder="Enter the question..."></textarea></div>
+    <div class="input-group"><label>Answer (Back)</label><textarea class="input" id="fc-back-input" style="min-height:90px;" placeholder="Enter the answer..."></textarea></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="closeModal('flashcard-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveFlashcard()"><i class="fas fa-save"></i> Create Card</button>
+    </div>
+  </div>
+</div>
+
+<!-- Goal Modal -->
+<div class="modal-overlay hidden" id="goal-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Add Goal</h3>
+      <button class="modal-close" onclick="closeModal('goal-modal')">✕</button>
+    </div>
+    <div class="input-group"><label>Goal Name</label><input class="input" id="goal-name-input" placeholder="e.g. Read 3 chapters"/></div>
+    <div class="input-group"><label>Target</label><input class="input" type="number" id="goal-target-input" placeholder="e.g. 10" min="1"/></div>
+    <div class="input-group"><label>Unit</label><input class="input" id="goal-unit-input" placeholder="e.g. pages, hours, problems"/></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="closeModal('goal-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveGoal()">Add Goal</button>
+    </div>
+  </div>
+</div>
+
+<!-- Planner Modal -->
+<div class="modal-overlay hidden" id="planner-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title">Schedule Study Session</h3>
+      <button class="modal-close" onclick="closeModal('planner-modal')">✕</button>
+    </div>
+    <div class="input-group"><label>Subject</label><select class="input" id="plan-subject"><option>Mathematics</option><option>Science</option><option>English</option><option>History</option><option>Geography</option><option>Computer Science</option></select></div>
+    <div class="input-group"><label>Day</label><select class="input" id="plan-day"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div>
+    <div class="input-group"><label>Time</label><input class="input" type="time" id="plan-time" value="09:00"/></div>
+    <div class="input-group"><label>Duration (minutes)</label><input class="input" type="number" id="plan-duration" value="45" min="15" max="180"/></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px;">
+      <button class="btn btn-secondary" onclick="closeModal('planner-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePlannerEntry()">Schedule</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== JAVASCRIPT ==================== -->
 <script>
-// Firebase Config
+// ============================================================
+// FIREBASE CONFIG — replace with your own keys
+// ============================================================
 const firebaseConfig = {
-    apiKey: "AIzaSyB2RZlRNlTONf4xuxjPMcZgedc9wbIhj-4",
-    authDomain: "axid-ai.firebaseapp.com",
-    projectId: "axid-ai",
-    storageBucket: "axid-ai.firebasestorage.app",
-    messagingSenderId: "354519561790",
-    appId: "1:354519561790:web:e2b25803bcd713aea4836f"
+  apiKey: "AIzaSyDEMO-REPLACE-WITH-YOUR-KEY",
+  authDomain: "studylyx-demo.firebaseapp.com",
+  projectId: "studylyx-demo",
+  storageBucket: "studylyx-demo.appspot.com",
+  messagingSenderId: "000000000000",
+  appId: "1:000000000000:web:demo000000000000"
 };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
+// Init Firebase (graceful fallback if config is placeholder)
+let db = null, auth = null, fbReady = false;
+try {
+  firebase.initializeApp(firebaseConfig);
+  auth = firebase.auth();
+  db = firebase.firestore();
+  fbReady = true;
+} catch(e) {
+  console.warn('Firebase not configured — running in demo mode');
+}
 
-// Global state
+// ============================================================
+// STATE
+// ============================================================
 let currentUser = null;
-let currentStreak = 7;
-let xp = 1240;
+let currentSection = 'dashboard';
+let currentSubject = null;
 
-// Switch auth tabs
-function switchAuthTab(tab) {
-    document.getElementById('login-form').classList.toggle('hidden', tab !== 0);
-    document.getElementById('signup-form').classList.toggle('hidden', tab !== 1);
-}
+// App data (local fallback)
+let appData = {
+  notes: [], flashcards: [], quizHistory: [], dqHistory: [],
+  tasks: [], goals: [], planner: [], watchHistory: [],
+  xp: 0, streak: 0, level: 1, sessions: 0,
+  achievements: [], dailyChallengeCompleted: false
+};
 
-// Auth functions
-async function loginWithEmail() {
-    const email = document.getElementById('login-email').value.trim();
-    const password = document.getElementById('login-password').value;
-    if (!email || !password) return showMessage("Please fill all fields");
-    try {
-        await auth.signInWithEmailAndPassword(email, password);
-    } catch (error) {
-        showMessage(error.message);
-    }
-}
-
-async function signupWithEmail() {
-    const name = document.getElementById('signup-name').value.trim();
-    const email = document.getElementById('signup-email').value.trim();
-    const password = document.getElementById('signup-password').value;
-    if (!name || !email || !password) return showMessage("Please fill all fields");
-    try {
-        const cred = await auth.createUserWithEmailAndPassword(email, password);
-        await cred.user.updateProfile({ displayName: name });
-    } catch (error) {
-        showMessage(error.message);
-    }
-}
-
-async function signInWithGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    try {
-        await auth.signInWithPopup(provider);
-    } catch (error) {
-        showMessage(error.message);
-    }
-}
-
-function forgotPassword() {
-    const email = prompt("Enter your email:");
-    if (email) {
-        auth.sendPasswordResetEmail(email).then(() => {
-            showMessage("Password reset email sent!", false);
-        }).catch(err => showMessage(err.message));
-    }
-}
-
-function logout() {
-    auth.signOut();
-}
-
-function showMessage(msg, isError = true) {
-    const el = document.getElementById('auth-message');
-    el.textContent = msg;
-    el.style.color = isError ? '#ef4444' : '#10b981';
-}
-
-// Navigation
-function navigateTo(page) {
-    document.querySelectorAll('[id^="page-"]').forEach(p => p.classList.add('hidden'));
-    document.getElementById('page-' + page).classList.remove('hidden');
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('nav-active'));
-    document.getElementById('nav-' + page).classList.add('nav-active');
-    document.getElementById('page-title').textContent = page === 'home' ? 'Home' : page.charAt(0).toUpperCase() + page.slice(1);
-}
-
-// Quiz demo
-let currentQuestion = 0;
-const sampleQuestions = [
-    { q: "What is 15 + 27?", options: ["40", "42", "45", "52"], ans: 1 },
-    { q: "What is the square root of 64?", options: ["6", "7", "8", "9"], ans: 2 }
+// ============================================================
+// VIDEOS / RECORDED CLASSES
+// ============================================================
+const recordedClasses = [
+  {id:'v1',title:'Basic Algebra',subject:'Mathematics',desc:'Introduction to algebraic expressions, variables, and solving simple equations.',url:'https://www.youtube.com/embed/TQINmo_TP9s',views:1240,thumb:'https://img.youtube.com/vi/TQINmo_TP9s/mqdefault.jpg'},
+  {id:'v2',title:'Squares and Square Roots',subject:'Mathematics',desc:'Understanding perfect squares, square roots, and their applications.',url:'https://www.youtube.com/embed/TQINmo_TP9s',views:980,thumb:'https://img.youtube.com/vi/TQINmo_TP9s/mqdefault.jpg'},
+  {id:'v3',title:'Cube and Cube Roots',subject:'Mathematics',desc:'Exploring cube numbers, cube roots and solving problems involving them.',url:'https://www.youtube.com/embed/zGluyVamuCw',views:756,thumb:'https://img.youtube.com/vi/zGluyVamuCw/mqdefault.jpg'},
+  {id:'v4',title:'Rational Numbers',subject:'Mathematics',desc:'Properties of rational numbers, operations and number line representation.',url:'https://www.youtube.com/embed/PlqEKJum2BA',views:1123,thumb:'https://img.youtube.com/vi/PlqEKJum2BA/mqdefault.jpg'},
+  {id:'v5',title:'Comparing Quantities',subject:'Mathematics',desc:'Ratios, percentages, profit, loss and simple interest concepts.',url:'https://www.youtube.com/embed/FADSgGKG_mc',views:892,thumb:'https://img.youtube.com/vi/FADSgGKG_mc/mqdefault.jpg'},
 ];
 
-function startQuiz() {
-    currentQuestion = 0;
-    document.getElementById('quiz-container').classList.remove('hidden');
-    document.getElementById('quiz-result').classList.add('hidden');
-    showQuestion();
+// ============================================================
+// QUIZ QUESTIONS DATABASE
+// ============================================================
+const questionBank = {
+  Mathematics:[
+    {q:'What is the value of √144?',opts:['10','11','12','13'],ans:2},
+    {q:'Solve: 3x + 7 = 22',opts:['4','5','6','7'],ans:1},
+    {q:'What is 15% of 200?',opts:['20','25','30','35'],ans:2},
+    {q:'The cube of 3 is:',opts:['6','9','27','81'],ans:2},
+    {q:'Which of these is a rational number?',opts:['√2','π','0.75','√3'],ans:2},
+    {q:'What is 2³ × 2²?',opts:['10','16','32','64'],ans:2},
+    {q:'If a : b = 3 : 4 and b : c = 2 : 5, find a : c',opts:['3:10','6:20','3:8','6:10'],ans:0},
+    {q:'The square root of 0.0049 is:',opts:['0.007','0.07','0.7','7'],ans:1},
+    {q:'Simplify: (2x)(3x²)',opts:['5x²','5x³','6x²','6x³'],ans:3},
+    {q:'What is the LCM of 12 and 18?',opts:['6','24','36','72'],ans:2},
+    {q:'A shopkeeper buys an item for ₹80 and sells it for ₹100. Profit % is:',opts:['20%','25%','30%','40%'],ans:1},
+    {q:'What is the additive inverse of -7?',opts:['-7','0','7','14'],ans:2},
+  ],
+  Science:[
+    {q:'What is the chemical formula of water?',opts:['HO','H₂O','H₂O₂','HO₂'],ans:1},
+    {q:'Which planet is known as the Red Planet?',opts:['Venus','Mars','Jupiter','Saturn'],ans:1},
+    {q:'The speed of light is approximately:',opts:['3×10⁶ m/s','3×10⁸ m/s','3×10¹⁰ m/s','3×10⁴ m/s'],ans:1},
+    {q:'Which gas do plants absorb during photosynthesis?',opts:['Oxygen','Nitrogen','Carbon Dioxide','Hydrogen'],ans:2},
+    {q:'What is Newton\'s First Law of Motion also called?',opts:['Law of Inertia','Law of Force','Law of Momentum','Law of Action'],ans:0},
+    {q:'The atomic number of Carbon is:',opts:['4','6','8','12'],ans:1},
+    {q:'Which organ purifies blood in the human body?',opts:['Heart','Liver','Kidneys','Lungs'],ans:2},
+    {q:'Sound travels fastest through:',opts:['Air','Water','Vacuum','Steel'],ans:3},
+    {q:'Which vitamin is produced by the skin when exposed to sunlight?',opts:['Vitamin A','Vitamin B','Vitamin C','Vitamin D'],ans:3},
+    {q:'The process of a liquid turning into gas is called:',opts:['Condensation','Evaporation','Sublimation','Freezing'],ans:1},
+    {q:'What is the SI unit of force?',opts:['Joule','Watt','Newton','Pascal'],ans:2},
+    {q:'Which blood group is the universal donor?',opts:['A','B','AB','O'],ans:3},
+  ],
+  English:[
+    {q:'Which of these is a synonym for "abundant"?',opts:['Scarce','Plentiful','Tiny','Dark'],ans:1},
+    {q:'"She writes beautifully." The underlined word is a/an:',opts:['Noun','Verb','Adjective','Adverb'],ans:3},
+    {q:'Identify the correct sentence:',opts:['He don\'t know.','He doesn\'t knows.','He doesn\'t know.','He do not knows.'],ans:2},
+    {q:'The antonym of "ancient" is:',opts:['Old','Modern','Antique','Historical'],ans:1},
+    {q:'Which literary device is used in "The wind whispered through the trees"?',opts:['Metaphor','Simile','Personification','Alliteration'],ans:2},
+    {q:'A word that replaces a noun is called a:',opts:['Verb','Adjective','Pronoun','Adverb'],ans:2},
+    {q:'Fill in the blank: She is _____ honest girl.',opts:['a','an','the','no article'],ans:0},
+    {q:'Which sentence is in passive voice?',opts:['She ate the cake.','The cake was eaten by her.','She was eating the cake.','She eats cake.'],ans:1},
+    {q:'"Break a leg" is an example of:',opts:['Simile','Idiom','Metaphor','Personification'],ans:1},
+    {q:'Choose the correctly spelled word:',opts:['Recieve','Receive','Receve','Receeve'],ans:1},
+    {q:'The plural of "child" is:',opts:['Childs','Childes','Children','Childrens'],ans:2},
+    {q:'Which tense is used in "I have been studying"?',opts:['Simple Present','Present Perfect','Present Continuous','Present Perfect Continuous'],ans:3},
+  ],
+  History:[
+    {q:'When did World War II end?',opts:['1943','1944','1945','1946'],ans:2},
+    {q:'Who was the first President of the United States?',opts:['John Adams','Abraham Lincoln','George Washington','Thomas Jefferson'],ans:2},
+    {q:'The Great Wall of China was primarily built to defend against:',opts:['Mongols','Japanese','Persians','Turks'],ans:0},
+    {q:'The Renaissance period began in which country?',opts:['France','England','Italy','Germany'],ans:2},
+    {q:'Who discovered America in 1492?',opts:['Vasco da Gama','Christopher Columbus','Ferdinand Magellan','John Cabot'],ans:1},
+  ],
+  Geography:[
+    {q:'What is the largest continent by area?',opts:['Africa','North America','Europe','Asia'],ans:3},
+    {q:'The Amazon River flows through which country?',opts:['Colombia','Peru','Brazil','Argentina'],ans:2},
+    {q:'What is the capital of Australia?',opts:['Sydney','Melbourne','Canberra','Brisbane'],ans:2},
+    {q:'Mount Everest is located in which mountain range?',opts:['Andes','Rockies','Alps','Himalayas'],ans:3},
+    {q:'The Sahara Desert is located in which continent?',opts:['Asia','Australia','Africa','South America'],ans:2},
+  ],
+  'Computer Science':[
+    {q:'What does CPU stand for?',opts:['Computer Processing Unit','Central Processing Unit','Core Processing Unit','Central Program Unit'],ans:1},
+    {q:'Which language is known as the backbone of the web?',opts:['Python','Java','HTML','C++'],ans:2},
+    {q:'What does HTTP stand for?',opts:['HyperText Transfer Protocol','High Text Transfer Protocol','HyperText Transmission Protocol','High Transfer Text Protocol'],ans:0},
+    {q:'Binary code uses how many digits?',opts:['8','10','2','16'],ans:2},
+    {q:'What is an algorithm?',opts:['A programming language','A step-by-step set of instructions','A type of computer','A storage device'],ans:1},
+  ]
+};
+
+// ============================================================
+// SUBJECTS
+// ============================================================
+const subjectsData = [
+  {name:'Mathematics',icon:'➕',color:'#7c5cfc',notes:[{title:'Algebra Basics',content:'Variables are symbols (like x, y) that represent unknown values. Expressions combine variables with numbers using operations: 3x + 2, 5y - 7.'}],flashcards:[{q:'What is a variable?',a:'A symbol representing an unknown quantity, like x or y.'},{q:'What is the formula for simple interest?',a:'SI = (P × R × T) / 100'}],resources:[{title:'Khan Academy – Algebra',url:'https://www.khanacademy.org/math/algebra'},{title:'NCERT Maths Solutions',url:'#'}]},
+  {name:'Science',icon:'🔬',color:'#34d399',notes:[{title:'Newton\'s Laws',content:'First Law (Inertia): An object remains at rest or in motion unless acted on by a net external force. Second Law: F = ma. Third Law: Every action has an equal and opposite reaction.'}],flashcards:[{q:'What is Newton\'s Second Law?',a:'F = ma (Force equals mass times acceleration)'},{q:'What organelle is the powerhouse of the cell?',a:'The mitochondria'}],resources:[{title:'NASA Science',url:'https://science.nasa.gov'},{title:'NCERT Science',url:'#'}]},
+  {name:'English',icon:'📖',color:'#f472b6',notes:[{title:'Parts of Speech',content:'Noun: person, place, thing. Verb: action word. Adjective: describes noun. Adverb: describes verb. Pronoun: replaces noun. Preposition: shows relationship. Conjunction: joins clauses. Interjection: exclamation.'}],flashcards:[{q:'What is a simile?',a:'A comparison using "like" or "as" — e.g., "brave as a lion"'},{q:'What is personification?',a:'Giving human qualities to non-human things — e.g., "the wind whispered"'}],resources:[{title:'Grammarly Blog',url:'https://www.grammarly.com/blog'},{title:'British Council English',url:'https://www.britishcouncil.org/english'}]},
+  {name:'History',icon:'🏛️',color:'#fb923c',notes:[{title:'World War II Summary',content:'WWII (1939–1945) involved most of the world\'s nations. The Allied powers defeated the Axis powers. Key events: Holocaust, D-Day invasion, atomic bombs on Hiroshima and Nagasaki.'}],flashcards:[{q:'In which year did WWII end?',a:'1945'},{q:'Who invented the printing press?',a:'Johannes Gutenberg, around 1440'}],resources:[{title:'History.com',url:'https://www.history.com'},{title:'BBC History',url:'https://www.bbc.co.uk/history'}]},
+  {name:'Geography',icon:'🌍',color:'#06b6d4',notes:[{title:'Continents & Oceans',content:'7 continents: Asia, Africa, North America, South America, Antarctica, Europe, Australia. 5 oceans: Pacific (largest), Atlantic, Indian, Southern, Arctic (smallest).'}],flashcards:[{q:'What is the largest ocean?',a:'The Pacific Ocean, covering over 165 million km²'},{q:'What is the capital of Australia?',a:'Canberra (not Sydney!)'}],resources:[{title:'National Geographic',url:'https://www.nationalgeographic.com'},{title:'WorldAtlas',url:'https://www.worldatlas.com'}]},
+  {name:'Computer Science',icon:'💻',color:'#a78bfa',notes:[{title:'Introduction to Algorithms',content:'An algorithm is a step-by-step procedure to solve a problem. Properties: Finiteness, Definiteness, Input, Output, Effectiveness. Examples: sorting, searching, pathfinding.'}],flashcards:[{q:'What does CPU stand for?',a:'Central Processing Unit'},{q:'What is binary?',a:'A base-2 number system using only 0 and 1'}],resources:[{title:'freeCodeCamp',url:'https://www.freecodecamp.org'},{title:'CS50 – Harvard',url:'https://cs50.harvard.edu'}]},
+];
+
+// ============================================================
+// ACHIEVEMENTS / BADGES
+// ============================================================
+const allBadges = [
+  {id:'first_note',icon:'📝',name:'Note Taker',desc:'Create your first note'},
+  {id:'streak_3',icon:'🔥',name:'On Fire',desc:'3-day study streak'},
+  {id:'quiz_master',icon:'🏆',name:'Quiz Master',desc:'Score 100% on a quiz'},
+  {id:'first_video',icon:'🎬',name:'First Watch',desc:'Watch your first video'},
+  {id:'xp_100',icon:'⭐',name:'Rising Star',desc:'Earn 100 XP'},
+  {id:'flash_5',icon:'🃏',name:'Flash Learner',desc:'Create 5 flashcards'},
+  {id:'daily_done',icon:'🎯',name:'Daily Hero',desc:'Complete a daily quiz'},
+  {id:'streak_7',icon:'💎',name:'Diamond',desc:'7-day study streak'},
+];
+
+// ============================================================
+// DAILY CHALLENGES
+// ============================================================
+const dailyChallenges = [
+  {icon:'📝',title:'Create 3 Notes',desc:'Write notes for any 3 topics you\'re studying today.'},
+  {icon:'🃏',title:'Study 10 Flashcards',desc:'Go through at least 10 flashcards in study mode.'},
+  {icon:'🎯',title:'Complete the Daily Quiz',desc:'Finish today\'s daily quiz with a score above 60%.'},
+  {icon:'⏰',title:'Pomodoro Session',desc:'Complete 2 full Pomodoro work sessions (50 mins total).'},
+  {icon:'📹',title:'Watch a Lesson',desc:'Watch any recorded class lesson to the end.'},
+  {icon:'✅',title:'Finish Your Tasks',desc:'Complete all tasks in your task manager today.'},
+];
+
+// ============================================================
+// PAGE NAVIGATION
+// ============================================================
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(pageId);
+  if (target) { target.classList.add('active'); }
+  window.scrollTo(0, 0);
 }
 
-function showQuestion() {
-    const q = sampleQuestions[currentQuestion];
-    document.getElementById('question-text').textContent = q.q;
-    const optsHTML = q.options.map((opt, i) => `
-        <button onclick="selectAnswer(${i})" class="w-full text-left px-6 py-4 border rounded-2xl hover:bg-slate-50">${opt}</button>
-    `).join('');
-    document.getElementById('options').innerHTML = optsHTML;
-    document.getElementById('next-btn').classList.add('hidden');
+function navigate(section) {
+  currentSection = section;
+  document.querySelectorAll('[id^="sec-"]').forEach(s => s.classList.add('hidden'));
+  const el = document.getElementById('sec-' + section);
+  if (el) el.classList.remove('hidden');
+  // Update sidebar active
+  document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+  // Update nav links
+  document.querySelectorAll('#main-sidebar .sidebar-item').forEach(b => {
+    if (b.textContent.toLowerCase().includes(section.replace('-',' '))) b.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+  // Section-specific init
+  if (section === 'dashboard') renderDashboard();
+  if (section === 'subjects') renderSubjectsGrid();
+  if (section === 'classes') renderClasses();
+  if (section === 'notes') renderNotes();
+  if (section === 'flashcards') loadFlashcards('');
+  if (section === 'analytics') initCharts();
+  if (section === 'leaderboard') renderLeaderboard();
+  if (section === 'profile') renderProfile();
+  if (section === 'settings') initSettings();
+  if (section === 'tools') initTools();
+  if (section === 'daily-quiz') initDailyQuiz();
+  if (section === 'quiz') renderQuizHistory();
+  closeSidebar();
 }
 
-function selectAnswer(selected) {
-    const q = sampleQuestions[currentQuestion];
-    const isCorrect = selected === q.ans;
-    if (isCorrect) xp += 50;
-    document.getElementById('next-btn').classList.remove('hidden');
+// ============================================================
+// SIDEBAR MOBILE
+// ============================================================
+function openSidebar() {
+  document.getElementById('main-sidebar').style.transform = 'translateX(0)';
+  const ov = document.getElementById('sidebar-overlay');
+  if (ov) ov.classList.add('show');
+}
+function closeSidebar() {
+  const sb = document.getElementById('main-sidebar');
+  if (sb && window.innerWidth <= 768) sb.style.transform = 'translateX(-100%)';
+  const ov = document.getElementById('sidebar-overlay');
+  if (ov) ov.classList.remove('show');
 }
 
-function submitQuizAnswer() {
-    currentQuestion++;
-    if (currentQuestion < sampleQuestions.length) {
-        showQuestion();
-    } else {
-        finishQuiz();
-    }
+// ============================================================
+// TOAST
+// ============================================================
+function toast(msg, type = 'info') {
+  const c = document.getElementById('toast-container');
+  const icons = {success:'✅',error:'❌',info:'💡'};
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.innerHTML = `${icons[type] || 'ℹ️'} ${msg}`;
+  c.appendChild(t);
+  setTimeout(() => { t.style.animation = 'slideOut 0.3s ease forwards'; setTimeout(() => t.remove(), 300); }, 3000);
 }
 
-function finishQuiz() {
-    document.getElementById('quiz-container').classList.add('hidden');
-    document.getElementById('quiz-result').classList.remove('hidden');
-    document.getElementById('score-display').textContent = "85%";
+// ============================================================
+// MODAL HELPERS
+// ============================================================
+function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+// ============================================================
+// THEME
+// ============================================================
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeIcons();
+}
+function toggleThemeFromSettings() {
+  toggleTheme();
+  const tgl = document.getElementById('theme-toggle-setting');
+  if (tgl) tgl.classList.toggle('on');
+}
+function updateThemeIcons() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.querySelectorAll('#theme-toggle, #theme-toggle-home, #theme-toggle2').forEach(btn => {
+    if (btn) btn.innerHTML = dark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+  });
+  const tgl = document.getElementById('theme-toggle-setting');
+  if (tgl) { if (dark) tgl.classList.remove('on'); else tgl.classList.add('on'); }
+}
+function setAccent(primary, accent, el) {
+  document.documentElement.style.setProperty('--primary', primary);
+  document.documentElement.style.setProperty('--accent', accent);
+  document.querySelectorAll('.color-opt').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function initTheme() {
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  updateThemeIcons();
 }
 
-// Dark mode
-function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
+// ============================================================
+// AUTH
+// ============================================================
+function loginUser() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  if (!email || !pass) { toast('Please fill all fields', 'error'); return; }
+  if (fbReady) {
+    auth.signInWithEmailAndPassword(email, pass)
+      .then(() => toast('Welcome back!', 'success'))
+      .catch(e => toast(e.message, 'error'));
+  } else {
+    // Demo mode
+    currentUser = { uid: 'demo', displayName: email.split('@')[0], email };
+    onUserLogin();
+  }
+}
+function signupUser() {
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const pass = document.getElementById('signup-pass').value;
+  if (!name || !email || !pass) { toast('Please fill all fields', 'error'); return; }
+  if (pass.length < 6) { toast('Password must be at least 6 characters', 'error'); return; }
+  if (fbReady) {
+    auth.createUserWithEmailAndPassword(email, pass)
+      .then(cred => cred.user.updateProfile({ displayName: name }))
+      .then(() => toast('Account created! Welcome to StudyLyx 🎉', 'success'))
+      .catch(e => toast(e.message, 'error'));
+  } else {
+    currentUser = { uid: 'demo', displayName: name, email };
+    onUserLogin();
+  }
+}
+function loginGoogle() {
+  if (fbReady) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).catch(e => toast(e.message, 'error'));
+  } else {
+    currentUser = { uid: 'demo', displayName: 'Demo Student', email: 'demo@studylyx.com' };
+    onUserLogin();
+  }
+}
+function resetPassword() {
+  const email = document.getElementById('forgot-email').value.trim();
+  if (!email) { toast('Enter your email', 'error'); return; }
+  if (fbReady) {
+    auth.sendPasswordResetEmail(email)
+      .then(() => { toast('Reset link sent! Check your email.', 'success'); showPage('login-page'); })
+      .catch(e => toast(e.message, 'error'));
+  } else {
+    toast('Reset link sent! (Demo mode)', 'success');
+    showPage('login-page');
+  }
+}
+function resetPassword2() {
+  if (fbReady && currentUser) {
+    auth.sendPasswordResetEmail(currentUser.email)
+      .then(() => toast('Reset email sent!', 'success'))
+      .catch(e => toast(e.message, 'error'));
+  } else { toast('Password reset email sent! (Demo)', 'success'); }
+}
+function logoutUser() {
+  if (fbReady) auth.signOut();
+  currentUser = null;
+  appData = { notes:[], flashcards:[], quizHistory:[], dqHistory:[], tasks:[], goals:[], planner:[], watchHistory:[], xp:0, streak:0, level:1, sessions:0, achievements:[], dailyChallengeCompleted:false };
+  showPage('home-page');
+  document.getElementById('main-sidebar').classList.add('hidden');
+  toast('Logged out. See you soon! 👋', 'info');
 }
 
-// Auth state
-auth.onAuthStateChanged(async (user) => {
-    if (user) {
-        currentUser = user;
-        document.getElementById('auth-screen').classList.add('hidden');
-        document.getElementById('main-app').classList.remove('hidden');
-        document.getElementById('welcome-name').textContent = user.displayName || "Student";
-        document.getElementById('sidebar-name').textContent = user.displayName || "Student";
-        document.getElementById('sidebar-email').textContent = user.email;
-        navigateTo('home');
-    } else {
-        document.getElementById('auth-screen').classList.remove('hidden');
-        document.getElementById('main-app').classList.add('hidden');
-    }
+if (fbReady) {
+  auth.onAuthStateChanged(user => {
+    if (user) { currentUser = user; onUserLogin(); }
+    else { showPage('home-page'); }
+  });
+}
+
+function onUserLogin() {
+  showPage('app-page');
+  document.getElementById('main-sidebar').classList.remove('hidden');
+  loadUserData();
+  const name = (currentUser.displayName || currentUser.email || 'Student').split(' ')[0];
+  const initials = name.charAt(0).toUpperCase();
+  const av = document.getElementById('app-avatar');
+  if (av) av.textContent = initials;
+  navigate('dashboard');
+  toast(`Welcome back, ${name}! 🎉`, 'success');
+}
+
+// ============================================================
+// FIRESTORE HELPERS
+// ============================================================
+function userDoc(path) {
+  if (!fbReady || !currentUser) return null;
+  return db.collection('users').doc(currentUser.uid).collection(path);
+}
+
+async function loadUserData() {
+  if (!fbReady || !currentUser) { loadDemoData(); return; }
+  try {
+    const snap = await db.collection('users').doc(currentUser.uid).get();
+    if (snap.exists) { const d = snap.data(); appData.xp = d.xp||0; appData.streak = d.streak||0; appData.level = d.level||1; appData.achievements = d.achievements||[]; appData.sessions = d.sessions||0; }
+    const ns = await userDoc('notes').orderBy('createdAt','desc').get();
+    appData.notes = ns.docs.map(d => ({id:d.id,...d.data()}));
+    const fs = await userDoc('flashcards').get();
+    appData.flashcards = fs.docs.map(d => ({id:d.id,...d.data()}));
+    const qs = await userDoc('quizHistory').orderBy('date','desc').limit(20).get();
+    appData.quizHistory = qs.docs.map(d => ({id:d.id,...d.data()}));
+    const dqs = await userDoc('dqHistory').orderBy('date','desc').limit(30).get();
+    appData.dqHistory = dqs.docs.map(d => ({id:d.id,...d.data()}));
+    const wh = await userDoc('watchHistory').get();
+    appData.watchHistory = wh.docs.map(d => ({id:d.id,...d.data()}));
+  } catch(e) { console.warn('Load error:', e); loadDemoData(); }
+}
+
+function loadDemoData() {
+  appData.xp = 450;
+  appData.streak = 5;
+  appData.level = 3;
+  appData.sessions = 12;
+  appData.achievements = ['first_note','xp_100','streak_3'];
+  appData.notes = [
+    {id:'n1',title:'Algebra Basics',subject:'Mathematics',content:'Variables represent unknowns. 3x + 7 = 22 → x = 5.',createdAt:new Date().toISOString()},
+    {id:'n2',title:'Newton\'s Laws',subject:'Science',content:'F = ma. Action & Reaction are equal and opposite.',createdAt:new Date().toISOString()},
+    {id:'n3',title:'Parts of Speech',subject:'English',content:'Noun, Verb, Adjective, Adverb, Pronoun, Conjunction, Preposition.',createdAt:new Date().toISOString()},
+  ];
+  appData.flashcards = [
+    {id:'f1',subject:'Mathematics',front:'What is a variable?',back:'A symbol representing an unknown value.'},
+    {id:'f2',subject:'Science',front:'Newton\'s Second Law?',back:'F = ma — Force equals mass × acceleration'},
+    {id:'f3',subject:'English',front:'What is a simile?',back:'A comparison using "like" or "as"'},
+  ];
+  appData.quizHistory = [
+    {id:'q1',subject:'Mathematics',score:80,total:10,date:new Date().toISOString()},
+    {id:'q2',subject:'Science',score:70,total:10,date:new Date(Date.now()-86400000).toISOString()},
+  ];
+  appData.dqHistory = [
+    {id:'dq1',score:80,total:10,date:new Date(Date.now()-86400000).toISOString(),xpEarned:80},
+  ];
+  appData.watchHistory = [{videoId:'v1',progress:100},{videoId:'v3',progress:65}];
+  appData.tasks = [{id:'t1',text:'Finish Algebra notes',done:false},{id:'t2',text:'Review Science flashcards',done:true}];
+  appData.goals = [{id:'g1',name:'Study Hours',current:4,target:10,unit:'hours'},{id:'g2',name:'Practice Problems',current:25,target:50,unit:'problems'}];
+  appData.planner = [{id:'p1',subject:'Mathematics',day:'Monday',time:'09:00',duration:45},{id:'p2',subject:'Science',day:'Wednesday',time:'14:00',duration:60}];
+}
+
+async function saveUserMeta() {
+  if (!fbReady || !currentUser) return;
+  try {
+    await db.collection('users').doc(currentUser.uid).set({
+      xp: appData.xp, streak: appData.streak, level: appData.level,
+      achievements: appData.achievements, sessions: appData.sessions,
+      displayName: currentUser.displayName || '', email: currentUser.email || '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch(e) {}
+}
+
+// ============================================================
+// XP + LEVEL + ACHIEVEMENTS
+// ============================================================
+function addXP(amount) {
+  appData.xp += amount;
+  appData.level = Math.floor(appData.xp / 200) + 1;
+  toast(`+${amount} XP! ⭐`, 'success');
+  saveUserMeta();
+  if (appData.xp >= 100) unlockAchievement('xp_100');
+}
+
+function unlockAchievement(id) {
+  if (appData.achievements.includes(id)) return;
+  appData.achievements.push(id);
+  const badge = allBadges.find(b => b.id === id);
+  if (badge) toast(`🏅 Badge Unlocked: ${badge.name}!`, 'success');
+  saveUserMeta();
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function renderDashboard() {
+  const name = (currentUser?.displayName || currentUser?.email || 'Student').split(' ')[0];
+  document.getElementById('dash-name').textContent = name;
+  document.getElementById('dash-streak').textContent = appData.streak;
+  document.getElementById('dash-xp').textContent = appData.xp;
+  document.getElementById('dash-level').textContent = appData.level;
+  document.getElementById('ds-notes').textContent = appData.notes.length;
+  document.getElementById('ds-flashcards').textContent = appData.flashcards.length;
+  document.getElementById('ds-quizzes').textContent = appData.quizHistory.length;
+  document.getElementById('ds-classes').textContent = appData.watchHistory.length;
+  renderStreak();
+  renderBadges('badge-grid');
+  renderSubjectProgress();
+  renderActivity();
+  renderContinueLearning();
+}
+
+function renderStreak() {
+  const days = ['M','T','W','T','F','S','S'];
+  const el = document.getElementById('streak-row');
+  if (!el) return;
+  el.innerHTML = days.map((d,i) => {
+    const cls = i < appData.streak ? 'streak-done' : (i === appData.streak ? 'streak-active' : 'streak-miss');
+    return `<div class="streak-day ${cls}">${d}</div>`;
+  }).join('');
+}
+
+function renderBadges(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = allBadges.map(b => `
+    <div class="badge-item ${appData.achievements.includes(b.id) ? '' : 'locked'}" title="${b.desc}">
+      <div class="badge-icon">${b.icon}</div>
+      <div class="badge-name">${b.name}</div>
+    </div>`).join('');
+}
+
+function renderSubjectProgress() {
+  const el = document.getElementById('subject-progress-list');
+  if (!el) return;
+  const subjects = ['Mathematics','Science','English','History','Geography','Computer Science'];
+  const pcts = [72, 58, 85, 40, 33, 60];
+  el.innerHTML = subjects.map((s,i) => `
+    <div class="progress-bar-wrap">
+      <div class="progress-label"><span>${s}</span><span>${pcts[i]}%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pcts[i]}%"></div></div>
+    </div>`).join('');
+}
+
+function renderActivity() {
+  const el = document.getElementById('activity-list');
+  if (!el) return;
+  const activities = [
+    {icon:'📝',bg:'rgba(124,92,252,0.2)',text:'Created a note',sub:'Algebra Basics • Mathematics',xp:'+10 XP'},
+    {icon:'🃏',bg:'rgba(244,114,182,0.2)',text:'Studied flashcards',sub:'Science • 10 cards reviewed',xp:'+20 XP'},
+    {icon:'✅',bg:'rgba(52,211,153,0.2)',text:'Completed quiz',sub:'Mathematics • Score: 80%',xp:'+40 XP'},
+    {icon:'📹',bg:'rgba(251,146,60,0.2)',text:'Watched a lesson',sub:'Basic Algebra • 12 min',xp:'+15 XP'},
+  ];
+  el.innerHTML = activities.map(a => `
+    <div class="activity-item">
+      <div class="activity-icon" style="background:${a.bg}">${a.icon}</div>
+      <div class="activity-text"><strong>${a.text}</strong><span>${a.sub}</span></div>
+      <div class="activity-xp">${a.xp}</div>
+    </div>`).join('');
+}
+
+function renderContinueLearning() {
+  const el = document.getElementById('continue-learning');
+  if (!el) return;
+  const items = recordedClasses.slice(0, 4);
+  el.innerHTML = items.map(v => {
+    const w = appData.watchHistory.find(wh => wh.videoId === v.id);
+    const pct = w ? w.progress : 0;
+    return `<div style="cursor:pointer;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card2);overflow:hidden;transition:var(--trans);" onclick="openVideo('${v.id}')" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="height:90px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;">
+        <img src="${v.thumb}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML='➕'"/>
+      </div>
+      <div style="padding:10px;">
+        <div style="font-size:11px;color:var(--primary);font-weight:700;text-transform:uppercase;margin-bottom:4px;">${v.subject}</div>
+        <div style="font-size:13px;font-weight:600;">${v.title}</div>
+        <div style="height:3px;background:var(--bg3);border-radius:2px;margin-top:8px;"><div style="height:100%;width:${pct}%;background:var(--primary);border-radius:2px;"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// SUBJECTS
+// ============================================================
+function renderSubjectsGrid() {
+  const el = document.getElementById('subjects-grid');
+  if (!el) return;
+  el.classList.remove('hidden');
+  document.getElementById('subject-detail-view').classList.add('hidden');
+  el.innerHTML = subjectsData.map(s => `
+    <div class="subject-card" style="--subject-color:${s.color}" onclick="openSubject('${s.name}')">
+      <div class="subject-icon-big">${s.icon}</div>
+      <div class="subject-name">${s.name}</div>
+      <div class="subject-count">${s.notes.length} notes · ${s.flashcards.length} cards</div>
+      <div class="subject-prog">
+        <div class="progress-bar"><div class="progress-fill" style="width:${40+Math.floor(Math.random()*50)}%"></div></div>
+      </div>
+    </div>`).join('');
+}
+
+function openSubject(name) {
+  currentSubject = subjectsData.find(s => s.name === name);
+  if (!currentSubject) return;
+  document.getElementById('subjects-grid').classList.add('hidden');
+  const dv = document.getElementById('subject-detail-view');
+  dv.classList.remove('hidden');
+  document.getElementById('sd-title').textContent = name;
+  document.getElementById('sd-h1').textContent = `${currentSubject.icon} ${name}`;
+  renderSubjectNotes();
+  renderSubjectFlashcards();
+  renderSubjectQuiz();
+  renderSubjectResources();
+}
+
+function backToSubjects() {
+  document.getElementById('subjects-grid').classList.remove('hidden');
+  document.getElementById('subject-detail-view').classList.add('hidden');
+  currentSubject = null;
+}
+
+function switchSubjectTab(btn, id) {
+  document.querySelectorAll('.subject-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['sd-notes','sd-flashcards','sd-quiz','sd-resources'].forEach(s => document.getElementById(s).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function renderSubjectNotes() {
+  const el = document.getElementById('sd-notes');
+  const subjectNotes = appData.notes.filter(n => n.subject === currentSubject.name);
+  const defaults = currentSubject.notes;
+  const allNotes = [...defaults.map(n => ({...n, isDefault: true})), ...subjectNotes];
+  el.innerHTML = `
+    <div style="margin-bottom:14px;"><button class="btn btn-primary btn-sm" onclick="openNoteModal('${currentSubject.name}')"><i class="fas fa-plus"></i> New Note</button></div>
+    <div class="notes-grid">${allNotes.length ? allNotes.map(n => noteCardHTML(n)).join('') : '<div class="empty-state"><div class="empty-icon">📝</div><div class="empty-title">No notes yet</div></div>'}</div>`;
+}
+
+function renderSubjectFlashcards() {
+  const el = document.getElementById('sd-flashcards');
+  const cards = [...currentSubject.flashcards, ...appData.flashcards.filter(f => f.subject === currentSubject.name)];
+  el.innerHTML = `
+    <div style="margin-bottom:14px;"><button class="btn btn-primary btn-sm" onclick="openFlashcardModal('${currentSubject.name}')"><i class="fas fa-plus"></i> New Flashcard</button></div>
+    <div class="fc-grid">${cards.map((c,i) => `
+      <div class="fc-mini">
+        <div class="fc-mini-front">${c.q || c.front}</div>
+        <div class="fc-mini-back">${c.a || c.back}</div>
+      </div>`).join('')}</div>`;
+}
+
+function renderSubjectQuiz() {
+  const el = document.getElementById('sd-quiz');
+  const qs = questionBank[currentSubject.name] || [];
+  el.innerHTML = qs.length ? `
+    <div class="dash-card" style="text-align:center;padding:40px;">
+      <div style="font-size:48px;margin-bottom:14px;">🎯</div>
+      <h3 style="margin-bottom:8px;">${currentSubject.name} Quiz</h3>
+      <p style="color:var(--text2);margin-bottom:20px;">${qs.length} questions available</p>
+      <button class="btn btn-primary" onclick="startQuiz('${currentSubject.name}');navigate('quiz')"><i class="fas fa-play"></i> Start Quiz</button>
+    </div>` : `<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-title">No quiz yet</div></div>`;
+}
+
+function renderSubjectResources() {
+  const el = document.getElementById('sd-resources');
+  el.innerHTML = `<div style="display:flex;flex-direction:column;gap:12px;">${currentSubject.resources.map(r => `
+    <a href="${r.url}" target="_blank" style="display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:var(--radius2);border:1px solid var(--border);background:var(--card);text-decoration:none;color:var(--text);transition:var(--trans);" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="width:40px;height:40px;background:rgba(124,92,252,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">🔗</div>
+      <div><div style="font-weight:600;font-size:14px;">${r.title}</div><div style="font-size:12px;color:var(--text3);">${r.url.startsWith('http')?r.url:'Internal resource'}</div></div>
+      <i class="fas fa-external-link-alt" style="margin-left:auto;color:var(--text3);font-size:13px;"></i>
+    </a>`).join('')}</div>`;
+}
+
+// ============================================================
+// NOTES
+// ============================================================
+let editingNoteId = null;
+
+function noteCardHTML(n) {
+  return `<div class="note-card" id="nc-${n.id}">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+      <div class="note-subject-tag">${n.subject || 'General'}</div>
+    </div>
+    <div class="note-title">${n.title}</div>
+    <div class="note-body">${n.content}</div>
+    <div class="note-footer">
+      <div class="note-date">${n.createdAt ? new Date(n.createdAt).toLocaleDateString() : 'Today'}</div>
+      <div class="note-actions">
+        <button onclick="editNote('${n.id}')" title="Edit"><i class="fas fa-edit"></i></button>
+        <button onclick="deleteNote('${n.id}')" title="Delete"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderNotes() {
+  const el = document.getElementById('notes-grid');
+  if (!el) return;
+  const q = document.getElementById('notes-search')?.value?.toLowerCase() || '';
+  const subj = document.getElementById('notes-subject-filter')?.value || '';
+  let notes = appData.notes.filter(n =>
+    (!q || n.title.toLowerCase().includes(q) || n.content.toLowerCase().includes(q)) &&
+    (!subj || n.subject === subj)
+  );
+  el.innerHTML = notes.length ? notes.map(noteCardHTML).join('') : `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📝</div><div class="empty-title">No notes yet</div><div class="empty-sub">Click "New Note" to create your first note.</div></div>`;
+}
+
+function filterNotes(q) { renderNotes(); }
+function filterNotesBySubject(s) { renderNotes(); }
+
+function openNoteModal(subject) {
+  editingNoteId = null;
+  document.getElementById('note-modal-title').textContent = 'New Note';
+  document.getElementById('note-title-input').value = '';
+  document.getElementById('note-content-input').value = '';
+  if (subject) document.getElementById('note-subject-input').value = subject;
+  openModal('note-modal');
+}
+
+function editNote(id) {
+  const note = appData.notes.find(n => n.id === id);
+  if (!note) return;
+  editingNoteId = id;
+  document.getElementById('note-modal-title').textContent = 'Edit Note';
+  document.getElementById('note-title-input').value = note.title;
+  document.getElementById('note-content-input').value = note.content;
+  document.getElementById('note-subject-input').value = note.subject || 'General';
+  openModal('note-modal');
+}
+
+async function saveNote() {
+  const title = document.getElementById('note-title-input').value.trim();
+  const content = document.getElementById('note-content-input').value.trim();
+  const subject = document.getElementById('note-subject-input').value;
+  if (!title) { toast('Enter a title', 'error'); return; }
+  if (editingNoteId) {
+    const idx = appData.notes.findIndex(n => n.id === editingNoteId);
+    if (idx !== -1) appData.notes[idx] = {...appData.notes[idx], title, content, subject};
+    if (fbReady && currentUser) await userDoc('notes').doc(editingNoteId).update({title,content,subject});
+    toast('Note updated!', 'success');
+  } else {
+    const note = {id: 'n_' + Date.now(), title, content, subject, createdAt: new Date().toISOString()};
+    appData.notes.unshift(note);
+    if (fbReady && currentUser) await userDoc('notes').add({title,content,subject,createdAt: firebase.firestore.FieldValue.serverTimestamp()});
+    unlockAchievement('first_note');
+    addXP(10);
+    toast('Note saved!', 'success');
+  }
+  closeModal('note-modal');
+  renderNotes();
+}
+
+async function deleteNote(id) {
+  appData.notes = appData.notes.filter(n => n.id !== id);
+  if (fbReady && currentUser) try { await userDoc('notes').doc(id).delete(); } catch(e) {}
+  const el = document.getElementById('nc-' + id);
+  if (el) el.remove();
+  toast('Note deleted', 'info');
+}
+
+// ============================================================
+// FLASHCARDS
+// ============================================================
+let fcStudyCards = [], fcCurrentIdx = 0;
+
+function openFlashcardModal(subject) {
+  if (subject) document.getElementById('fc-subject-input').value = subject;
+  document.getElementById('fc-front-input').value = '';
+  document.getElementById('fc-back-input').value = '';
+  openModal('flashcard-modal');
+}
+
+async function saveFlashcard() {
+  const subject = document.getElementById('fc-subject-input').value;
+  const front = document.getElementById('fc-front-input').value.trim();
+  const back = document.getElementById('fc-back-input').value.trim();
+  if (!front || !back) { toast('Fill in both sides', 'error'); return; }
+  const card = {id: 'fc_' + Date.now(), subject, front, back};
+  appData.flashcards.push(card);
+  if (fbReady && currentUser) await userDoc('flashcards').add({subject, front, back, createdAt: firebase.firestore.FieldValue.serverTimestamp()});
+  if (appData.flashcards.length >= 5) unlockAchievement('flash_5');
+  addXP(5);
+  toast('Flashcard created!', 'success');
+  closeModal('flashcard-modal');
+  loadFlashcards(document.getElementById('fc-subject-filter')?.value || '');
+}
+
+function loadFlashcards(subjectFilter) {
+  const el = document.getElementById('fc-grid');
+  if (!el) return;
+  const allCards = [
+    ...subjectsData.flatMap(s => s.flashcards.map(c => ({id:s.name+'_'+c.q,subject:s.name,front:c.q,back:c.a,isBuiltin:true}))),
+    ...appData.flashcards
+  ];
+  const filtered = subjectFilter ? allCards.filter(c => c.subject === subjectFilter) : allCards;
+  el.innerHTML = filtered.length ? filtered.map(c => `
+    <div class="fc-mini" style="cursor:default;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+        <span class="chip chip-purple" style="font-size:10px;">${c.subject}</span>
+        ${!c.isBuiltin ? `<button onclick="deleteFlashcard('${c.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;"><i class="fas fa-trash"></i></button>` : ''}
+      </div>
+      <div class="fc-mini-front">Q: ${c.front}</div>
+      <div class="fc-mini-back">A: ${c.back}</div>
+    </div>`).join('') : `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">🃏</div><div class="empty-title">No flashcards</div><div class="empty-sub">Create your first flashcard!</div></div>`;
+  fcStudyCards = filtered;
+}
+
+function deleteFlashcard(id) {
+  appData.flashcards = appData.flashcards.filter(f => f.id !== id);
+  if (fbReady && currentUser) try { userDoc('flashcards').doc(id).delete(); } catch(e) {}
+  loadFlashcards('');
+  toast('Flashcard deleted', 'info');
+}
+
+function startFlashcardStudy() {
+  const allCards = [
+    ...subjectsData.flatMap(s => s.flashcards.map(c => ({front:c.q,back:c.a}))),
+    ...appData.flashcards
+  ];
+  if (!allCards.length) { toast('Create some flashcards first!', 'info'); return; }
+  fcStudyCards = allCards.sort(() => Math.random() - 0.5);
+  fcCurrentIdx = 0;
+  document.getElementById('fc-study-mode').classList.remove('hidden');
+  document.getElementById('fc-grid').classList.add('hidden');
+  showFCCard();
+}
+
+function showFCCard() {
+  const card = fcStudyCards[fcCurrentIdx];
+  if (!card) return;
+  document.getElementById('fc-front-text').textContent = card.front;
+  document.getElementById('fc-back-text').textContent = card.back;
+  document.getElementById('fc-current').textContent = fcCurrentIdx + 1;
+  document.getElementById('fc-total').textContent = fcStudyCards.length;
+  document.getElementById('main-flashcard').classList.remove('flipped');
+}
+
+function flipCard() { document.getElementById('main-flashcard').classList.toggle('flipped'); }
+function nextCard() { if (fcCurrentIdx < fcStudyCards.length - 1) { fcCurrentIdx++; showFCCard(); } else { toast('You\'ve reviewed all cards! 🎉', 'success'); addXP(20); } }
+function prevCard() { if (fcCurrentIdx > 0) { fcCurrentIdx--; showFCCard(); } }
+function markCard(diff) { if (diff === 'easy') addXP(2); nextCard(); }
+function endStudyMode() {
+  document.getElementById('fc-study-mode').classList.add('hidden');
+  document.getElementById('fc-grid').classList.remove('hidden');
+}
+
+// ============================================================
+// QUIZ SYSTEM
+// ============================================================
+let quizState = { subject:'', questions:[], current:0, score:0, answers:[], timer:null, elapsed:0 };
+
+function renderQuizHistory() {
+  const el = document.getElementById('quiz-history-list');
+  if (!el) return;
+  if (!appData.quizHistory.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">📊</div><div class="empty-title">No quizzes yet</div></div>`; return; }
+  el.innerHTML = appData.quizHistory.slice(0,10).map(q => {
+    const pct = Math.round((q.score/q.total)*100);
+    const cls = pct>=80?'qhi-gold':pct>=60?'qhi-silver':'qhi-bronze';
+    const label = pct>=80?'Excellent':pct>=60?'Good':'Keep trying';
+    return `<div class="quiz-history-item"><div class="qhi-score">${pct}%</div><div class="qhi-info"><strong>${q.subject}</strong><span>${new Date(q.date).toLocaleDateString()} · ${q.score}/${q.total} correct</span></div><div class="qhi-badge ${cls}">${label}</div></div>`;
+  }).join('');
+}
+
+function startQuiz(subject) {
+  const bank = questionBank[subject] || [];
+  if (!bank.length) { toast('No questions for this subject yet!', 'info'); return; }
+  const shuffled = [...bank].sort(() => Math.random() - 0.5).slice(0, Math.min(10, bank.length));
+  quizState = { subject, questions: shuffled, current: 0, score: 0, answers: [], elapsed: 0 };
+  document.getElementById('quiz-lobby').classList.add('hidden');
+  document.getElementById('quiz-result').classList.add('hidden');
+  document.getElementById('quiz-active').classList.remove('hidden');
+  document.getElementById('q-subject-label').textContent = subject;
+  document.getElementById('q-total').textContent = shuffled.length;
+  showQuizQuestion();
+  startQuizTimer();
+}
+
+function showQuizQuestion() {
+  const q = quizState.questions[quizState.current];
+  document.getElementById('q-num').textContent = quizState.current + 1;
+  document.getElementById('q-score-live').textContent = `Score: ${quizState.score}`;
+  document.getElementById('quiz-question-text').textContent = q.q;
+  const fill = document.getElementById('quiz-prog-fill');
+  if (fill) fill.style.width = `${((quizState.current)/quizState.questions.length)*100}%`;
+  const optsEl = document.getElementById('quiz-options');
+  optsEl.innerHTML = q.opts.map((opt,i) => `<button class="quiz-option" onclick="selectAnswer(${i})">${opt}</button>`).join('');
+  document.getElementById('quiz-next-btn').disabled = true;
+}
+
+function selectAnswer(idx) {
+  const q = quizState.questions[quizState.current];
+  const btns = document.querySelectorAll('.quiz-option');
+  btns.forEach(b => b.disabled = true);
+  if (idx === q.ans) { btns[idx].classList.add('correct'); quizState.score++; }
+  else { btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
+  quizState.answers.push({q: q.q, chosen: idx, correct: q.ans, opts: q.opts});
+  document.getElementById('quiz-next-btn').disabled = false;
+}
+
+function nextQuestion() {
+  quizState.current++;
+  if (quizState.current >= quizState.questions.length) { endQuiz(); return; }
+  showQuizQuestion();
+}
+
+function quitQuiz() { clearInterval(quizState.timer); showQuizLobby(); }
+function showQuizLobby() {
+  document.getElementById('quiz-active').classList.add('hidden');
+  document.getElementById('quiz-result').classList.add('hidden');
+  document.getElementById('quiz-lobby').classList.remove('hidden');
+}
+
+function retryQuiz() { startQuiz(quizState.subject); }
+
+async function endQuiz() {
+  clearInterval(quizState.timer);
+  const total = quizState.questions.length;
+  const pct = Math.round((quizState.score / total) * 100);
+  document.getElementById('quiz-active').classList.add('hidden');
+  document.getElementById('quiz-result').classList.remove('hidden');
+  const circle = document.getElementById('quiz-score-circle');
+  circle.style.setProperty('--pct', pct + '%');
+  document.getElementById('result-score').textContent = pct + '%';
+  let title, sub;
+  if (pct >= 90) { title = '🏆 Outstanding!'; sub = 'You\'re a true scholar!'; }
+  else if (pct >= 70) { title = '🎉 Great Job!'; sub = 'Keep up the excellent work!'; }
+  else if (pct >= 50) { title = '👍 Good Effort!'; sub = 'Review the missed questions.'; }
+  else { title = '📚 Keep Studying'; sub = 'Revision will help you improve!'; }
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-sub').textContent = sub;
+  const xpEarned = Math.round(pct / 2);
+  addXP(xpEarned);
+  if (pct === 100) unlockAchievement('quiz_master');
+  const record = { subject: quizState.subject, score: quizState.score, total, date: new Date().toISOString(), elapsed: quizState.elapsed };
+  appData.quizHistory.unshift(record);
+  if (fbReady && currentUser) try { await userDoc('quizHistory').add(record); } catch(e) {}
+  // Answer review
+  const rev = document.getElementById('answer-review');
+  rev.innerHTML = '<h3 style="margin-bottom:14px;">Review Answers</h3>' + quizState.answers.map((a,i) => `
+    <div class="review-item">
+      <div class="review-q">${i+1}. ${a.q}</div>
+      ${a.chosen === a.correct
+        ? `<div class="review-correct"><i class="fas fa-check-circle"></i> Correct: ${a.opts[a.correct]}</div>`
+        : `<div class="review-wrong"><i class="fas fa-times-circle"></i> Your answer: ${a.opts[a.chosen]}</div>
+           <div class="review-correct"><i class="fas fa-check-circle"></i> Correct: ${a.opts[a.correct]}</div>`}
+    </div>`).join('');
+}
+
+function startQuizTimer() {
+  quizState.elapsed = 0;
+  clearInterval(quizState.timer);
+  quizState.timer = setInterval(() => {
+    quizState.elapsed++;
+    const m = Math.floor(quizState.elapsed/60).toString().padStart(2,'0');
+    const s = (quizState.elapsed%60).toString().padStart(2,'0');
+    const el = document.getElementById('quiz-timer');
+    if (el) el.textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+// ============================================================
+// RECORDED CLASSES
+// ============================================================
+let classFilter = '', classSearch = '';
+
+function renderClasses() {
+  renderClassGrid();
+  renderRecentlyWatched();
+}
+
+function renderClassGrid() {
+  const el = document.getElementById('classes-grid');
+  if (!el) return;
+  let items = recordedClasses;
+  if (classFilter) items = items.filter(c => c.subject === classFilter);
+  if (classSearch) items = items.filter(c => c.title.toLowerCase().includes(classSearch) || c.desc.toLowerCase().includes(classSearch));
+  el.innerHTML = items.map(classCardHTML).join('');
+}
+
+function classCardHTML(v) {
+  const w = appData.watchHistory.find(wh => wh.videoId === v.id);
+  const pct = w ? w.progress : 0;
+  return `<div class="class-card" onclick="openVideo('${v.id}')">
+    <div class="class-thumb">
+      <img src="${v.thumb}" alt="${v.title}" onerror="this.parentElement.innerHTML='<div class=\\"class-thumb-placeholder\\">🎬</div>'"/>
+      <div class="class-play-overlay"><div class="class-play-btn"><i class="fas fa-play"></i></div></div>
+    </div>
+    <div class="class-info">
+      <div class="class-subject-tag">${v.subject}</div>
+      <div class="class-title">${v.title}</div>
+      <div class="class-desc">${v.desc}</div>
+      <div class="class-meta"><i class="fas fa-eye"></i>${v.views} views${pct>0?` · ${pct}% watched`:''}</div>
+      ${pct > 0 ? `<div class="class-progress-bar"><div class="class-progress-fill" style="width:${pct}%"></div></div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderRecentlyWatched() {
+  const watched = appData.watchHistory;
+  const sec = document.getElementById('recently-watched-section');
+  if (!watched.length) { if (sec) sec.classList.add('hidden'); return; }
+  if (sec) sec.classList.remove('hidden');
+  const el = document.getElementById('recently-watched-grid');
+  if (!el) return;
+  const items = watched.slice(0,3).map(w => recordedClasses.find(v => v.id === w.videoId)).filter(Boolean);
+  el.innerHTML = items.map(classCardHTML).join('');
+}
+
+function searchClasses(q) { classSearch = q.toLowerCase(); renderClassGrid(); }
+function filterClasses(subject) { classFilter = subject; renderClassGrid(); }
+
+async function openVideo(id) {
+  const video = recordedClasses.find(v => v.id === id);
+  if (!video) return;
+  document.getElementById('classes-listing').classList.add('hidden');
+  const pv = document.getElementById('video-player-view');
+  pv.classList.remove('hidden');
+  // Set iframe
+  const iframe = document.getElementById('main-video-iframe');
+  iframe.src = video.url + '?autoplay=1&rel=0';
+  document.getElementById('vp-title').textContent = video.title;
+  document.getElementById('vp-subject').textContent = video.subject;
+  document.getElementById('vp-desc').textContent = video.desc;
+  document.getElementById('vp-views').textContent = video.views;
+  // Related
+  const related = recordedClasses.filter(v => v.subject === video.subject && v.id !== id);
+  const relEl = document.getElementById('related-list');
+  relEl.innerHTML = related.map(rv => `
+    <div class="related-item" onclick="openVideo('${rv.id}')">
+      <div class="related-thumb"><img src="${rv.thumb}" alt="${rv.title}" onerror="this.parentElement.innerHTML='🎬'"/></div>
+      <div class="related-info"><strong>${rv.title}</strong><span>${rv.subject}</span></div>
+    </div>`).join('') || '<p style="color:var(--text3);font-size:13px;">No related videos</p>';
+  // Track watch
+  let w = appData.watchHistory.find(wh => wh.videoId === id);
+  if (!w) { w = {videoId: id, progress: 0}; appData.watchHistory.push(w); }
+  // Simulate progress after 3s
+  setTimeout(async () => {
+    w.progress = Math.min(100, w.progress + 25);
+    if (fbReady && currentUser) try { await userDoc('watchHistory').doc(id).set(w); } catch(e) {}
+    if (w.progress === 25) { unlockAchievement('first_video'); addXP(15); }
+  }, 3000);
+  window.scrollTo(0,0);
+}
+
+function backToClasses() {
+  const iframe = document.getElementById('main-video-iframe');
+  if (iframe) iframe.src = '';
+  document.getElementById('video-player-view').classList.add('hidden');
+  document.getElementById('classes-listing').classList.remove('hidden');
+}
+
+// ============================================================
+// DAILY QUIZ
+// ============================================================
+let dqState = { questions:[], current:0, score:0, answers:[], timer:null, elapsed:0, category:'all' };
+
+function initDailyQuiz() {
+  const today = new Date().toLocaleDateString();
+  document.getElementById('dq-date').textContent = today;
+  const best = appData.dqHistory.length ? Math.max(...appData.dqHistory.map(d => Math.round((d.score/d.total)*100))) + '%' : '—';
+  document.getElementById('dq-best').textContent = best;
+  renderDQHistory();
+  document.getElementById('dq-start-screen').classList.remove('hidden');
+  document.getElementById('dq-active').classList.add('hidden');
+  document.getElementById('dq-result').classList.add('hidden');
+}
+
+function setDQCategory(btn, cat) {
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  dqState.category = cat;
+}
+
+function startDailyQuiz() {
+  let pool = [];
+  if (dqState.category === 'all') {
+    ['Mathematics','Science','English'].forEach(s => {
+      pool.push(...(questionBank[s] || []).map(q => ({...q, subject: s})));
+    });
+  } else {
+    pool = (questionBank[dqState.category] || []).map(q => ({...q, subject: dqState.category}));
+  }
+  if (!pool.length) { toast('No questions available!', 'error'); return; }
+  const questions = pool.sort(() => Math.random() - 0.5).slice(0, 10);
+  dqState = { ...dqState, questions, current: 0, score: 0, answers: [], elapsed: 0 };
+  document.getElementById('dq-start-screen').classList.add('hidden');
+  document.getElementById('dq-active').classList.remove('hidden');
+  document.getElementById('dq-category-label').textContent = dqState.category === 'all' ? 'Mixed' : dqState.category;
+  showDQQuestion();
+  dqState.timer = setInterval(() => {
+    dqState.elapsed++;
+    const m = Math.floor(dqState.elapsed/60).toString().padStart(2,'0');
+    const s = (dqState.elapsed%60).toString().padStart(2,'0');
+    const el = document.getElementById('dq-timer');
+    if (el) el.textContent = `${m}:${s}`;
+  }, 1000);
+}
+
+function showDQQuestion() {
+  const q = dqState.questions[dqState.current];
+  document.getElementById('dq-num').textContent = dqState.current + 1;
+  document.getElementById('dq-score-live').textContent = `Score: ${dqState.score}`;
+  document.getElementById('dq-q-subject').textContent = q.subject || '';
+  document.getElementById('dq-question-text').textContent = q.q;
+  const fill = document.getElementById('dq-prog-fill');
+  if (fill) fill.style.width = `${(dqState.current/10)*100}%`;
+  const optsEl = document.getElementById('dq-options');
+  optsEl.innerHTML = q.opts.map((opt,i) => `<button class="quiz-option" onclick="selectDQAnswer(${i})">${opt}</button>`).join('');
+  document.getElementById('dq-next-btn').disabled = true;
+}
+
+function selectDQAnswer(idx) {
+  const q = dqState.questions[dqState.current];
+  const btns = document.querySelectorAll('#dq-options .quiz-option');
+  btns.forEach(b => b.disabled = true);
+  if (idx === q.ans) { btns[idx].classList.add('correct'); dqState.score++; }
+  else { btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
+  dqState.answers.push({q: q.q, chosen: idx, correct: q.ans, opts: q.opts});
+  document.getElementById('dq-next-btn').disabled = false;
+}
+
+function nextDQ() {
+  dqState.current++;
+  if (dqState.current >= dqState.questions.length) { endDQ(); return; }
+  showDQQuestion();
+}
+
+function quitDQ() { clearInterval(dqState.timer); initDailyQuiz(); }
+
+async function endDQ() {
+  clearInterval(dqState.timer);
+  const pct = Math.round((dqState.score / 10) * 100);
+  document.getElementById('dq-active').classList.add('hidden');
+  document.getElementById('dq-result').classList.remove('hidden');
+  const circle = document.getElementById('dq-score-circle');
+  circle.style.setProperty('--pct', pct + '%');
+  document.getElementById('dq-result-score').textContent = pct + '%';
+  const xpEarned = Math.round(pct);
+  let title, sub;
+  if (pct >= 90) { title = '🏆 Perfect!'; sub = 'Incredible performance today!'; }
+  else if (pct >= 70) { title = '🎉 Well Done!'; sub = 'You\'re improving every day!'; }
+  else if (pct >= 50) { title = '👍 Not Bad!'; sub = 'Keep practising for better scores.'; }
+  else { title = '📚 Keep Going!'; sub = 'Every attempt makes you stronger.'; }
+  document.getElementById('dq-result-title').textContent = title;
+  document.getElementById('dq-result-sub').textContent = sub;
+  document.getElementById('dq-xp-earned').textContent = `+${xpEarned} XP earned!`;
+  addXP(xpEarned);
+  unlockAchievement('daily_done');
+  // Save streak
+  appData.streak = (appData.streak || 0) + 1;
+  if (appData.streak >= 3) unlockAchievement('streak_3');
+  if (appData.streak >= 7) unlockAchievement('streak_7');
+  const record = { score: dqState.score, total: 10, date: new Date().toISOString(), xpEarned, category: dqState.category };
+  appData.dqHistory.unshift(record);
+  if (fbReady && currentUser) {
+    try { await userDoc('dqHistory').add(record); } catch(e) {}
+    const best = appData.dqHistory.length ? Math.max(...appData.dqHistory.map(d => d.score)) : 0;
+    await db.collection('users').doc(currentUser.uid).set({ bestDQScore: best }, { merge: true });
+  }
+  saveUserMeta();
+  // Review
+  const rev = document.getElementById('dq-answer-review');
+  rev.innerHTML = '<h3 style="margin-bottom:14px;">Review Answers</h3>' + dqState.answers.map((a,i) => `
+    <div class="review-item">
+      <div class="review-q">${i+1}. ${a.q}</div>
+      ${a.chosen === a.correct
+        ? `<div class="review-correct"><i class="fas fa-check-circle"></i> Correct: ${a.opts[a.correct]}</div>`
+        : `<div class="review-wrong"><i class="fas fa-times-circle"></i> Your answer: ${a.opts[a.chosen]}</div>
+           <div class="review-correct"><i class="fas fa-check-circle"></i> Correct: ${a.opts[a.correct]}</div>`}
+    </div>`).join('');
+}
+
+function resetDQ() {
+  document.getElementById('dq-result').classList.add('hidden');
+  document.getElementById('dq-start-screen').classList.remove('hidden');
+  renderDQHistory();
+}
+
+function renderDQHistory() {
+  const el = document.getElementById('dq-history-list');
+  if (!el) return;
+  if (!appData.dqHistory.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">🎯</div><div class="empty-title">No quiz history</div><div class="empty-sub">Complete your first daily quiz!</div></div>`; return; }
+  el.innerHTML = appData.dqHistory.slice(0,7).map(q => {
+    const pct = Math.round((q.score/q.total)*100);
+    const cls = pct>=80?'qhi-gold':pct>=60?'qhi-silver':'qhi-bronze';
+    const label = pct>=80?'Excellent':pct>=60?'Good':'Needs work';
+    return `<div class="quiz-history-item"><div class="qhi-score">${pct}%</div><div class="qhi-info"><strong>Daily Quiz</strong><span>${new Date(q.date).toLocaleDateString()} · ${q.score}/10 correct · +${q.xpEarned||0} XP</span></div><div class="qhi-badge ${cls}">${label}</div></div>`;
+  }).join('');
+}
+
+// ============================================================
+// STUDY TOOLS
+// ============================================================
+let pomoInterval = null, pomoRunning = false, pomoSeconds = 25*60, pomoTotal = 25*60, pomoType = 'Work', pomoSessions = 0;
+
+function initTools() {
+  renderTasks();
+  renderGoals();
+  renderPlanner();
+  setDailyChallenge();
+  updatePomoDisplay();
+}
+
+function setPomo(btn, mins, type) {
+  document.querySelectorAll('.pomo-type-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  pomoType = type;
+  pomoSeconds = mins * 60;
+  pomoTotal = mins * 60;
+  pomoRunning = false;
+  clearInterval(pomoInterval);
+  document.getElementById('pomo-btn').innerHTML = '<i class="fas fa-play"></i> Start';
+  updatePomoDisplay();
+}
+
+function updatePomoDisplay() {
+  const m = Math.floor(pomoSeconds/60).toString().padStart(2,'0');
+  const s = (pomoSeconds%60).toString().padStart(2,'0');
+  const el = document.getElementById('pomo-display');
+  if (el) el.textContent = `${m}:${s}`;
+  const lbl = document.getElementById('pomo-label');
+  if (lbl) lbl.textContent = pomoType;
+  const fill = document.getElementById('pomo-ring-fill');
+  if (fill) {
+    const progress = 1 - (pomoSeconds / pomoTotal);
+    const offset = 440 - (440 * progress);
+    fill.style.strokeDashoffset = offset;
+  }
+}
+
+function pomoToggle() {
+  if (pomoRunning) {
+    clearInterval(pomoInterval);
+    pomoRunning = false;
+    document.getElementById('pomo-btn').innerHTML = '<i class="fas fa-play"></i> Resume';
+  } else {
+    pomoRunning = true;
+    document.getElementById('pomo-btn').innerHTML = '<i class="fas fa-pause"></i> Pause';
+    pomoInterval = setInterval(() => {
+      pomoSeconds--;
+      updatePomoDisplay();
+      if (pomoSeconds <= 0) {
+        clearInterval(pomoInterval);
+        pomoRunning = false;
+        if (pomoType === 'Work') { pomoSessions++; const el = document.getElementById('pomo-sessions'); if (el) el.textContent = pomoSessions; addXP(25); toast('🍅 Pomodoro complete! Take a break.', 'success'); setPomo(document.querySelector('.pomo-type-btn'), 25, 'Work'); }
+        else { toast('Break over! Ready to focus?', 'info'); setPomo(document.querySelectorAll('.pomo-type-btn')[0], 25, 'Work'); }
+      }
+    }, 1000);
+  }
+}
+
+function pomoReset() { clearInterval(pomoInterval); pomoRunning = false; pomoSeconds = pomoTotal; document.getElementById('pomo-btn').innerHTML = '<i class="fas fa-play"></i> Start'; updatePomoDisplay(); }
+function pomoSkip() { clearInterval(pomoInterval); pomoRunning = false; pomoSeconds = 0; updatePomoDisplay(); if (pomoType==='Work'){pomoSessions++;const el=document.getElementById('pomo-sessions');if(el)el.textContent=pomoSessions;} setPomo(document.querySelectorAll('.pomo-type-btn')[0],25,'Work'); }
+
+// Tasks
+function renderTasks() {
+  const el = document.getElementById('task-list');
+  if (!el) return;
+  el.innerHTML = appData.tasks.map(t => `
+    <div class="task-item" id="task-${t.id}">
+      <div class="task-check ${t.done?'done':''}"><i class="fas fa-check" style="color:#fff;font-size:10px;${t.done?'':'display:none'}"></i></div>
+      <span class="task-text ${t.done?'done':''}" onclick="toggleTask('${t.id}')" style="cursor:pointer;flex:1;">${t.text}</span>
+      <button class="task-del" onclick="deleteTask('${t.id}')"><i class="fas fa-times"></i></button>
+    </div>`).join('') || '<p style="color:var(--text3);font-size:13px;text-align:center;padding:10px;">No tasks yet</p>';
+}
+
+function addTask() {
+  const input = document.getElementById('task-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const task = {id:'t_'+Date.now(), text, done: false};
+  appData.tasks.push(task);
+  input.value = '';
+  renderTasks();
+}
+
+function toggleTask(id) {
+  const t = appData.tasks.find(t => t.id === id);
+  if (t) { t.done = !t.done; if (t.done) addXP(5); renderTasks(); }
+}
+function deleteTask(id) { appData.tasks = appData.tasks.filter(t => t.id !== id); renderTasks(); }
+
+// Goals
+function renderGoals() {
+  const el = document.getElementById('goal-list');
+  if (!el) return;
+  el.innerHTML = appData.goals.map(g => `
+    <div class="goal-item">
+      <div class="goal-header"><span class="goal-name">${g.name}</span><span class="goal-val">${g.current}/${g.target} ${g.unit}</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${Math.min(100,(g.current/g.target)*100)}%"></div></div>
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        <button class="btn btn-secondary btn-sm" style="font-size:11px;" onclick="incrementGoal('${g.id}')"><i class="fas fa-plus"></i> Add Progress</button>
+        <button class="btn btn-danger btn-sm" style="font-size:11px;" onclick="deleteGoal('${g.id}')">Remove</button>
+      </div>
+    </div>`).join('') || '<p style="color:var(--text3);font-size:13px;text-align:center;">No goals yet</p>';
+}
+
+function openGoalModal() { openModal('goal-modal'); }
+function saveGoal() {
+  const name = document.getElementById('goal-name-input').value.trim();
+  const target = parseInt(document.getElementById('goal-target-input').value) || 10;
+  const unit = document.getElementById('goal-unit-input').value.trim() || 'units';
+  if (!name) { toast('Enter a goal name', 'error'); return; }
+  appData.goals.push({id:'g_'+Date.now(), name, current: 0, target, unit});
+  closeModal('goal-modal');
+  renderGoals();
+}
+function incrementGoal(id) {
+  const g = appData.goals.find(g => g.id === id);
+  if (g && g.current < g.target) { g.current++; if (g.current === g.target) { toast(`🎯 Goal "${g.name}" complete!`, 'success'); addXP(30); } renderGoals(); }
+}
+function deleteGoal(id) { appData.goals = appData.goals.filter(g => g.id !== id); renderGoals(); }
+
+// Planner
+function renderPlanner() {
+  const el = document.getElementById('planner-days');
+  if (!el) return;
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  el.innerHTML = days.map(day => {
+    const entries = appData.planner.filter(p => p.day === day);
+    return `<div style="padding:8px 12px;border-radius:8px;background:var(--bg3);"><div style="font-size:12px;font-weight:700;color:var(--text3);margin-bottom:4px;">${day}</div>${entries.map(e => `<div style="font-size:12px;color:var(--text2);display:flex;justify-content:space-between;"><span>${e.subject}</span><span>${e.time} (${e.duration}m)</span></div>`).join('') || '<div style="font-size:11px;color:var(--text3);">No sessions</div>'}</div>`;
+  }).join('');
+}
+
+function addPlannerEntry() { openModal('planner-modal'); }
+function savePlannerEntry() {
+  const subject = document.getElementById('plan-subject').value;
+  const day = document.getElementById('plan-day').value;
+  const time = document.getElementById('plan-time').value;
+  const duration = parseInt(document.getElementById('plan-duration').value) || 45;
+  appData.planner.push({id:'pl_'+Date.now(), subject, day, time, duration});
+  closeModal('planner-modal');
+  renderPlanner();
+  toast('Study session scheduled!', 'success');
+}
+
+// Daily Challenge
+const challengeIndex = new Date().getDay();
+function setDailyChallenge() {
+  const ch = dailyChallenges[challengeIndex % dailyChallenges.length];
+  const iconEl = document.getElementById('dc-icon');
+  const titleEl = document.getElementById('dc-title');
+  const descEl = document.getElementById('dc-desc');
+  if (iconEl) iconEl.textContent = ch.icon;
+  if (titleEl) titleEl.textContent = ch.title;
+  if (descEl) descEl.textContent = ch.desc;
+  const btn = document.getElementById('dc-btn');
+  if (btn && appData.dailyChallengeCompleted) { btn.textContent = '✅ Completed!'; btn.disabled = true; }
+}
+function completeDailyChallenge() {
+  appData.dailyChallengeCompleted = true;
+  addXP(50);
+  toast('🎯 Daily challenge complete! +50 XP', 'success');
+  setDailyChallenge();
+}
+
+// ============================================================
+// ANALYTICS
+// ============================================================
+let chartsInit = false;
+function initCharts() {
+  if (chartsInit) return;
+  chartsInit = true;
+  const def = { color: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(240,240,255,0.7)' : 'rgba(26,26,46,0.7)' };
+  const gridColor = document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+  Chart.defaults.color = def.color;
+  Chart.defaults.borderColor = gridColor;
+
+  // Activity chart
+  new Chart(document.getElementById('chart-activity'), {
+    type:'bar',
+    data:{ labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets:[{label:'Study Minutes',data:[45,60,30,90,75,120,50],backgroundColor:'rgba(124,92,252,0.7)',borderRadius:6}] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+  });
+
+  // Subjects chart
+  new Chart(document.getElementById('chart-subjects'), {
+    type:'doughnut',
+    data:{ labels:['Mathematics','Science','English','History','Geography','CS'], datasets:[{data:[30,20,25,10,8,7],backgroundColor:['#7c5cfc','#34d399','#f472b6','#fb923c','#06b6d4','#a78bfa']}] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{padding:10,boxWidth:12}}} }
+  });
+
+  // Quiz chart
+  new Chart(document.getElementById('chart-quiz'), {
+    type:'line',
+    data:{ labels:['Quiz 1','Quiz 2','Quiz 3','Quiz 4','Quiz 5'], datasets:[{label:'Score %',data:[60,70,65,80,75],borderColor:'#f472b6',backgroundColor:'rgba(244,114,182,0.1)',fill:true,tension:0.4}] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{min:0,max:100}} }
+  });
+
+  // XP chart
+  new Chart(document.getElementById('chart-xp'), {
+    type:'line',
+    data:{ labels:['Week 1','Week 2','Week 3','Week 4'], datasets:[{label:'XP Earned',data:[80,150,220,appData.xp],borderColor:'#7c5cfc',backgroundColor:'rgba(124,92,252,0.1)',fill:true,tension:0.4}] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}} }
+  });
+
+  // Stats
+  document.getElementById('analytics-stats').innerHTML = `
+    <div class="stat-card"><div class="stat-val grad-text">${appData.xp}</div><div class="stat-label">Total XP</div></div>
+    <div class="stat-card"><div class="stat-val grad-text">${appData.streak}</div><div class="stat-label">Current Streak</div></div>
+    <div class="stat-card"><div class="stat-val grad-text">${appData.notes.length}</div><div class="stat-label">Notes Created</div></div>
+    <div class="stat-card"><div class="stat-val grad-text">${appData.quizHistory.length + appData.dqHistory.length}</div><div class="stat-label">Total Quizzes</div></div>`;
+}
+
+// ============================================================
+// LEADERBOARD
+// ============================================================
+function renderLeaderboard() {
+  const el = document.getElementById('leaderboard-list');
+  if (!el) return;
+  const myName = (currentUser?.displayName || 'You').split(' ')[0];
+  const colors = ['#7c5cfc','#34d399','#f472b6','#fb923c','#06b6d4'];
+  const players = [
+    {name:'Aanya Sharma',xp:2840,level:14,isMe:false},
+    {name:'Rohan Mehta',xp:2610,level:13,isMe:false},
+    {name:'Priya Nair',xp:2340,level:12,isMe:false},
+    {name:myName,xp:appData.xp,level:appData.level,isMe:true},
+    {name:'Kiran Rao',xp:1890,level:9,isMe:false},
+    {name:'Divya Singh',xp:1750,level:8,isMe:false},
+    {name:'Arjun Patel',xp:1580,level:7,isMe:false},
+    {name:'Sneha Kumar',xp:1340,level:6,isMe:false},
+  ].sort((a,b) => b.xp - a.xp);
+  const rankColors = ['gold','silver','bronze'];
+  el.innerHTML = players.map((p,i) => `
+    <div class="lb-item ${p.isMe?'lb-me':''}">
+      <div class="lb-rank ${rankColors[i]||''}">${i+1}</div>
+      <div class="lb-avatar" style="background:${colors[i%colors.length]};">${p.name.charAt(0)}</div>
+      <div class="lb-info"><div class="lb-name">${p.name}${p.isMe?' (You)':''}</div><div class="lb-level">Level ${p.level}</div></div>
+      <div class="lb-xp">${p.xp} XP</div>
+    </div>`).join('');
+}
+
+// ============================================================
+// PROFILE
+// ============================================================
+function renderProfile() {
+  const name = currentUser?.displayName || 'Student';
+  const email = currentUser?.email || '—';
+  const initials = name.charAt(0).toUpperCase();
+  document.getElementById('profile-avatar-big').textContent = initials;
+  document.getElementById('profile-name').textContent = name;
+  document.getElementById('profile-email').textContent = email;
+  document.getElementById('ps-xp').textContent = appData.xp;
+  document.getElementById('ps-streak').textContent = appData.streak;
+  document.getElementById('ps-badges').textContent = appData.achievements.length;
+  document.getElementById('ps-level').textContent = appData.level;
+  renderBadges('profile-badge-grid');
+}
+
+// ============================================================
+// SETTINGS
+// ============================================================
+function initSettings() {
+  const name = currentUser?.displayName || '';
+  const ni = document.getElementById('settings-name-input');
+  if (ni) ni.value = name;
+  const ea = document.getElementById('settings-email-display');
+  if (ea) ea.textContent = currentUser?.email || '—';
+  const av = document.getElementById('settings-avatar');
+  if (av) av.textContent = name.charAt(0).toUpperCase();
+  updateThemeIcons();
+}
+
+function switchSettingsTab(btn, id) {
+  document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+  const sec = document.getElementById(id);
+  if (sec) sec.classList.add('active');
+}
+
+async function saveProfileSettings() {
+  const name = document.getElementById('settings-name-input').value.trim();
+  if (!name) { toast('Enter a name', 'error'); return; }
+  if (fbReady && currentUser) {
+    try { await currentUser.updateProfile({ displayName: name }); } catch(e) {}
+  }
+  if (currentUser) currentUser.displayName = name;
+  toast('Profile updated!', 'success');
+  const av = document.getElementById('app-avatar');
+  if (av) av.textContent = name.charAt(0).toUpperCase();
+}
+
+// ============================================================
+// MISC HELPERS
+// ============================================================
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+function sendContact() {
+  const name = document.getElementById('contact-name')?.value?.trim();
+  const email = document.getElementById('contact-email')?.value?.trim();
+  const msg = document.getElementById('contact-msg')?.value?.trim();
+  if (!name || !email || !msg) { toast('Please fill all fields', 'error'); return; }
+  toast('Message sent! We\'ll be in touch soon. 📧', 'success');
+  if (document.getElementById('contact-name')) document.getElementById('contact-name').value = '';
+  if (document.getElementById('contact-email')) document.getElementById('contact-email').value = '';
+  if (document.getElementById('contact-msg')) document.getElementById('contact-msg').value = '';
+}
+
+// Responsive: hide sidebar on desktop
+function handleResize() {
+  const sb = document.getElementById('main-sidebar');
+  if (!sb) return;
+  if (window.innerWidth > 768) {
+    sb.style.transform = 'translateX(0)';
+    const ov = document.getElementById('sidebar-overlay');
+    if (ov) ov.classList.remove('show');
+  } else {
+    sb.style.transform = 'translateX(-100%)';
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('resize', handleResize);
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  if (!fbReady) {
+    // Demo: show home page
+    showPage('home-page');
+  }
 });
 
-// Initialize Tailwind and load
-console.log("%cStudyLyx loaded successfully", "color: #7c3aed; font-size: 16px; font-weight: bold");
+// Close sidebar overlay
+const sov = document.getElementById('sidebar-overlay');
+if (sov) sov.addEventListener('click', closeSidebar);
+
+// Handle keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
+  }
+});
+
+// Click outside modal to close
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.add('hidden');
+  });
+});
 </script>
 </body>
 </html>
-``` cursor-pointer
